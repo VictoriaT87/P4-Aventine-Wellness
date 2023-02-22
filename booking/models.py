@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Appointments(models.Model):
+class Appointment(models.Model):
     AVAILABLE_TIMES = (
         ("9 AM", "9 AM"),
         ("10:30 AM", "10:30 AM"),
