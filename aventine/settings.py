@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'django_summernote',
+    'bootstrap5',
+    'bootstrap_datepicker_plus',
     'booking',
 ]
 
