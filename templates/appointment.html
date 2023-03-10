@@ -7,4 +7,26 @@
     <a href="{% url 'home' %}">Home Page</a>
 </div>
 
+<h1 class="text-center  mt-3">Online Booking</h1>
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+
+
+    <div>
+        <form method="POST" class="appointment-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+        </form>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
 {%endblock%}
