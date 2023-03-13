@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime, date
 from django.urls import reverse
+from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -25,8 +26,10 @@ class Appointment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     # service = models.CharField(max_length=50, choices=SERVICES, default="Yoga")
-    day = models.DateField(default=datetime.now)
-    time = models.CharField(max_length=10, choices=AVAILABLE_TIMES, default="A")
+    
+    date_posted = models.DateTimeField(default=timezone.now)
+    date = models.DateField(default=datetime.now)
+    timeblock = models.CharField(max_length=10, choices=AVAILABLE_TIMES, default="A")
 
     def is_upcoming(self):
         return date.today() <= self.date

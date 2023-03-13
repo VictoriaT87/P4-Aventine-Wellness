@@ -1,33 +1,48 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
 {% block content %}
+{% for day in days %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ day.date }}</a>
+            <small class="text-muted">{{ day.day }}</small>
+        </div>
+        {% if not day.A_booked %}
+            <a class='btn btn-success btn-lg btn-block'
+                href="{% url 'appointment-create-spec' day.date 'A' %}">09:00 - 10:00</a>
+        {% else %}
+            <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
+        {% endif %}
 
-<div class="container-fluid">
-    <h1>appointment template</h1>
-    <a href="{% url 'home' %}">Home Page</a>
-</div>
+        {% if not day.B_booked %}
+            <a class='btn btn-success btn-lg btn-block'
+                href="{% url 'appointment-create-spec' day.date 'B' %}">10:30 - 11:30</a>
+        {% else %}
+            <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
+        {% endif %}
 
-<h1 class="text-center  mt-3">Online Booking</h1>
+        {% if not day.C_booked %}
+            <a class='btn btn-success btn-lg btn-block'
+                href="{% url 'appointment-create-spec' day.date 'C' %}">12:00 - 13:00</a>
+        {% else %}
+            <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
+        {% endif %}
 
-<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+        {% if not day.D_booked %}
+            <a class='btn btn-success btn-lg btn-block'
+                href="{% url 'appointment-create-spec' day.date 'D' %}">13:30 - 14:30</a>
+        {% else %}
+            <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
+        {% endif %}
 
+        {% if not day.E_booked %}
+            <a class='btn btn-success btn-lg btn-block'
+                href="{% url 'appointment-create-spec' day.date 'E' %}">15:00 - 16:00</a>
+        {% else %}
+            <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
+        {% endif %}
 
-    <div>
-        {{ form.media }}
-        <form method="POST" class="appointment-form">{% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="reset" class="btn btn-default">Reset</button>
-        </form>
     </div>
-
-
-
-
-
-
-</div>
-
-
-
-{%endblock%}
+</article>
+{% endfor %}
+{% endblock content %}
