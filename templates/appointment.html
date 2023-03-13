@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="container-fluid">
@@ -15,7 +15,7 @@
     <div>
         {{ form.media }}
         <form method="POST" class="appointment-form">{% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="reset" class="btn btn-default">Reset</button>
         </form>

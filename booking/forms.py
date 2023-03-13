@@ -8,7 +8,11 @@ class AppointmentForm(forms.ModelForm):
 
     class Meta:
         model = Appointment
-        fields = ('service', 'day', 'time',)
+        fields = ('day', 'time',)
         widgets = {
-            "day": DatePickerInput(),
+            "day": DatePickerInput(attrs={"class": "IE-time"},
+        options={
+            "format": "DD/MM/YYYY",
+                },),
         }
+
