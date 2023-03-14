@@ -47,7 +47,7 @@ def generate_daylist():
         day["E_booked"] = (
             Appointment.objects.filter(date=str(curr_day)).filter(timeblock="E").exists()
         )
-        if day["day"] != "SATURDAY" or "SUNDAY":  # Writing lab doesn't open on Saturday
+        if day["day"] != "SUNDAY":
             daylist.append(day)
     return daylist
 
