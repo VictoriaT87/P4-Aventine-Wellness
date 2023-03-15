@@ -21,7 +21,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-custom bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}">Aventine Wellness</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -29,7 +29,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
@@ -46,9 +46,9 @@
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text text-muted">
+                <!-- <span class="navbar-text text-muted">
                     Aventine Wellness
-                </span>
+                </span> -->
             </div>
         </div>
     </nav>

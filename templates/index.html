@@ -1,12 +1,32 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <h1>hello world</h1>
     <a href="{% url 'appointment' %}">appointment</a>
-</div>
+</div> -->
+
+<section id="hero" class="hero">
+
+    <div class="info d-flex align-items-center">
+        <div class="hero-container">
+            <div class="row justify-content-center hero-content">
+                <div class="col-lg-6 hero-text">
+                    <h2>Nourish your spirit, mind and body</h2>
+                    <p>A countryside wellness retreat. Open Monday to Saturday for workshops and classes.
+                        We offer yoga, meditation, massage, acupuncture, facials, hypnotherapy, personal coaching,
+                        readings and more.</p>
+                    <a href="#">View Classes</a>
+                </div>
+                <div class="col-lg-6 hero-content-image">
+                    <img class="hero-image" src="{% static 'media/images/hero-image.png' %}"
+                        alt="Collage image of wellness retreat and woman doing yoga">
+            </div>
+            </div>
+        </div>
+    </div>
 
 
-
-{%endblock%}
+    {%endblock%}
