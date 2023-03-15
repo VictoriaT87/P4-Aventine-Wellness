@@ -18,7 +18,7 @@
                     <p>A countryside wellness retreat. Open Monday to Saturday for workshops and classes.
                         We offer yoga, meditation, massage, acupuncture, facials, hypnotherapy, personal coaching,
                         readings and more.</p>
-                    <a href="#">View Classes</a>
+                    <!-- <a href="#">View Classes</a> -->
                 </div>
                 <div class="col-lg-6 hero-content-image">
                     <img class="hero-image" src="{% static 'media/images/hero-image.png' %}"
@@ -29,5 +29,54 @@
     </div>
 </section>
 
+<section class="treatments">
+    <div class="container">
+
+        <div class="section-header">
+            <h2>Wellness Treatments</h2>
+        </div>
+
+        <div class="row gy-4">
+
+            <div class="col-lg-6">
+                <div class="card-item">
+                    <div class="row">
+                        <div class="col-xl-5">
+                            <div class="card-bg">
+                                <img src="{% static 'media/images/meditation.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xl-7 d-flex align-items-center">
+                            <div class="card-body">
+                                <h4 class="card-title">Meditation</h4>
+                                <p>Come and join a group meditation, set in the beautiful Aventine House Gardens.</p>
+                                <p>Our sessions are guided by a trained meditation facilitator, guaranteed to relieve
+                                    you of the stresses of daily life.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card-item">
+                    <div class="row">
+                        <div class="col-xl-5">
+                            <div class="card-bg">
+                                <img src="{% static 'media/images/yoga.jpg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xl-7 d-flex align-items-center">
+                            <div class="card-body">
+                                <h4 class="card-title">Yoga</h4>
+                                <p>Our yoga sessions offer you simple methods to cultivate peace, joy and wellbeing.</p>
+                                <p>Whether you are seeking to eliminate anxiety, improve productivity, or regain a lost
+                                sense of vibrancy, there are a variety of sessions for you to dive into.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
 
 {%endblock%}
