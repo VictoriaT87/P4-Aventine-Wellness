@@ -5,19 +5,26 @@
 /* .navbar-custom{
     background-color: #fff;
 } */
+:root {
+    --color-default: #175851;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
 
 .navbar {
     font-size: 1.5rem;
 }
 
 .navbar-custom a {
-    color: #175851;
+    color: var(--color-default);
     font-size: 1.5rem;
     padding-left: 0.5rem;
 }
 
 #navbarText {
-    color: #175851;
+    color: var(--color-default);
 }
 
 .hero {
@@ -78,6 +85,10 @@
     justify-content: center;
 }
 
+.divider {
+    max-width: 20em;
+}
+
 .section {
     padding: 80px 0;
     overflow: hidden;
@@ -92,7 +103,7 @@
     font-size: 32px;
     font-weight: 700;
     position: relative;
-    color: #175851;
+    color: var(--color-default);
 }
 
 .treatments .card-item {
@@ -113,13 +124,48 @@
 .treatments .card-item h4 {
     font-weight: 700;
     margin-bottom: 15px;
-    color: #175851;
+    color: var(--color-default);
     text-align: center;
 }
 
 .treatments .card-item p {
-    color: #175851;
+    color: var(--color-default);
     margin: 0;
     font-size: 1.2rem;
     text-align: center;
+}
+
+.benefits .benefits-item {
+    padding: 40px;
+    background: #fff;
+    height: 100%;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+.benefits .benefits-item h3 {
+    color: var(--color-default);
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    padding-bottom: 8px;
+    font-size: 22px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.benefits .benefits-item p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.icon {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.icon-img {
+    max-width: 40%;
+    max-height: 100px;
 }
