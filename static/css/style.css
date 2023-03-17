@@ -170,12 +170,19 @@
     max-height: 100px;
 }
 
+.booking-page-heading {
+    color: var(--color-default);
+    text-align: center;
+    margin: 20px;
+}
+
 .booking-page-text {
-    font-size: large;
+    font-size: x-large;
     font-weight: 700;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    padding-top: 20px;
 }
 
 
@@ -189,8 +196,9 @@
 }
 
 .booking-slots .btn {
-    background-color: #175851;
+    background-color: var(--color-default);
     display: flex;
     flex-direction: column-reverse;
     width: 30%;
+    margin: 20px;
 }

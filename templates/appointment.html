@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
+<h1 class="booking-page-heading">Please Choose a Time and Day to Book a Wellness Session</h1>
+
 {% for day in days %}
-<article class="media content-section">
+<article>
     <div class="booking-page">
+        
         <div class="booking-page-text">
             <p>{{ day.day }}</p>
             <!-- <p>{{ day.date }}</p> -->
@@ -39,6 +43,13 @@
             {% if not day.E_booked %}
             <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'E' %}">15:00 -
                 16:00</a>
+            {% else %}
+            <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
+            {% endif %}
+
+            {% if not day.F_booked %}
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'F' %}">16:30 -
+                17:30</a>
             {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
             {% endif %}
