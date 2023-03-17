@@ -169,3 +169,28 @@
     max-width: 40%;
     max-height: 100px;
 }
+
+.booking-page-text {
+    font-size: large;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+
+
+.booking-slots {
+    display: flex;
+    max-width: 70%;
+    margin: auto;
+    align-content: stretch;
+    justify-content: space-evenly;
+}
+
+.booking-slots .btn {
+    background-color: #175851;
+    display: flex;
+    flex-direction: column-reverse;
+    width: 30%;
+}

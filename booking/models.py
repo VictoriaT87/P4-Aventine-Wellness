@@ -22,6 +22,7 @@ class Appointment(models.Model):
         ("C", '12:00 - 13:00'),
         ("D", '13:30 - 14:30'),
         ("E", '15:00 - 16:00'),
+        ("F", '16:30 - 17:30'),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

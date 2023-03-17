@@ -2,46 +2,47 @@
 {% block content %}
 {% for day in days %}
 <article class="media content-section">
-    <div class="media-body">
-        <div class="article-metadata">
-            <p class="mr-2">{{ day.date }}</p>
-            <small class="text-muted">{{ day.day }}</small>
+    <div class="booking-page">
+        <div class="booking-page-text">
+            <p>{{ day.day }}</p>
+            <!-- <p>{{ day.date }}</p> -->
         </div>
-        {% if not day.A_booked %}
-            <a class='btn btn-success btn-lg btn-block'
-                href="{% url 'appointment-create-spec' day.date 'A' %}">09:00 - 10:00</a>
-        {% else %}
+        <div class="booking-slots d-flex align-content-center flex-wrap">
+            {% if not day.A_booked %}
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'A' %}">09:00 -
+                10:00</a>
+            {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
-        {% endif %}
+            {% endif %}
 
-        {% if not day.B_booked %}
-            <a class='btn btn-success btn-lg btn-block'
-                href="{% url 'appointment-create-spec' day.date 'B' %}">10:30 - 11:30</a>
-        {% else %}
+            {% if not day.B_booked %}
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'B' %}">10:30 -
+                11:30</a>
+            {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
-        {% endif %}
+            {% endif %}
 
-        {% if not day.C_booked %}
-            <a class='btn btn-success btn-lg btn-block'
-                href="{% url 'appointment-create-spec' day.date 'C' %}">12:00 - 13:00</a>
-        {% else %}
+            {% if not day.C_booked %}
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'C' %}">12:00 -
+                13:00</a>
+            {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
-        {% endif %}
+            {% endif %}
 
-        {% if not day.D_booked %}
-            <a class='btn btn-success btn-lg btn-block'
-                href="{% url 'appointment-create-spec' day.date 'D' %}">13:30 - 14:30</a>
-        {% else %}
+            {% if not day.D_booked %}
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'D' %}">13:30 -
+                14:30</a>
+            {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
-        {% endif %}
+            {% endif %}
 
-        {% if not day.E_booked %}
-            <a class='btn btn-success btn-lg btn-block'
-                href="{% url 'appointment-create-spec' day.date 'E' %}">15:00 - 16:00</a>
-        {% else %}
+            {% if not day.E_booked %}
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'E' %}">15:00 -
+                16:00</a>
+            {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
-        {% endif %}
-
+            {% endif %}
+        </div>
     </div>
 </article>
 {% endfor %}
