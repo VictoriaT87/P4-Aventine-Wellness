@@ -1,6 +1,7 @@
 import datetime
 
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Appointment
 from .forms import AppointmentForm
@@ -54,8 +55,8 @@ def generate_daylist():
 
 class AppointmentListView(ListView):
     model = Appointment
-    template_name = "appointment_list.html" 
-    context_object_name = "appointment_list"
+    template_name = "appointments.html" 
+    context_object_name = "appointments"
     ordering = ["-date"]
 
 
@@ -65,13 +66,16 @@ class AppointmentDetailView(DetailView):
 
 class AppointmentCreateView(CreateView):
     form_class = AppointmentForm
-    template_name = "appointment_list.html"
+    template_name = "appointment_confirm_form.html"
 
     def get_initial(self):
         return {
             "date": self.kwargs.get("date"),
             "timeblock": self.kwargs.get("timeblock"),
         }
+
+    # def success_redirect(self):
+    #     return reverse(reverse('appointment', args=["<slug:pk>"]))
 
 
 def home(request):

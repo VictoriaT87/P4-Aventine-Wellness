@@ -41,4 +41,4 @@ class Appointment(models.Model):
 
     def get_absolute_url(self):
         # returns a complete url string and let view handle the redirect
-        return reverse("home")
+        return reverse("appointment-details", kwargs={"pk": self.pk})

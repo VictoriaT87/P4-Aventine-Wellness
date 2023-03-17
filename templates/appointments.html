@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+{% for appointment in appointments %}
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2">{{ appointment.user }}</a>
+            <small class="text-muted">{{ appointment.date|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'appointment_detail' appointment.id %}">{{ appointment.helptype }}</a></h2>
+        <p class="article-content">{{ appointment.date|date:"l" }}</p>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}
