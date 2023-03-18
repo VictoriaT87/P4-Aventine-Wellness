@@ -2,7 +2,7 @@ from datetime import datetime
 
 from . import views
 from booking.views import (
-    AppointmentListView, AppointmentCreateView, AppointmentDetailView)
+    AppointmentListView, AppointmentCreateView, AppointmentDetailView, )
 from django.urls import path, register_converter
 
 
@@ -33,4 +33,5 @@ urlpatterns = [
         AppointmentCreateView.as_view(),
         name="appointment-create-spec",
     ),
+   
 ]

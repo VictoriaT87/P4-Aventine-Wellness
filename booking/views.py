@@ -33,20 +33,17 @@ def generate_daylist():
         weekday = curr_day.strftime("%A").upper()
         day["date"] = str(curr_day)
         day["day"] = weekday
-        day["A_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="A").exists()
+        day["slot1_booked"] = (
+            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="9 AM").exists()
         )
-        day["B_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="B").exists()
+        day["slot2_booked"] = (
+            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="11 AM").exists()
         )
-        day["C_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="C").exists()
+        day["slot3_booked"] = (
+            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="1 PM").exists()
         )
-        day["D_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="D").exists()
-        )
-        day["E_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="E").exists()
+        day["slot4_booked"] = (
+            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="3 PM").exists()
         )
         if day["day"] != "SUNDAY":
             daylist.append(day)
@@ -62,6 +59,7 @@ class AppointmentListView(ListView):
 
 class AppointmentDetailView(DetailView):
     model = Appointment
+    template_name = "appointment_detail.html"
 
 
 class AppointmentCreateView(CreateView):
@@ -70,12 +68,10 @@ class AppointmentCreateView(CreateView):
 
     def get_initial(self):
         return {
+            "user": self.kwargs.get("user"),
             "date": self.kwargs.get("date"),
             "timeblock": self.kwargs.get("timeblock"),
         }
-
-    # def success_redirect(self):
-    #     return reverse(reverse('appointment', args=["<slug:pk>"]))
 
 
 def home(request):
