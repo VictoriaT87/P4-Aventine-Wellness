@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid">
+    <h1>appointment template</h1>
+    <a href="{% url 'home' %}">Home Page</a>
+</div>
+
+<h1 class="text-center  mt-3">Online Booking</h1>
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+
+    <div class="text-center  mt-3">
+        Edit Your Appointment
+    </div>
+
+    <div>
+        {{ form.media }}
+        <form method="POST" class="appointment-form">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Confirm</button>
+            <button type="reset" class="btn btn-default">Return</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

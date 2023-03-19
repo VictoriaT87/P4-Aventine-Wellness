@@ -1,5 +1,6 @@
 from django import forms
 from .models import Appointment
+from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -14,4 +15,3 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
         fields = ('date', 'timeblock',)
-

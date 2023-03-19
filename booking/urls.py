@@ -2,7 +2,11 @@ from datetime import datetime
 
 from . import views
 from booking.views import (
-    AppointmentListView, AppointmentCreateView, AppointmentDetailView, )
+    AppointmentListView, 
+    AppointmentCreateView, 
+    AppointmentDetailView, 
+    AppointmentEditView,
+    AppointmentDeleteView, )
 from django.urls import path, register_converter
 
 
@@ -33,5 +37,7 @@ urlpatterns = [
         AppointmentCreateView.as_view(),
         name="appointment-create-spec",
     ),
-   
+    path("appointment/<int:pk>/edit", AppointmentEditView.as_view(), name="appointment-edit"),
+    path("appointment/<int:pk>/delete", AppointmentDeleteView.as_view(), name="appointment-delete"),
+    path('user-profile', views.userProfile, name='user-profile'),
 ]

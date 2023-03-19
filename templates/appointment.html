@@ -19,22 +19,22 @@
             {% endif %}
 
             {% if not day.slot2_booked %}
-            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date '11 AM' %}">10:30 -
-                11:30</a>
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date '11 AM' %}">11:00 -
+                12:00</a>
             {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
             {% endif %}
 
             {% if not day.slot3_booked %}
-            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date '3 PM' %}">12:00 -
-                13:00</a>
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date '1 PM' %}">13:00 -
+                14:00</a>
             {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
             {% endif %}
 
             {% if not day.slot4_booked %}
-            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date 'D' %}">13:30 -
-                14:30</a>
+            <a class='btn btn-success btn-lg btn-block' href="{% url 'appointment-create-spec' day.date '3 PM' %}">15:00 -
+                16:00</a>
             {% else %}
             <a class='btn btn-secondary btn-lg btn-block' disabled>BOOKED</a>
             {% endif %}
