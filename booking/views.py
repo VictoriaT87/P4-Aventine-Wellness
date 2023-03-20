@@ -19,11 +19,6 @@ from django.views.generic import (
 
 # Create your views here.
 
-# class HomeTemplate(View):
-
-#     def get(self, request, *args, **kwargs):
-#         return render(request, "index.html")
-
 
 def generate_daylist():
     daylist = []
@@ -51,18 +46,6 @@ def generate_daylist():
     return daylist
 
 
-class AppointmentListView(ListView):
-    model = Appointment
-    template_name = "appointments.html" 
-    context_object_name = "appointments"
-    ordering = ["-date"]
-
-
-class AppointmentDetailView(DetailView):
-    model = Appointment
-    template_name = "appointment_detail.html"
-
-
 class AppointmentCreateView(CreateView):
     form_class = AppointmentForm
     template_name = "appointment_confirm_form.html"
@@ -74,12 +57,29 @@ class AppointmentCreateView(CreateView):
             "timeblock": self.kwargs.get("timeblock"),
         }
 
+    def get_form_kwargs(self, *args, **kwargs):
+        kwargs = super(AppointmentCreateView, self).get_form_kwargs(*args, **kwargs)
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def get_success_url(self):
         return reverse("user-profile")
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class AppointmentListView(ListView):
+    model = Appointment
+    template_name = "appointments.html" 
+    context_object_name = "appointments"
+    ordering = ["-date"]
+
+
+class AppointmentDetailView(DetailView):
+    model = Appointment
+    template_name = "appointment_detail.html"
 
 
 class AppointmentEditView(UpdateView):

@@ -26,7 +26,7 @@ class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     # service = models.CharField(max_length=50, choices=SERVICES, default="Yoga")
     
-    date_posted = models.DateTimeField(default=timezone.now)
+    date_posted = models.DateField(default=timezone.now)
     date = models.DateField(default=datetime.now)
     timeblock = models.CharField(max_length=10, choices=AVAILABLE_TIMES, default="9 AM")
 
