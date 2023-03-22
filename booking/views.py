@@ -19,31 +19,31 @@ from django.views.generic import (
 
 # Create your views here.
 
-
-def generate_daylist():
-    daylist = []
-    today = datetime.date.today()
-    for i in range(7):
+def daylist():
+    # https://www.geeksforgeeks.org/creating-a-list-of-range-of-dates-in-python/
+    res = []
+    now = datetime.date.today()
+    for days in range(7):
         day = {}
-        curr_day = today + datetime.timedelta(days=i)
-        weekday = curr_day.strftime("%A").upper()
-        day["date"] = str(curr_day)
+        today = now + datetime.timedelta(days=days)
+        weekday = today.strftime("%A").upper()
+        day["date"] = str(today)
         day["day"] = weekday
         day["slot1_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="9 AM").exists()
+            Appointment.objects.filter(date=str(today)).filter(timeblock="9 AM").exists()
         )
         day["slot2_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="11 AM").exists()
+            Appointment.objects.filter(date=str(today)).filter(timeblock="11 AM").exists()
         )
         day["slot3_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="1 PM").exists()
+            Appointment.objects.filter(date=str(today)).filter(timeblock="1 PM").exists()
         )
         day["slot4_booked"] = (
-            Appointment.objects.filter(date=str(curr_day)).filter(timeblock="3 PM").exists()
+            Appointment.objects.filter(date=str(today)).filter(timeblock="3 PM").exists()
         )
         if day["day"] != "SUNDAY":
-            daylist.append(day)
-    return daylist
+            res.append(day)
+    return res
 
 
 class AppointmentCreateView(CreateView):
@@ -109,7 +109,7 @@ def home(request):
 
 
 def appointment(request):
-    context = {"days": generate_daylist()}
+    context = {"days": daylist()}
     return render(request, "appointment.html", context)
 
 

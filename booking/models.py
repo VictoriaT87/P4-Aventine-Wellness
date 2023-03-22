@@ -16,6 +16,15 @@ class Appointment(models.Model):
     #     ("Guided Meditation", "Guided Meditation"),
     # )
 
+    DAYS = (
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+        ('Saturday', 'Saturday'),
+    )
+
     AVAILABLE_TIMES = (
         ("9 AM", '09:00 - 10:00'),
         ("11 AM", '11:00 - 12:00'),
@@ -28,10 +37,17 @@ class Appointment(models.Model):
     
     date_posted = models.DateField(default=timezone.now)
     date = models.DateField(default=datetime.now)
+    days = models.CharField(max_length=10, choices=DAYS, default='Monday')
     timeblock = models.CharField(max_length=10, choices=AVAILABLE_TIMES, default="9 AM")
 
+    def timeblock_foo(self):
+        return dict(Appointment.AVAILABLE_TIMES)[self.timeblock]
+
+    def days_foo(self):
+        return dict(Appointment.DAYS)[self.days]
+
     def __str__(self):
-        return f"{self.user} | day: {self.date} | time: {self.timeblock}"
+        return f"{self.user} | date: {self.date} | days: {self.days}  time: {self.timeblock}"
 
     def is_upcoming(self):
         return date.today() <= self.date

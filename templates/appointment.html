@@ -8,7 +8,7 @@
     <div class="booking-page">
         
         <div class="booking-page-text">
-            <p>{{ day.day }}</p>
+            <p>{{ day.start }}</p>
         </div>
         <div class="booking-slots d-flex align-content-center flex-wrap">
             {% if not day.slot1_booked %}
@@ -45,3 +45,5 @@
 </article>
 {% endfor %}
 {% endblock content %}
+
+

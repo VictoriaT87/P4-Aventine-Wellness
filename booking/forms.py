@@ -1,6 +1,8 @@
-from django import forms
+from bootstrap_datepicker_plus.widgets import DatePickerInput
+
 from .models import Appointment
-from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput
+from django import forms
+
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -8,12 +10,18 @@ from django.contrib.auth.models import User
 
 # Create your forms here.
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class AppointmentForm(forms.ModelForm):
 
-    date = forms.DateField(localize=True)
-    timeblock = forms.CharField()
+    # date = forms.DateField(widget=DateInput)
+    date = forms.DateField(disabled=True)
+    timeblock = forms.CharField(disabled=True)
 
     class Meta:
+        widgets = {'date': DateInput()}
         model = Appointment
         fields = ('date', 'timeblock',)
 
