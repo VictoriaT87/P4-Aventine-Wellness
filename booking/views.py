@@ -1,11 +1,14 @@
 import datetime
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
-from .models import Appointment
-from .forms import AppointmentForm
+from .models import Appointment, Account
+from .forms import AppointmentForm, AccountForm
+from django.contrib.auth import logout
+from django.contrib import messages
 
 from django.views.generic import (
     CreateView,
@@ -18,6 +21,15 @@ from django.views.generic import (
 
 
 # Create your views here.
+
+def home(request):
+    return render(request, "index.html")
+
+
+def appointment(request):
+    context = {"days": daylist()}
+    return render(request, "appointment.html", context)
+
 
 def daylist():
     # https://www.geeksforgeeks.org/creating-a-list-of-range-of-dates-in-python/
@@ -70,18 +82,6 @@ class AppointmentCreateView(CreateView):
         return super().form_valid(form)
 
 
-class AppointmentListView(ListView):
-    model = Appointment
-    template_name = "appointments.html" 
-    context_object_name = "appointments"
-    ordering = ["-date"]
-
-
-class AppointmentDetailView(DetailView):
-    model = Appointment
-    template_name = "appointment_detail.html"
-
-
 class AppointmentEditView(UpdateView):
     model = Appointment
     template_name = "edit_appointment.html"
@@ -104,15 +104,24 @@ def userProfile(request):
     })
 
 
-def home(request):
-    return render(request, "index.html")
+def user_update(request, id):
+    user = request.user
+    appointments = Appointment.objects.filter(user=user).order_by('date', 'timeblock')
+    form = AccountForm()
+    if request.method == 'POST':
+        user = User.objects.get(id=id)
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.save()
+        form = AccountForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile saved.')
+            return render(request, 'user_profile.html', {
+                                'user':user,
+                                'appointments':appointments,
+                        })
+        else:
+            messages.warning(request, 'Failed to saved profile')
 
-
-def appointment(request):
-    context = {"days": daylist()}
-    return render(request, "appointment.html", context)
-
-
-def booking(request):
-    context = {"booking": Appointment.objects.all()}
-    return render(request, "booking.html", context)
+    return render(request, 'user_update.html', {'form':form})

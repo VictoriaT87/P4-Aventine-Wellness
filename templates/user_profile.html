@@ -13,6 +13,10 @@
         <li class="list-group mt-2">First Name: {{ user.first_name }}</li>
         <li class="list-group mt-2">Last Name: {{ user.last_name }}</li>
     </ul>
+    <div>
+            <a class='btn btn-secondary btn-small mt-1 mb-1'
+            href="{% url 'user-update' user.id %}">Update Account</a>
+    </div>
 </div>
 
 <!-- Booked Appointment Times -->

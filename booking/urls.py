@@ -4,8 +4,8 @@ from . import views
 from booking.views import (
     AppointmentCreateView,
     AppointmentEditView,
-    AppointmentDetailView,
-    AppointmentDeleteView, )
+    AppointmentDeleteView,
+    )
 from django.urls import path, register_converter
 
 
@@ -26,8 +26,6 @@ urlpatterns = [
     path('appointment', views.appointment, name='appointment'),
     path("appointment/new/", AppointmentCreateView.as_view(),
          name="appointment-create"),
-    path("appointment/<int:pk>/", AppointmentDetailView.as_view(),
-         name="appointment-details"),
     path(
         "appointment/new/<yyyy:date>/",
         AppointmentCreateView.as_view(),
@@ -43,4 +41,5 @@ urlpatterns = [
     path("appointment/<int:pk>/delete",
          AppointmentDeleteView.as_view(), name="appointment-delete"),
     path('user-profile', views.userProfile, name='user-profile'),
+    path('user-update/<int:id>/', views.user_update, name='user-update'),
 ]

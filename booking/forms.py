@@ -1,6 +1,5 @@
-from bootstrap_datepicker_plus.widgets import DatePickerInput
 from allauth.account.forms import SignupForm
-from .models import Appointment
+from .models import Appointment, Account
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
@@ -15,7 +14,9 @@ class DateInput(forms.DateInput):
 
 
 class AppointmentForm(forms.ModelForm):
-
+    """
+    Form for Appointment Model
+    """
     # date = forms.DateField(widget=DateInput)
     date = forms.DateField(disabled=True)
     timeblock = forms.CharField(disabled=True)
@@ -39,7 +40,9 @@ class AppointmentForm(forms.ModelForm):
 
 
 class SignupForm(SignupForm):
-    
+    """
+    Form for custom signup page
+    """
     first_name = forms.CharField(max_length=30, label='First Name')
     last_name = forms.CharField(max_length=30, label='Last Name')
     username = forms.CharField(max_length=30, label='Username', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
@@ -50,3 +53,9 @@ class SignupForm(SignupForm):
         user.username = self.cleaned_data['username']
         user.save()
         return user
+
+
+class AccountForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = ['first_name', 'last_name']

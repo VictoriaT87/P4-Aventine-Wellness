@@ -59,3 +59,9 @@ class Appointment(models.Model):
     def get_absolute_url(self):
         # returns a complete url string and let view handle the redirect
         return reverse("appointment-details", kwargs={"pk": self.pk})
+
+
+class Account(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)

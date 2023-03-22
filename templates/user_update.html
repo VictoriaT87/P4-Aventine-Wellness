@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
+
+<h2>Update Your Account</h2>
+<hr>
+<form action="." method="POST" class="padding">{% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary">Confirm</button>
+    <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
+</form>
+
+{%endblock%}
