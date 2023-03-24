@@ -117,7 +117,15 @@
     color: var(--color-default);
 }
 
-.treatments .card-item {
+.section-p {
+    text-align: center;
+    color: var(--color-default);
+    font-size: 1.2em;
+    margin: 10px;
+}
+
+.treatments .card-item,
+.instructors .card-item {
     border: 1px solid rgba(82, 86, 94, 0.2);
     background: #fff;
     position: relative;
@@ -128,18 +136,25 @@
     width: 100%;
 }
 
-.treatments .card-item .card-body {
+.card-bg-instructors img {
+    width: 75%;
+}
+
+.treatments .card-item .card-body,
+.instructors .card-item .card-body {
     padding: 30px;
 }
 
-.treatments .card-item h4 {
+.treatments .card-item h4, 
+.instructors .card-item h4 {
     font-weight: 700;
     margin-bottom: 15px;
     color: var(--color-default);
     text-align: center;
 }
 
-.treatments .card-item p {
+.treatments .card-item p,
+.instructors .card-item p {
     color: var(--color-default);
     margin: 0;
     font-size: 1.2rem;
@@ -181,6 +196,15 @@
     max-height: 100px;
 }
 
+.footer {
+    background-color: #175851;
+}
+
+.footer-content {
+    padding-top: 20px;
+    color: #fff;
+}
+
 .booking-page-heading {
     color: var(--color-default);
     text-align: center;
@@ -195,8 +219,6 @@
     align-items: center;
     padding-top: 20px;
 }
-
-
 
 .booking-slots {
     display: flex;
