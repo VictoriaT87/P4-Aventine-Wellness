@@ -30,8 +30,12 @@
 .account-form {
     width: 100%;
     margin: 3% auto;
-    box-shadow: var(--smal-box-shadow);
+    box-shadow: 0px 0px 10px 2px #888888;
     border-radius: 5px;
+}
+
+.form-group {
+    margin: 10px;
 }
 
 .hero {
