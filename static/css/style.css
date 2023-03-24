@@ -27,6 +27,13 @@
     color: var(--color-default);
 }
 
+.account-form {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: var(--smal-box-shadow);
+    border-radius: 5px;
+}
+
 .hero {
     overflow-x: hidden;
     padding: 0;

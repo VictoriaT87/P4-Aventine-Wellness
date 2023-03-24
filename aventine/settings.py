@@ -20,7 +20,8 @@ from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+# TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -43,9 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'bootstrap_datepicker_plus',
     'django_summernote',
+
     'booking',
 ]
 
@@ -93,7 +97,7 @@ ROOT_URLCONF = 'aventine.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,6 +106,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field'
+                ]
         },
     },
 ]
@@ -158,6 +166,14 @@ USE_TZ = True
 
 DATE_INPUT_FORMATS = ('%d-%m-%Y')
 
+# Accounts
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFCATION = 'none'
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_FORMS = {
     'add_email': 'allauth.account.forms.AddEmailForm',
