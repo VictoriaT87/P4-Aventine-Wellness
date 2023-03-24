@@ -7,6 +7,7 @@
 } */
 :root {
     --color-default: #175851;
+    --white: #fff;
 }
 
 :root {
@@ -120,14 +121,14 @@
 .section-p {
     text-align: center;
     color: var(--color-default);
-    font-size: 1.2em;
-    margin: 10px;
+    font-size: 1.4em;
+    margin: 5px;
 }
 
 .treatments .card-item,
 .instructors .card-item {
     border: 1px solid rgba(82, 86, 94, 0.2);
-    background: #fff;
+    background: var(--white);
     position: relative;
     border-radius: 0;
 }
@@ -138,6 +139,10 @@
 
 .card-bg-instructors img {
     width: 75%;
+}
+
+.container {
+    padding-bottom: 2em;
 }
 
 .treatments .card-item .card-body,
@@ -162,15 +167,22 @@
 }
 
 .benefits .benefits-item {
-    padding: 40px;
-    background: #fff;
+    padding: 15px;
+    background: var(--color-default);
     height: 100%;
     line-height: 1.8;
-    margin-bottom: 50px;
+}
+
+.section-bg {
+    background-color: var(--color-default);
+}
+
+.benefits .section-header h2 {
+    color: var(--white);
 }
 
 .benefits .benefits-item h3 {
-    color: var(--color-default);
+    color: var(--white);
     font-weight: 700;
     margin: 0 0 20px 0;
     padding-bottom: 8px;
@@ -192,8 +204,7 @@
 }
 
 .icon-img {
-    max-width: 40%;
-    max-height: 100px;
+    max-height: 125px;
 }
 
 .footer {
