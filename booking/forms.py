@@ -59,3 +59,10 @@ class AccountForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['first_name', 'last_name']
+
+
+class UserDeleteForm(forms.Form):
+    """
+    Form that adds a checkbox to confirm account deletion
+    """
+    delete = forms.BooleanField(required=True)

@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from .models import Appointment, Account
-from .forms import AppointmentForm, AccountForm
+from .forms import AppointmentForm, AccountForm, UserDeleteForm
 from django.contrib.auth import logout
 from django.contrib import messages
 
@@ -125,3 +125,22 @@ def user_update(request, id):
             messages.warning(request, 'Failed to saved profile')
 
     return render(request, 'user_update.html', {'form':form})
+
+
+class UserDeleteView(LoginRequiredMixin, View):
+    """
+    Deletes the currently signed-in user and all associated data.
+    """
+    def get(self, request, *args, **kwargs):
+        form = UserDeleteForm()
+        return render(request, 'user_delete.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = UserDeleteForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            user.delete()
+            messages.success(request, 'Account successfully deleted')
+            return redirect(reverse('home'))
+        return render(request, 'user_delete.html', {'form': form})
+

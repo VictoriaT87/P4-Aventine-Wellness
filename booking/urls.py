@@ -5,6 +5,7 @@ from booking.views import (
     AppointmentCreateView,
     AppointmentEditView,
     AppointmentDeleteView,
+    UserDeleteView, 
     )
 from django.urls import path, register_converter
 
@@ -41,5 +42,6 @@ urlpatterns = [
     path("appointment/<int:pk>/delete",
          AppointmentDeleteView.as_view(), name="appointment-delete"),
     path('user-profile', views.userProfile, name='user-profile'),
+    path('user-delete/<int:id>/', UserDeleteView.as_view(), name='user-delete'),
     path('user-update/<int:id>/', views.user_update, name='user-update'),
 ]
