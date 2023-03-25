@@ -9,9 +9,6 @@ from django.contrib.auth.models import User
 
 # Create your forms here.
 
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
 
 class AppointmentForm(forms.ModelForm):
     """
@@ -22,7 +19,6 @@ class AppointmentForm(forms.ModelForm):
     timeblock = forms.CharField(disabled=True)
 
     class Meta:
-        widgets = {'date': DateInput()}
         model = Appointment
         fields = ('date', 'timeblock',)
 

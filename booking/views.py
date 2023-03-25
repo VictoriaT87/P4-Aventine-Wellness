@@ -10,6 +10,8 @@ from .forms import AppointmentForm, AccountForm, UserDeleteForm
 from django.contrib.auth import logout
 from django.contrib import messages
 
+from bootstrap_datepicker_plus.widgets import DatePickerInput
+
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -55,8 +57,7 @@ def daylist():
         day["slot4_booked"] = (
             Appointment.objects.filter(date=str(today)).filter(timeblock="3 PM").exists()
         )
-        if day["day"] != "SUNDAY":
-            res.append(day)
+        res.append(day)
     return res
 
 
@@ -102,6 +103,16 @@ class AppointmentEditView(UpdateView):
     model = Appointment
     template_name = "edit_appointment.html"
     fields = ["date", "timeblock"]
+    
+    def get_form(self):
+        form = super().get_form()
+        form.fields['date'].widget = DatePickerInput(options={
+            "format": "MM/DD/YYYY",
+                    'minDate': (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'),
+                    'maxDate': (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d 23:59:59'),
+                    "showTodayButton": True,
+                })
+        return form
     success_url = reverse_lazy('user-profile')
 
 
