@@ -179,4 +179,3 @@ class UserDeleteView(LoginRequiredMixin, View):
             messages.success(request, 'Account successfully deleted')
             return redirect(reverse('home'))
         return render(request, 'user_delete.html', {'form': form})
-

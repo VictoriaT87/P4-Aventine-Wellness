@@ -246,3 +246,24 @@
     width: 30%;
     margin: 20px;
 }
+
+.booked-appointments, .user-info {
+    color: #175851;
+    text-align: center;
+}
+
+.list-group {
+    text-align: center;
+    margin: 15px;
+}
+
+.profile-btns {
+    background-color: #175851;
+    min-width: 5em;
+    margin: 1%;
+}
+
+.appointment-list {
+    border: #175851 1px solid;
+    margin: 1em;
+}
