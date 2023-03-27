@@ -21,6 +21,10 @@ main {
     flex: 1 0 auto;
 }
 
+a {
+    color: var(--color-default);
+}
+
 .navbar {
     font-size: 1.5rem;
 }
@@ -41,26 +45,76 @@ main {
     background-color: var(--color-default);
 }
 
+.footer a {
+    color: var(--white);
+}
+
 .footer-content {
     padding-top: 20px;
     color: #fff;
 }
 
+.copyright,
+.credits {
+    color: var(--white);
+}
+
+.form-control {
+    width: 100%;
+    text-align: center;
+    display: flex;
+}
+
 .account-form {
     width: 100%;
     margin: 3% auto;
-    box-shadow: 0px 0px 10px 2px #888888;
     border-radius: 5px;
 }
 
-.account-form-logout {
+.login {
+    max-height: 500px;
+    position: relative;
+    color: #175851;
+    text-align: center;
+}
+
+.login-form {
     width: 100%;
-    margin: 3% auto;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup {
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #175851;
+    text-align: center;
+}
+
+.signup-form {
+    
+    width: 100%;
+    border-radius: 5px;
+}
+
+#signup_form label {
+    font-size: 1.25em;
+}
+
+#signup_form input {
+    max-width: 20em;
+    text-align: center;
 }
 
 .form-group {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero {
@@ -263,25 +317,31 @@ main {
 }
 
 .booked-appointments,
-.user-info{
+.user-info {
     color: #175851;
     text-align: center;
 }
 
-.delete-div, .update-div {
+.delete-div,
+.update-div,
+.login-div {
     height: 300px;
     position: relative;
-      color: #175851;
-      text-align: center;
+    color: #175851;
+    text-align: center;
 }
 
 .verticle-center {
     margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.logout {
+    color: var(--color-default);
 }
 
 .list-group {
@@ -292,10 +352,29 @@ main {
 .profile-btns {
     background-color: #175851;
     min-width: 5em;
-    margin: 1%;
+    margin: 2%;
+}
+
+.profile-btn-signin {
+    background-color: #175851;
+    min-width: 10em;
+    margin: 2%;
 }
 
 .appointment-list {
     border: #175851 1px solid;
     margin: 1em;
+    padding: 1em;
+}
+
+.appointment-form label {
+    font-size: 1.2em;
+}
+
+.appointment-details {
+    font-size: 1.25em;
+    text-decoration: underline;
+}
+#id_timeblock {
+    width: 250px;
 }

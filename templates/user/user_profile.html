@@ -4,7 +4,7 @@
 
 
 {% if user.is_authenticated %}
-<h1 class="booked-appointments mt-5 ">My Profile</h1>
+<h1 class="booked-appointments mt-3 ">My Profile</h1>
 
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
     <h2 class="user-info">User Information:</h2>
@@ -14,9 +14,9 @@
         <li class="list-group mt-2">Last Name: {{ user.last_name }}</li>
     </ul>
     <div class="profile-btn-group d-flex justify-content-center">
-        <a class='profile-btns btn btn-secondary btn-small mt-1 mb-1' href="{% url 'user-update' user.id %}">Update
+        <a class='profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-update' user.id %}">Update
             Account</a>
-        <a class='profile-btns btn btn-secondary btn-small mt-1 mb-1' href="{% url 'user-delete' user.id %}">Delete
+        <a class='profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-delete' user.id %}">Delete
             Account</a>
     </div>
 </div>
@@ -30,14 +30,15 @@
         <div class="list-group fs-4 border p-3 mb-3">
             {% for appointment in appointments %}
             <div class="appointment-list">
+                <p class="appointment-details">Appointment Details:</p>
                 <p class="list-group mt-2">Date: {{ appointment.date }}</p>
                 <p class="list-group mt-2">Time: {{ appointment.timeblock }}</p>
 
                 <div>
                     <a class='profile-btns btn btn-secondary btn-small mt-1 mb-1'
-                        href="{% url 'appointment-edit' appointment.id %}">Edit</a>
+                        href="{% url 'appointment-edit' appointment.id %}">Edit Appointment</a>
                     <a class='profile-btns btn btn-secondary btn-small mt-1 mb-1'
-                        href="{% url 'appointment-delete' appointment.id %}">Delete</a>
+                        href="{% url 'appointment-delete' appointment.id %}">Delete Appointment</a>
                 </div>
             </div>
             {% endfor %}

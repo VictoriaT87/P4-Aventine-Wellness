@@ -103,6 +103,7 @@ class AppointmentEditView(UpdateView):
     model = Appointment
     template_name = "edit_appointment.html"
     fields = ["date", "timeblock"]
+
     
     def get_form(self):
         form = super().get_form()

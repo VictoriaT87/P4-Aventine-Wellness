@@ -8,9 +8,9 @@
     <h2>Update Your Account</h2>
     <hr>
     <p>Please enter a new First Name and Last Name</p>
-    <form action="." method="POST" class="padding">{% csrf_token %}
+    <form action="." method="POST" class="appointment-form">{% csrf_token %}
       {{ form.as_p}}
-      <button type="submit" class="btn btn-primary profile-btns">Confirm</button>
+      <button type="submit" class="btn btn-secondary profile-btns">Confirm</button>
       <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
     </form>
   </div>
