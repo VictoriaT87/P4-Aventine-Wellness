@@ -375,6 +375,11 @@ a {
     font-size: 1.25em;
     text-decoration: underline;
 }
+
 #id_timeblock {
     width: 250px;
+}
+
+.delete {
+    font-size: larger;
 }
