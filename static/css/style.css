@@ -18,6 +18,8 @@ body {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
     flex: 1 0 auto;
 }
 
@@ -120,7 +122,6 @@ a {
 .hero {
     overflow-x: hidden;
     padding: 0;
-
     color: #fff;
     z-index: 1;
     width: 100%;
@@ -186,7 +187,7 @@ a {
 
 .section-header {
     text-align: center;
-    padding: 40px;
+    padding: 30px;
 }
 
 .section-header h2 {
@@ -196,7 +197,7 @@ a {
     color: var(--color-default);
 }
 
-.section-p {
+.section-p, .section-h3 {
     text-align: center;
     color: var(--color-default);
     font-size: 1.4em;
@@ -283,6 +284,76 @@ a {
 
 .icon-img {
     max-height: 125px;
+}
+
+.about-section {
+    align-items: center;
+}
+
+.about-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    margin: auto;
+}
+
+.about h2 {
+    color: var(--color-default);
+}
+
+.about-text {
+    margin: 1% auto;
+}
+
+.about-text p {
+    padding: 1%;
+    text-align: center;
+    color: var(--color-default);
+}
+
+.directions-text {
+    margin: 1% auto;
+}
+
+.directions-text li {
+    color: var(--color-default);
+    text-align: center;
+    list-style-type: none;
+    font-size: 1.2rem;
+}
+
+iframe {
+    width: inherit;
+}
+
+.about-links {
+    text-align: center;
+     font-size: 1.2rem;
+     margin: auto;
+     color: var(--color-default);
+}
+
+.about-links a {
+    text-align: center;
+     font-size: 1.2rem;
+     margin: auto;
+     color: var(--color-default);
+}
+
+.card-title {
+    margin: auto;
+}
+
+.card-text {
+    color: var(--color-default);
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 .booking-page-heading {

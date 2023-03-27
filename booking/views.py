@@ -31,6 +31,13 @@ def home(request):
     return render(request, "index.html")
 
 
+def about(request):
+    """
+    About Page
+    """
+    return render(request, "about.html")
+
+
 def daylist():
     """
     Generate a list of days for the next 7 days.
