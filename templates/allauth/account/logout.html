@@ -8,16 +8,16 @@
 
 
 <div class="container text-center">
-  <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mt-3">
       <h1>{% trans "Sign Out" %}</h1>
 
       <p>{% trans 'Are you sure you want to sign out?' %}</p>
     </div>
 
-    <div class="row">
-      <div class="col-md-8 mt-3 offset-md-2">
-        <form class="account-form" method="post" action="{% url 'account_logout' %}">
+    <div class="row justify-content-center">
+      <div class="col-md-8 mt-3">
+        <form class="account-form-logout" method="post" action="{% url 'account_logout' %}">
           {% csrf_token %}
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

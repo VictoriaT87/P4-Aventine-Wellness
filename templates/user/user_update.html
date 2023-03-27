@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black m-5 update-div">
+  <div class="verticle-center">
+    <h2>Update Your Account</h2>
+    <hr>
+    <p>Please enter a new First Name and Last Name</p>
+    <form action="." method="POST" class="padding">{% csrf_token %}
+      {{ form.as_p}}
+      <button type="submit" class="btn btn-primary profile-btns">Confirm</button>
+      <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
+    </form>
+  </div>
+</div>
+{%endblock%}

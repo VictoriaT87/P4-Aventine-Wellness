@@ -131,7 +131,7 @@ def user_profile(request):
     """
     user = request.user
     appointments = Appointment.objects.filter(user=user).order_by('date', 'timeblock')
-    return render(request, 'user_profile.html', {
+    return render(request, 'user/user_profile.html', {
         'user':user,
         'appointments':appointments,
     })
@@ -153,14 +153,14 @@ def user_update(request, id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile saved.')
-            return render(request, 'user_profile.html', {
+            return render(request, 'user/user_profile.html', {
                                 'user':user,
                                 'appointments':appointments,
                         })
         else:
             messages.warning(request, 'Failed to saved profile')
 
-    return render(request, 'user_update.html', {'form':form})
+    return render(request, 'user/user_update.html', {'form':form})
 
 
 class UserDeleteView(LoginRequiredMixin, View):
@@ -169,7 +169,7 @@ class UserDeleteView(LoginRequiredMixin, View):
     """
     def get(self, request, *args, **kwargs):
         form = UserDeleteForm()
-        return render(request, 'user_delete.html', {'form': form})
+        return render(request, 'user/user_delete.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = UserDeleteForm(request.POST)
@@ -178,4 +178,4 @@ class UserDeleteView(LoginRequiredMixin, View):
             user.delete()
             messages.success(request, 'Account successfully deleted')
             return redirect(reverse('home'))
-        return render(request, 'user_delete.html', {'form': form})
+        return render(request, 'user/user_delete.html', {'form': form})
