@@ -12,6 +12,23 @@ body {
     height: 100%;
 }
 
+.logo {
+    width: 50%;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.navbar-brand {
+    display: flex;
+    justify-content: center;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -29,6 +46,7 @@ a {
 
 .navbar {
     font-size: 1.5rem;
+    /* flex-wrap: nowrap; */
 }
 
 .navbar-custom a {
@@ -39,8 +57,8 @@ a {
 
 #navbarText {
     color: var(--color-default);
+    width: 75%;
 }
-
 
 .footer {
     flex-shrink: 0;
@@ -98,7 +116,7 @@ a {
 }
 
 .signup-form {
-    
+
     width: 100%;
     border-radius: 5px;
 }
@@ -140,7 +158,7 @@ a {
 
 .hero-container {
     position: absolute;
-    max-width: 100%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -152,17 +170,16 @@ a {
     position: relative;
     max-width: 80%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 
 .hero-image {
-    max-width: 100%;
+    display: none;
 }
 
 .hero-text {
     display: flex;
-    width: 30%;
     font-size: 1.5rem;
     text-align: center;
     flex-direction: column;
@@ -197,11 +214,34 @@ a {
     color: var(--color-default);
 }
 
-.section-p, .section-h3 {
+.section-p,
+.section-h3 {
     text-align: center;
     color: var(--color-default);
     font-size: 1.4em;
     margin: 5px;
+}
+
+.wellness-row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wellness-card {
+    display: flex;
+}
+
+.instructors-row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .treatments .card-item,
@@ -210,18 +250,40 @@ a {
     background: var(--white);
     position: relative;
     border-radius: 0;
+    display: flex;
+}
+
+.card-bg {
+    text-align: center;
 }
 
 .card-bg img {
-    width: 100%;
+    width: 60%;
 }
 
-.card-bg-instructors img {
-    width: 75%;
+.card-bg-instructors img,
+.card-bg-instructors-middle img {
+    width: 70%;
 }
+
+.card-bg-instructors {
+    text-align: center;
+}
+
+.card-bg-instructors-middle {
+    display: flex;
+    justify-content: center;
+}
+
 
 .container {
     padding-bottom: 2em;
+}
+
+.treatments,
+.benefits,
+.instructors {
+    padding: 35px 0;
 }
 
 .treatments .card-item .card-body,
@@ -250,6 +312,7 @@ a {
     background: var(--color-default);
     height: 100%;
     line-height: 1.8;
+    text-align: center;
 }
 
 .section-bg {
@@ -267,7 +330,6 @@ a {
     padding-bottom: 8px;
     font-size: 22px;
     position: relative;
-    display: inline-block;
     text-align: center;
 }
 
@@ -298,7 +360,7 @@ a {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 0.25rem;
     margin: auto;
 }
@@ -334,16 +396,16 @@ iframe {
 
 .about-links {
     text-align: center;
-     font-size: 1.2rem;
-     margin: auto;
-     color: var(--color-default);
+    font-size: 1.2rem;
+    margin: auto;
+    color: var(--color-default);
 }
 
 .about-links a {
     text-align: center;
-     font-size: 1.2rem;
-     margin: auto;
-     color: var(--color-default);
+    font-size: 1.2rem;
+    margin: auto;
+    color: var(--color-default);
 }
 
 .card-title {
@@ -373,7 +435,7 @@ iframe {
 
 .booking-slots {
     display: flex;
-    max-width: 70%;
+    /* max-width: 70%; */
     margin: auto;
     align-content: stretch;
     justify-content: space-evenly;
@@ -382,10 +444,16 @@ iframe {
 .booking-slots .btn {
     background-color: var(--color-default);
     display: flex;
-    flex-direction: column-reverse;
-    width: 30%;
+    width: 35%;
     margin: 20px;
+    align-items: center;
+    justify-content: center;
 }
+
+.booking-slots .booked {
+    width: 30%;
+}
+
 
 .booked-appointments,
 .user-info {
@@ -453,4 +521,103 @@ iframe {
 
 .delete {
     font-size: larger;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    
+    
+    .booking-slots .btn {
+        background-color: var(--color-default);
+        display: flex;
+        flex-direction: column-reverse;
+        width: 30%;
+        margin: 20px;
+    }
+    
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+
+    .navbar-brand {
+        justify-content: flex-start;
+    }
+
+    .hero-content {
+        position: relative;
+        max-width: 80%;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-text {
+        width: 50%;
+    }
+
+    .hero-content-image {
+        padding: 0;
+        margin: 0;
+        width: 35%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .treatments .card-item {
+        min-height: 45vh;
+    }
+
+    .card-bg img {
+        width: 50%;
+    }
+
+    .booking-slots {
+        display: flex;
+        max-width: 60%;
+        margin: auto;
+        align-content: space-around;
+        justify-content: center;
+        flex-wrap: nowrap;
+        flex-direction: row-reverse;
+    }
+
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+    .hero-image {
+        display: flex;
+        max-width: 100%;
+    }
+
+    .card-bg-instructors {
+        text-align: left;
+    }
+
+    .card-bg-instructors-middle {
+        display: flex;
+        justify-content: end;
+    }
+
+    .card-bg img {
+        width: 100%;
+    }
+
+
+}
+
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    ...
 }
