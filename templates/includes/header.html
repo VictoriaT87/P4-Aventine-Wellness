@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'about' %}">About</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'appointment' %}">Book</a>

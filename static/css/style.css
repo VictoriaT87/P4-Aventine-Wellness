@@ -21,7 +21,7 @@ body {
     flex-wrap: inherit;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .navbar-brand {
@@ -38,6 +38,7 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
+    border-top: 1px solid var(--color-default);
 }
 
 a {
@@ -406,6 +407,150 @@ a {
     color: var(--color-default);
 }
 
+.contact h2 {
+    color: var(--color-default);
+    text-align: center;
+    margin: 20px;
+}
+
+.contact .container .row {
+    margin-bottom: 20px;
+}
+
+.contact .info-item {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    padding: 20px 0 30px 0;
+}
+
+.contact .info-item i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    line-height: 0;
+    color: var(--color-default);
+    border-radius: 50%;
+    border: 2px dotted var(--color-default);
+}
+
+.contact .info-item h3 {
+    font-size: 20px;
+    color: var(--color-default);
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.contact .info-item p {
+    padding: 0;
+    line-height: 24px;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.contact-form label {
+    color: var(--color-default);
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.contact-form {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+}
+
+.contact-form .form-group {
+    padding-bottom: 20px;
+}
+
+.contact-form .error-message {
+    display: none;
+    color: #fff;
+    background: #df1529;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.contact-form .error-message br+br {
+    margin-top: 25px;
+}
+
+.contact-form .sent-message {
+    display: none;
+    color: #fff;
+    background: #059652;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.contact-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.contact-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #059652;
+    border-top-color: #fff;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+
+.contact-form input,
+.contact-form textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-primary);
+}
+
+.contact-form input {
+    height: 44px;
+}
+
+.contact-form textarea {
+    padding: 10px 12px;
+}
+
+.contact-form button[type=submit] {
+    background: var(--color-default);
+    border: 0;
+    padding: 10px 35px;
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.contact-form button[type=submit]:hover {
+    background: #093631;
+    color: var(--white);
+}
+
+@keyframes animate-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .directions-text {
     margin: 1% auto;
 }
@@ -415,6 +560,7 @@ a {
     text-align: center;
     list-style-type: none;
     font-size: 1.2rem;
+    padding: 10px;
 }
 
 iframe {
@@ -556,8 +702,8 @@ iframe {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-    
-    
+
+
     .booking-slots .btn {
         background-color: var(--color-default);
         display: flex;
@@ -565,7 +711,7 @@ iframe {
         width: 30%;
         margin: 20px;
     }
-    
+
 
 }
 

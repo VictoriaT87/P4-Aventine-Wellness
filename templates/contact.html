@@ -3,6 +3,81 @@
 
 {% block content %}
 
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact m-3">
+    <div class="container">
+        <h2>Contact Us:</h2>
+        <div class="row gy-4">
+            <div class="col-lg-4">
+                <div class="info-item  d-flex flex-column justify-content-center align-items-center">
+                    <i class="fa-solid fa-map"></i>
+                    <h3>Our Address</h3>
+                    <p>Brighten Roads, Kerrymount,
+                        Foxrock,
+                        Co. Dublin</p>
+                </div>
+            </div><!-- End Info Item -->
+
+            <div class="col-lg-4 col-md-6">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>info@aventinegardens.ie</p>
+                </div>
+            </div><!-- End Info Item -->
+
+            <div class="col-lg-4 col-md-6">
+                <div class="info-item  d-flex flex-column justify-content-center align-items-center">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>+353 123 456789</p>
+                </div>
+            </div><!-- End Info Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1 contact-form">
+
+            <div class="col-lg-12">
+                <form id="contact-form" action="forms/contact.php" method="post" role="form" class="email-form">
+                    <div class="row gy-4">
+                        <div class="col-lg-12 form-group">
+                            <label for="user_name">Name:</label>
+                            <input type="text" name="user_name" class="form-control" id="user_name" placeholder="Your Name"
+                                required>
+                                
+                        </div>
+                        <div class="col-lg-12 form-group">
+                            <label for="user_email">Email:</label>
+                            <input type="email" class="form-control" name="user_email" id="user_email" placeholder="Your Email"
+                                required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                            required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </form>
+            </div><!-- End Contact Form -->
+
+        </div>
+
+    </div>
+</section><!-- End Contact Section -->
+
+
 
 <div class="section-header">
     <h2>How to Find Us:</h2>
