@@ -63,15 +63,42 @@ a {
 .footer {
     flex-shrink: 0;
     background-color: var(--color-default);
+    text-align: center;
+}
+
+.footer .row {
+    padding-top: 20px;
 }
 
 .footer a {
     color: var(--white);
 }
 
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
 .footer-content {
     padding-top: 20px;
     color: #fff;
+}
+
+.footer-col {
+    padding: 20px;
+}
+
+.social-links {
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.social-links a {
+    text-decoration: none;
+}
+
+.social-links i {
+    padding: 10px;
 }
 
 .copyright,

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 footer-col">
                     <div class="footer-info">
                         <h3>Aventine Wellness</h3>
                         <p>Brighten Roads
@@ -13,28 +13,31 @@
                             Co. Dublin<br>
 
                         </p>
-                        <div class="social-links d-flex mt-3">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa-brands fa-twitter"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa-brands fa-facebook"></i></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa-brands fa-instagram"></i></a>
-                        </div>
+                        
                     </div>
                 </div><!-- End footer info column-->
 
-                <div class="col-lg-2 col-md-3 float-right footer-links">
+                
+
+                <div class="col-lg-4 col-md-3 footer-col">
                     <h4>Contact Us</h4>
                     <strong>Phone:</strong> +353 123 456789<br>
-                    <strong>Email:</strong> info@example.com<br>
+                    <strong>Email:</strong> info@aventinegardens.ie<br>
                 </div><!-- End footer links column-->
 
-                <div class="col-lg-2 col-md-3 float-right footer-links">
+                <div class="col-lg-4 col-md-3 footer-col">
                     <h4>Useful Links</h4>
                     <ul>
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
                     </ul>
                 </div><!-- End footer links column-->
-
+                <div class="social-links d-flex">
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="d-flex align-items-center justify-content-center"><i class="fa-brands fa-instagram"></i></a>
+                </div>
             </div>
         </div>
     </div>

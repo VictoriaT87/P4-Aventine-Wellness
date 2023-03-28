@@ -38,6 +38,13 @@ def about(request):
     return render(request, "about.html")
 
 
+def contact(request):
+    """
+    Contact Page
+    """
+    return render(request, "contact.html")
+
+
 def daylist():
     """
     Generate a list of days for the next 7 days.

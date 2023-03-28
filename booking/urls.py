@@ -25,6 +25,7 @@ register_converter(DateConverter, "yyyy")
 urlpatterns = [
     path('', views.home, name='home'),
     path('about', views.about, name='about'),
+    path('contact', views.contact, name='contact'),
     path('appointments/appointment', views.appointment, name='appointment'),
     path('appointments/appointment/new/', AppointmentCreateView.as_view(),
          name='appointment-create'),
