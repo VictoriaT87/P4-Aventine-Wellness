@@ -67,6 +67,10 @@ a {
     text-align: center;
 }
 
+.footer-container {
+    padding-bottom: 20px;
+}
+
 .footer .row {
     padding-top: 20px;
 }
@@ -81,12 +85,16 @@ a {
 }
 
 .footer-content {
-    padding-top: 20px;
     color: #fff;
 }
 
 .footer-col {
-    padding: 20px;
+    padding-top: 20px;
+}
+
+.footer-row {
+    padding: 0;
+    margin: 0;
 }
 
 .social-links {
