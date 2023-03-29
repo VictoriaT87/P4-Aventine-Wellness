@@ -29,7 +29,8 @@ class AppointmentForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         user = cleaned_data.get("user")
-        date = self.cleaned_data['date']
+        date = cleaned_data.get("date")
+        # date = self.cleaned_data['date']
 
         if Appointment.objects.filter(user=self.user, date=date).exists():
             raise forms.ValidationError('Cannot schedule more than one appointment on a single day!')

@@ -105,6 +105,7 @@ class AppointmentCreateView(CreateView):
         return reverse("user-profile")
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
         messages.success(self.request, "Your appointment was successfully booked!")
         super().form_valid(form)
         return HttpResponseRedirect(self.get_success_url())

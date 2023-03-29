@@ -14,7 +14,7 @@ class DateConverter:
     regex = r"\d{4}-\d{2}-\d{2}"
 
     def to_python(self, value):
-        return datetime.strptime(value, "%Y-%m-%d")
+        return datetime.strptime(value, "%d-%m-%Y")
 
     def to_url(self, value):
         return value
@@ -30,12 +30,12 @@ urlpatterns = [
     path('appointments/appointment/new/', AppointmentCreateView.as_view(),
          name='appointment-create'),
     path(
-        'appointments/appointment/new/<yyyy:date>/',
+        'appointments/appointment/new/<date>/',
         AppointmentCreateView.as_view(),
         name='appointment-create-date',
     ),
     path(
-        'appointments/appointment/new/<yyyy:date>/<str:timeblock>',
+        'appointments/appointment/new/<date>/<str:timeblock>',
         AppointmentCreateView.as_view(),
         name='appointment-create-spec',
     ),

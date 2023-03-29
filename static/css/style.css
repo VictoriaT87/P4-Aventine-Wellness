@@ -775,7 +775,6 @@ iframe {
         align-content: space-around;
         justify-content: center;
         flex-wrap: nowrap;
-        flex-direction: row-reverse;
     }
 
 }
