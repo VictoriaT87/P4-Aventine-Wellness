@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from .models import Appointment, Account
 from .forms import AppointmentForm, AccountForm, UserDeleteForm
-from django.contrib.auth import logout
 from django.contrib import messages
 
 from bootstrap_datepicker_plus.widgets import DatePickerInput
@@ -106,8 +105,13 @@ class AppointmentCreateView(CreateView):
         return reverse("user-profile")
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+        messages.success(self.request, "Your appointment was successfully booked!")
+        super().form_valid(form)
+        return HttpResponseRedirect(self.get_success_url())
+
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return super().form_valid(form)
 
 
 class AppointmentEditView(UpdateView):
@@ -128,7 +132,14 @@ class AppointmentEditView(UpdateView):
                     "showTodayButton": True,
                 })
         return form
-    success_url = reverse_lazy('user-profile')
+
+    def get_success_url(self):
+        return reverse("user-profile")
+    
+    def form_valid(self, form):
+        messages.success(self.request, "Your appointment has been changed!")
+        super().form_valid(form)
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class AppointmentDeleteView(DeleteView):
@@ -167,7 +178,8 @@ def user_update(request, id):
         form = AccountForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile saved.')
+            messages.success(request, "Profile updated.")
+            
             return render(request, 'user/user_profile.html', {
                                 'user':user,
                                 'appointments':appointments,
