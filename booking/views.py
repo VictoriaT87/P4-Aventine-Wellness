@@ -111,16 +111,27 @@ class AppointmentCreateView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-
 class AppointmentEditView(UpdateView):
     """
     Update an Appointment
     """
     
     template_name = "appointments/edit_appointment.html"
-    # fields = ["date", "timeblock"]
     form_class = AppointmentForm
     queryset = Appointment.objects.all()
+
+    def get_form(self, form_class=None):
+        form = super(AppointmentEditView, self).get_form(form_class)
+        form = super().get_form()
+        form.fields['date'].widget = DatePickerInput(options={
+            "format": "DD/MM/YYYY",
+                    'minDate': (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'),
+                    'maxDate': (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d 23:59:59'),
+                    "showTodayButton": True,
+                })
+        form.fields['date'].disabled = False
+        form.fields['timeblock'].disabled = False
+        return form
 
 
 class AppointmentDeleteView(DeleteView):

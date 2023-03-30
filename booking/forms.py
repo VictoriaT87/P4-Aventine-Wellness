@@ -17,9 +17,16 @@ class AppointmentForm(forms.ModelForm):
     """
     Form for Appointment Model
     """
-    # date = forms.DateField(widget=DateInput)
-    date = forms.DateField()
-    timeblock = forms.CharField()
+
+    AVAILABLE_TIMES = (
+        ("9 AM", '09:00 - 10:00'),
+        ("11 AM", '11:00 - 12:00'),
+        ("1 PM", '13:00 - 14:00'),
+        ("3 PM", '15:00 - 16:00'),
+    )
+    
+    date = forms.DateField(disabled=True)
+    timeblock = forms.ChoiceField(choices=AVAILABLE_TIMES, disabled=True)
 
     class Meta:
         model = Appointment
@@ -34,11 +41,6 @@ class AppointmentForm(forms.ModelForm):
         user = cleaned_data.get("user")
         date = cleaned_data.get("date")
         timeblock = cleaned_data.get("timeblock")
-
-        print('clean timeblock: ', timeblock)
-        print('clean date: ', date)
-        print('Appt exists: ', Appointment.objects.filter(timeblock=timeblock, date=date).exists() )
-        # date = self.cleaned_data['date']
 
         if Appointment.objects.filter(user=self.user, date=date).exists():
             raise forms.ValidationError('Cannot schedule more than one appointment on a single day!')
