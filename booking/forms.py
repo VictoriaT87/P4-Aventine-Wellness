@@ -17,18 +17,13 @@ class AppointmentForm(forms.ModelForm):
     """
     Form for Appointment Model
     """
-
     # date = forms.DateField(widget=DateInput)
-    date = forms.DateField(input_formats=['%d-%m-%Y'])
+    date = forms.DateField()
     timeblock = forms.CharField()
 
     class Meta:
         model = Appointment
         fields = ('date', 'timeblock',)
-        date = forms.DateField(
-        widget=forms.DateInput(format='%d-%m-%Y'),
-        input_formats=('%d-%m-%Y', )
-        )
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)

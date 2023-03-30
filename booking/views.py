@@ -110,9 +110,6 @@ class AppointmentCreateView(CreateView):
         super().form_valid(form)
         return HttpResponseRedirect(self.get_success_url())
 
-    def form_invalid(self, form):
-        print(form.errors)
-        return HttpResponseRedirect(self.get_success_url())
 
 
 class AppointmentEditView(UpdateView):
@@ -124,15 +121,6 @@ class AppointmentEditView(UpdateView):
     # fields = ["date", "timeblock"]
     form_class = AppointmentForm
     queryset = Appointment.objects.all()
-
-    def get_success_url(self):
-        return reverse("user-profile")
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        messages.success(self.request, "Your appointment was successfully updated!")
-        super().form_valid(form)
-        return HttpResponseRedirect(self.get_success_url())
 
 
 class AppointmentDeleteView(DeleteView):

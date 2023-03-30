@@ -167,7 +167,7 @@ USE_TZ = True
 DATE_FORMAT = 'd-m-Y'
 DATE_INPUT_FORMATS = [
     '%d-%m-%Y', 
-        '%Y-%m-%d',  # '2006-10-25'
+    '%Y-%m-%d',  # '2006-10-25'
     '%m/%d/%Y',  # '10/25/2006'
     '%m/%d/%y',  # '10/25/06'
     '%b %d %Y',  # 'Oct 25 2006'
