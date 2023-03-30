@@ -8,7 +8,7 @@
 {% if user.is_authenticated %}
 <h1 class="booked-appointments mt-3 ">My Profile</h1>
 
-<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+<div class="shadow p-4 rounded m-5">
     <h2 class="user-info">User Information:</h2>
     <ul class="list-group fs-4 mt-3">
         <li class="list-group mt-2">Username: {{ user.username }}</li>
@@ -27,7 +27,7 @@
 {% if appointments.count > 0 %}
 <div class="mt-5 ">
 
-    <div class="shadow p-4 mb-3 bg-body bg-body rounded text-black  m-5">
+    <div class="shadow p-4 rounded m-5">
         <h2 class="booked-appointments">My Booked Appointments:</h2>
         <div class="list-group fs-4 border p-3 mb-3">
             {% for appointment in appointments %}
@@ -48,8 +48,8 @@
 
         {% elif appointments.count == 0 %}
 
-        <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5">
-            <h1 class="p-2  ms-3">You don't have any saved appointments!</h1>
+        <div class="appointments-none rounded shadow p-4 m-5">
+            <h1 class="p-2 ms-3">You don't have any saved appointments!</h1>
         </div>
     </div>
     {% endif %}

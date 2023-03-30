@@ -139,7 +139,7 @@ a {
 }
 
 .login {
-    max-height: 500px;
+    max-height: 60vh;
     position: relative;
     color: #175851;
     text-align: center;
@@ -154,7 +154,7 @@ a {
 }
 
 .signup {
-    max-height: 75vh;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -610,6 +610,10 @@ iframe {
     text-align: center;
 }
 
+.booking-page {
+    margin-bottom: 2em;
+}
+
 .booking-page-heading {
     color: var(--color-default);
     text-align: center;
@@ -646,6 +650,9 @@ iframe {
     width: 30%;
 }
 
+.appointments-none {
+    text-align: center;
+}
 
 .booked-appointments,
 .user-info {
@@ -656,7 +663,7 @@ iframe {
 .delete-div,
 .update-div,
 .login-div {
-    height: 300px;
+    height: 40vh;
     position: relative;
     color: #175851;
     text-align: center;

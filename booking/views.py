@@ -141,6 +141,11 @@ class AppointmentDeleteView(DeleteView):
     model = Appointment
     template_name = "appointments/delete_appointment.html"
     success_url = reverse_lazy('user-profile')
+    success_message = "Appointment deleted successfully."
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(AppointmentDeleteView, self).delete(request, *args, **kwargs)
 
 
 def user_profile(request):
