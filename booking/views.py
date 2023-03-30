@@ -56,7 +56,7 @@ def daylist():
         day = {}
         today = now + datetime.timedelta(days=days)
         weekday = today.strftime("%A").upper()
-        day["date"] = str(today)
+        day["date"] = today.strftime("%d-%m-%Y")
         day["day"] = weekday
         day["slot1_booked"] = (
             Appointment.objects.filter(date=str(today)).filter(timeblock="9 AM").exists()
@@ -110,35 +110,27 @@ class AppointmentCreateView(CreateView):
         super().form_valid(form)
         return HttpResponseRedirect(self.get_success_url())
 
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user
-    #     return super().form_valid(form)
+    def form_invalid(self, form):
+        print(form.errors)
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class AppointmentEditView(UpdateView):
     """
     Update an Appointment
     """
-    model = Appointment
-    template_name = "appointments/edit_appointment.html"
-    fields = ["date", "timeblock"]
-
     
-    def get_form(self):
-        form = super().get_form()
-        form.fields['date'].widget = DatePickerInput(options={
-            "format": "MM/DD/YYYY",
-                    'minDate': (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'),
-                    'maxDate': (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d 23:59:59'),
-                    "showTodayButton": True,
-                })
-        return form
+    template_name = "appointments/edit_appointment.html"
+    # fields = ["date", "timeblock"]
+    form_class = AppointmentForm
+    queryset = Appointment.objects.all()
 
     def get_success_url(self):
         return reverse("user-profile")
-    
+
     def form_valid(self, form):
-        messages.success(self.request, "Your appointment has been changed!")
+        form.instance.user = self.request.user
+        messages.success(self.request, "Your appointment was successfully updated!")
         super().form_valid(form)
         return HttpResponseRedirect(self.get_success_url())
 

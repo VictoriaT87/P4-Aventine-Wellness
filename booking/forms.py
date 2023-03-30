@@ -2,6 +2,9 @@ from allauth.account.forms import SignupForm
 from .models import Appointment, Account
 from django import forms
 
+from django.conf import settings
+from bootstrap_datepicker_plus.widgets import DatePickerInput
+
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -14,26 +17,38 @@ class AppointmentForm(forms.ModelForm):
     """
     Form for Appointment Model
     """
+
     # date = forms.DateField(widget=DateInput)
-    date = forms.DateField(disabled=True)
-    timeblock = forms.CharField(disabled=True)
+    date = forms.DateField(input_formats=['%d-%m-%Y'])
+    timeblock = forms.CharField()
 
     class Meta:
         model = Appointment
         fields = ('date', 'timeblock',)
+        date = forms.DateField(
+        widget=forms.DateInput(format='%d-%m-%Y'),
+        input_formats=('%d-%m-%Y', )
+        )
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user')
+        self.user = kwargs.pop('user', None)
         super(AppointmentForm, self).__init__(*args, **kwargs)
 
     def clean(self):
         cleaned_data = super().clean()
         user = cleaned_data.get("user")
         date = cleaned_data.get("date")
+        timeblock = cleaned_data.get("timeblock")
+
+        print('clean timeblock: ', timeblock)
+        print('clean date: ', date)
+        print('Appt exists: ', Appointment.objects.filter(timeblock=timeblock, date=date).exists() )
         # date = self.cleaned_data['date']
 
         if Appointment.objects.filter(user=self.user, date=date).exists():
             raise forms.ValidationError('Cannot schedule more than one appointment on a single day!')
+        if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
+            raise forms.ValidationError('Sorry, this time is already booked!')
 
 
 class SignupForm(SignupForm):
