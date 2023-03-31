@@ -132,7 +132,7 @@ class AppointmentEditView(LoginRequiredMixin, UpdateView):
     form_class = AppointmentForm
     queryset = Appointment.objects.all()
 
-    def get_form(self, form_class=None):
+    def get_form(self, form_class=AppointmentForm):
         form = super(AppointmentEditView, self).get_form(form_class)
         form = super().get_form()
         form.fields['date'].widget = DatePickerInput(options={
@@ -177,7 +177,7 @@ def user_profile(request):
     user = request.user
 
     if request.user.is_authenticated:
-        # Do something for authenticated users.
+        # Render the page for authenticated users.
         appointments = Appointment.objects.filter(
             user=user).order_by('date', 'timeblock')
         return render(request, 'user/user_profile.html', {
@@ -185,7 +185,7 @@ def user_profile(request):
             'appointments': appointments,
         })
     else:
-        # Do something for anonymous users.
+        # Redirect anonymous users.
         return HttpResponseRedirect('../accounts/login/')
 
 
