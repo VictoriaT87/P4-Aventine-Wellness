@@ -23,6 +23,7 @@ from django.views.generic import (
 
 # Create your views here.
 
+
 def home(request):
     """
     Home Page
@@ -122,7 +123,7 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class AppointmentEditView(UpdateView):
+class AppointmentEditView(LoginRequiredMixin, UpdateView):
     """
     Update an Appointment
     """
@@ -155,8 +156,7 @@ class AppointmentEditView(UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-
-class AppointmentDeleteView(DeleteView):
+class AppointmentDeleteView(LoginRequiredMixin, DeleteView):
     """
     Delete an Appointment
     """

@@ -2,15 +2,32 @@ from allauth.account.forms import SignupForm
 from .models import Appointment, Account
 from django import forms
 
-from django.conf import settings
-from bootstrap_datepicker_plus.widgets import DatePickerInput
-
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 
 # Create your forms here.
+# import json
+# from datetime import datetime
+
+
+# def get_time_slots(request):
+#     # get the date in python format, sent via ajax request
+#     date = datetime.strptime(request.GET.get('date'), '%d-%m-%Y')
+
+#     # get all times from bookings on the provided date
+#     booked_slots = Appointment.objects.filter(date=date).values_list('timeblock', flat=True)
+    
+#     available_slots = []
+#     for slots in AVAILABLE_TIMES:
+#         if slots[0] not in booked_slots:
+#             available_slots.append(slots)
+
+#     times_as_json = json.dumps(available_slots)
+    
+#     return JsonResponse(times_as_json)
+
 
 
 class AppointmentForm(forms.ModelForm):
@@ -52,8 +69,12 @@ class AppointmentForm(forms.ModelForm):
             raise forms.ValidationError('Cannot schedule more than one appointment on a single day!')
         if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
             raise forms.ValidationError('Sorry, this time is already booked!')
-        if Appointment.objects.filter(user=self.user, timeblock=timeblock, date=date).exists():
-            raise forms.ValidationError('Cannot schedule more than one appointment on a single day!')
+        if get_time_slots and Appointment.objects.filter(timeblock=timeblock, date=date).exists():
+            raise forms.ValidationError('Sorry, this time is already booked!')
+
+        for instance in Appointment.objects.all():
+            if instance.timeblock == timeblock and instance.date == date:
+                raise forms.ValidationError("Sorry, timeslot is booked!")
 
 
 class SignupForm(SignupForm):

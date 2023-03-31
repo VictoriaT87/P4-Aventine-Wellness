@@ -12,7 +12,7 @@
                 <form method="POST" class="appointment-form">{% csrf_token %}
                     {{ form|crispy }}
                     <button type="submit" class="btn btn-secondary profile-btns">Confirm</button>
-                    <a class="btn btn-outline-secondary" href="{% url 'appointment' %}">Return</a>
+                    <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
                 </form>
             </div>
         </div>
