@@ -69,9 +69,6 @@ class AppointmentForm(forms.ModelForm):
             raise forms.ValidationError('Cannot schedule more than one appointment on a single day!')
         if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
             raise forms.ValidationError('Sorry, this time is already booked!')
-        if get_time_slots and Appointment.objects.filter(timeblock=timeblock, date=date).exists():
-            raise forms.ValidationError('Sorry, this time is already booked!')
-
         for instance in Appointment.objects.all():
             if instance.timeblock == timeblock and instance.date == date:
                 raise forms.ValidationError("Sorry, timeslot is booked!")

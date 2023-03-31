@@ -27,13 +27,6 @@ class Appointment(models.Model):
     def __str__(self):
         return f"{self.user} | date: {self.date} | time: {self.timeblock}"
 
-    def is_upcoming(self):
-        return date.today() <= self.date
-
-    @property
-    def get_weekday(self):
-        return self.date.strftime("%A")
-
     def get_absolute_url(self):
         # returns a complete url string and let view handle the redirect
         return reverse("user-profile")

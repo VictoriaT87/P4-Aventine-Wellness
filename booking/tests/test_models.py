@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Account, Appointment
+from booking.models import Account, Appointment
 
 
 class AppointmentModelTest(TestCase):
