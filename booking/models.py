@@ -9,13 +9,6 @@ from django.contrib.auth.models import User
 
 class Appointment(models.Model):
 
-    # SERVICES = (
-    #     ("Yoga", "Yoga"),
-    #     ("Mindfulness Meditation", "Mindfulness Meditation"),
-    #     ("Tai Chi", "Tai Chi"),
-    #     ("Guided Meditation", "Guided Meditation"),
-    # )
-
     DAYS = (
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
@@ -33,7 +26,6 @@ class Appointment(models.Model):
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    # service = models.CharField(max_length=50, choices=SERVICES, default="Yoga")
     
     date_posted = models.DateField(default=timezone.now)
     date = models.DateField(default=datetime.now)

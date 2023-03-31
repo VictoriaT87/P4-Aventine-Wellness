@@ -654,6 +654,12 @@ iframe {
     text-align: center;
 }
 
+.appointments-none a {
+    color: var(--color-default);
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
 .booked-appointments,
 .user-info {
     color: #175851;
