@@ -21,9 +21,6 @@ class Appointment(models.Model):
     date = models.DateField(default=datetime.now)
     timeblock = models.CharField(max_length=10, choices=AVAILABLE_TIMES, default="9 AM")
 
-    def timeblock_foo(self):
-        return dict(Appointment.AVAILABLE_TIMES)[self.timeblock]
-
     def __str__(self):
         return f"{self.user} | date: {self.date} | time: {self.timeblock}"
 

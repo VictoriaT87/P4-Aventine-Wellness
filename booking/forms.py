@@ -43,8 +43,8 @@ class AppointmentForm(forms.ModelForm):
     )
     
     # date = forms.DateField(widget=DateInput)
-    date = forms.DateField(disabled=True)
-    timeblock = forms.ChoiceField(choices=AVAILABLE_TIMES, disabled=True)
+    date = forms.DateField()
+    timeblock = forms.ChoiceField(choices=AVAILABLE_TIMES)
 
     class Meta:
         model = Appointment

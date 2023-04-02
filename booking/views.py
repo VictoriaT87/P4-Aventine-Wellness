@@ -92,7 +92,7 @@ def appointment(request):
         return HttpResponseRedirect('../accounts/login/')
 
 
-class AppointmentCreateView(LoginRequiredMixin, CreateView):
+class AppointmentCreateView(CreateView):
     """
     Create an Appointment
     """
@@ -105,6 +105,13 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
             "date": self.kwargs.get("date"),
             "timeblock": self.kwargs.get("timeblock"),
         }
+    
+    def get_form(self, form_class=AppointmentForm):
+        form = super(AppointmentCreateView, self).get_form(form_class)
+        form = super().get_form()
+        form.fields['date'].disabled = True
+        form.fields['timeblock'].disabled = True
+        return form
 
     def get_form_kwargs(self, *args, **kwargs):
         kwargs = super(AppointmentCreateView,
@@ -141,8 +148,6 @@ class AppointmentEditView(LoginRequiredMixin, UpdateView):
             'maxDate': (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d 23:59:59'),
             "showTodayButton": True,
         })
-        form.fields['date'].disabled = False
-        form.fields['timeblock'].disabled = False
         return form
 
     def get_success_url(self):

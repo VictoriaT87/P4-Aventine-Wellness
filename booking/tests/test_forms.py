@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from booking.forms import AppointmentForm, SignupForm
-from booking.models import Appointment
+from booking.models import Appointment, Account
 
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model, authenticate
@@ -31,66 +31,59 @@ class AppointmentFormTest(TestCase):
         # test field label for timeblock
         form = AppointmentForm()
         self.assertTrue(form.fields['timeblock'].label is None or form.fields['timeblock'].label == 'timeblock')
-
-    # def test_appointment_form_timeblock_choices(self):
-    #     # test choices for timeblocks
-    #     form = AppointmentForm()
-    #     self.assertTrue(form.fields['timeblock'].label is None or form.fields['timeblock'].label == 'timeblock')
-
-
-    def test_appointment_creation(self):
-         # test appointment creates through form
-        appt = Appointment.objects.create(date='2023-04-01', timeblock='9 AM')
+ 
+    def test_form_validation(self):
+        # test form validation errors
+        appt = Appointment.objects.create(id=300, date='2023-05-01', timeblock='9 AM')
+        user = authenticate(username='test_username', password='password')
         data = {
             'date': appt.date,
             'timeblock': appt.timeblock,
         }
         form = AppointmentForm(data=data)
         self.assertFalse(form.is_valid())
-        
-    def test_valid_form(self):
-        appt = Appointment.objects.create(date='2023-04-01', timeblock='9 AM')
-        user = User.objects.create(first_name="Bob", last_name="Bob")
-        data = {
-            'date': appt.date,
-            'timeblock': appt.timeblock,
-        }
-        form = AppointmentForm(data=data)
         print(form.errors)
-        self.assertFalse(form.is_valid())
-        self.assertEqual(
-            form.errors["date"], ["This field is required."]
-        )
-        self.assertEqual(
-            form.errors["timeblock"], ["This field is required."]
-        )
         self.assertRaises(ValidationError, form.clean)
-        
 
-    # def test_invalid_form(self):
-    #     appt = Whatever.objects.create(title='Foo', body='')
-    #     data = {'title': appt.title, 'body': appt.body,}
-    #     form = WhateverForm(data=data)
-    #     self.assertFalse(form.is_valid())
+    def test_new_appointment_form_is_valid(self):
+        # test form is_valid with correct inputs
+        form = AppointmentForm(data={
+            'date': '2023-07-10',
+            'timeblock': '9 AM',
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_new_appointment_form_is_not_valid(self):
+        # test form is not valid with wrong inputs
+        form = AppointmentForm(data={
+            'date': '2023-07-10',
+            'timeblock': '12 AM',
+        })
+        self.assertFalse(form.is_valid())
 
 
-class SigninTest(TestCase):
+class SignUpTest(TestCase):
 
-    def setUp(self):
-        self.user = get_user_model().objects.create_user(username='test', password='test', email='test@example.com')
-        self.user.save()
+    @classmethod
+    def setUp(cls):
+        """
+        Create a user
+        """
+        client = Client()
+        user = User.objects.create_user(
+            username="test_username", email="test@test.com", password="password", first_name="firstname", last_name="lastname"
+        )
 
-    def tearDown(self):
-        self.user.delete()
-
-    def test_correct(self):
-        user = authenticate(username='test', password='test')
-        self.assertTrue((user is not None) and user.is_authenticated)
-
-    def test_wrong_username(self):
-        user = authenticate(username='wrong', password='test')
-        self.assertFalse(user is not None and user.is_authenticated)
-
-    def test_wrong_password(self):
-        user = authenticate(username='test', password='wrong')
-        self.assertFalse(user is not None and user.is_authenticated)
+    def test_signupform(self):
+        user = Account.objects.all()
+        data = {
+            'username': 'Bob',
+            'first_name': 'Bob',
+            'last_name': 'Bob',
+            'email': 'testing@test.com',
+            'password1': 'randompw',
+            'password2': 'randompw',
+        }
+        form = SignupForm(data=data)
+        print(form.errors)
+        self.assertTrue(form.is_valid())

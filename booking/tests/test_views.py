@@ -1,8 +1,13 @@
+import unittest
+from unittest.mock import MagicMock
+from unittest.mock import patch, Mock
 from django.test import TestCase, Client
 from booking.models import Account, Appointment
 from booking.views import AppointmentCreateView, AppointmentEditView
+from booking.forms import AppointmentForm
 from django.urls import reverse
 from datetime import datetime
+from django.test import RequestFactory
 
 from django.contrib.auth.models import User
 
@@ -55,7 +60,10 @@ class TestAppointmentViews(TestCase):
         user = User.objects.create_user(
             username="test_username", email="test@test.com", password="password",
         )
-        
+        appt = Appointment.objects.create(
+            id=300, date='2023-05-01', timeblock='9 AM')
+       
+
     def test_appointment_page_redirects_if_logged_in_(self):
         # Test that the appointment page renders if logged in
         self.client.login(username="test_username", password="password")
@@ -75,19 +83,33 @@ class TestAppointmentViews(TestCase):
         date = "2023-04-04"
         timeblock = "9 AM"
         self.client.login(username="test_username", password="password")
-        self.create_url = reverse('appointment-create-spec', args=[date, timeblock])
+        self.create_url = reverse(
+            'appointment-create-spec', args=[date, timeblock])
         response = self.client.get(self.create_url)
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'appointments/appointment_confirm_form.html')
+        self.assertTemplateUsed(
+            response, 'appointments/appointment_confirm_form.html')
 
     def test_appointment_edit_url(self):
         # Test that the appointment edit url works with intended args
-        appointment = Appointment.objects.create(date="2023-04-04", timeblock="9 AM")
+        appointment = Appointment.objects.create(
+            date="2023-04-04", timeblock="9 AM")
         self.client.login(username="test_username", password="password")
         self.edit_url = reverse('appointment-edit', args=[appointment.pk])
         response = self.client.get(self.edit_url)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'appointments/edit_appointment.html')
+
+    def test_appointment_delete_url(self):
+        # Test that the appointment edit url works with intended args
+        appointment = Appointment.objects.create(
+            date="2023-04-04", timeblock="9 AM")
+        self.client.login(username="test_username", password="password")
+        self.delete_url = reverse('appointment-delete', args=[appointment.pk])
+        response = self.client.get(self.delete_url)
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(
+            response, 'appointments/delete_appointment.html')
 
 
 class TestUserProfile(TestCase):
@@ -125,9 +147,10 @@ class TestUserProfile(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_update_user_profile_page_updates(self):
-        # Test that the user-profile updates 
+        # Test that the user-profile updates
         self.client.login(username="test_username", password="password")
-        response = self.client.post(reverse('user-profile'), {'first_name': 'Bob', 'last_name': 'last'})
+        response = self.client.post(
+            reverse('user-profile'), {'first_name': 'Bob', 'last_name': 'last'})
         self.assertEqual(response.status_code, 200)
 
     def test_delete_user_url(self):
@@ -139,10 +162,9 @@ class TestUserProfile(TestCase):
         self.assertTemplateUsed(response, 'user/user_delete.html')
 
     def test_update_user_url(self):
-        # Test update user works and redirects 
+        # Test update user works and redirects
         self.client.login(username="test_username", password="password")
         self.edit_url = reverse('user-update', args=[1])
         response = self.client.get(self.edit_url)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'user/user_update.html')
-
