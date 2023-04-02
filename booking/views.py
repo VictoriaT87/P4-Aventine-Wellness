@@ -150,10 +150,13 @@ class AppointmentEditView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        messages.success(
-            self.request, "Your appointment was successfully changed!")
-        super().form_valid(form)
-        return HttpResponseRedirect(self.get_success_url())
+        if form.is_valid():
+            messages.success(
+                self.request, "Your appointment was successfully changed!")
+            super().form_valid(form)
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            messages.error(self.request, "Failed to save appointment")
 
 
 class AppointmentDeleteView(LoginRequiredMixin, DeleteView):

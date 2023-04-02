@@ -59,10 +59,6 @@ class AppointmentForm(forms.ModelForm):
         user = cleaned_data.get("user")
         date = cleaned_data.get("date")
         timeblock = cleaned_data.get("timeblock")
-
-        print('clean timeblock: ', timeblock)
-        print('clean date: ', date)
-        print('Appt exists: ', Appointment.objects.filter(timeblock=timeblock, date=date).exists() )
         # date = self.cleaned_data['date']
 
         if Appointment.objects.filter(user=self.user, date=date).exists():
@@ -72,6 +68,8 @@ class AppointmentForm(forms.ModelForm):
         for instance in Appointment.objects.all():
             if instance.timeblock == timeblock and instance.date == date:
                 raise forms.ValidationError("Sorry, timeslot is booked!")
+
+        return cleaned_data
 
 
 class SignupForm(SignupForm):
