@@ -1,8 +1,7 @@
-import unittest
 from django.test import TestCase, Client
-from .models import Account
-from .views import UserDeleteView
-from .forms import SignupForm, AccountForm
+from profiles.models import Account
+from profiles.views import UserDeleteView
+from profiles.forms import SignupForm, AccountForm
 from django.urls import reverse
 from datetime import datetime
 from django.contrib.auth.models import User

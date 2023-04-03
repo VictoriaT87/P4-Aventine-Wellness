@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
-from .forms import SignupForm
+from profiles.forms import SignupForm
+from profiles.models import Account
 
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model, authenticate

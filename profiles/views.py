@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
+from django.http import HttpResponseRedirect
 
 from django.views.generic import View
 from django.contrib import messages
@@ -29,7 +30,7 @@ def user_profile(request):
         })
     else:
         # Redirect anonymous users.
-        return HttpResponseRedirect('../accounts/login/')
+        return HttpResponseRedirect('../../accounts/login/')
 
 
 def user_update(request, id):
