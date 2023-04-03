@@ -468,17 +468,19 @@ a {
     margin-bottom: 0;
 }
 
+
+
 .contact-form label {
     color: var(--color-default);
     text-align: center;
-    font-size: 1.25em;
+    font-size: 1.5em;
 }
 
 .contact-form {
     width: 100%;
     background: #fff;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-    padding: 30px;
+    padding: 0 30px 30px 30px;
 }
 
 .contact-form .form-group {
@@ -541,6 +543,7 @@ a {
 
 .contact-form input {
     height: 44px;
+    width: 20em;
 }
 
 .contact-form textarea {
@@ -560,14 +563,23 @@ a {
     color: var(--white);
 }
 
-@keyframes animate-loading {
-    0% {
-        transform: rotate(0deg);
-    }
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    100% {
-        transform: rotate(360deg);
-    }
+#contact-form p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#id_message {
+    height: 150px;
+    width: 20em;
 }
 
 .directions-text {

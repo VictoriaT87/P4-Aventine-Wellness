@@ -3,6 +3,9 @@
 
 {% block content %}
 
+{% include 'includes/messages.html' %}
+
+
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact m-3">
     <div class="container">
@@ -37,35 +40,47 @@
         </div>
 
         <div class="row gy-4 mt-1 contact-form">
+            <form method="POST" action="{% url 'contact' %}" id="contact-form">
+                {% csrf_token %}
+                {{form.as_p}}
+                <!-- <div class="col-lg-12">
+                    <h2>To send us a message, please fill in the form.</h2>
+                    {% csrf_token %}
+                    <form method="POST" action="{% url 'contact' %}" id="contact-form" role="form" class="email-form">
+                        {% csrf_token %}
+                        <div class="row gy-4">
+                            <div class="col-lg-12 form-group">
+                                <label for="name">Subject:</label>
+                                <input type="text" name="subject" class="form-control" id="subject"
+                                    placeholder="Subject" required>
 
-            <div class="col-lg-12">
-                <form id="contact-form" action="forms/contact.php" method="post" role="form" class="email-form">
-                    <div class="row gy-4">
-                        <div class="col-lg-12 form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                required>
-                                
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                    required>
+
+                            </div>
+                            <div class="col-lg-12 form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Your Email" required>
+                            </div>
                         </div>
-                        <div class="col-lg-12 form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                                required>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                                required></textarea>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message:</label>
-                        <textarea class="form-control" name="message" rows="5" placeholder="Message"
-                            required></textarea>
-                    </div>
-                    <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
-                    </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
-            </div><!-- End Contact Form -->
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div> -->
+
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                    </form>
+                </div><!-- End Contact Form -->
 
         </div>
 
