@@ -725,8 +725,17 @@ iframe {
 }
 
 .delete {
-    font-size: larger;
+    font-size: 2em;
 }
+
+.delete-p {
+    font-size: 1.2rem;
+}
+
+#delete label {
+    font-size: 1.25em;
+}
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {}

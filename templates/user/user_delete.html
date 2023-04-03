@@ -6,8 +6,8 @@
   <div class="verticle-center">
     <h2 class="delete">Delete your account</h2>
     <hr>
-    <p>Are you sure you want to delete your account? This action cannot be undone.</p>
-    <form action="." method="POST" class="padding">{% csrf_token %}
+    <p class="delete-p">Are you sure you want to delete your account? This action cannot be undone.</p>
+    <form action="." method="POST" class="padding" id="delete">{% csrf_token %}
       {{ form.as_p}}
       <button type="submit" class="btn btn-primary profile-btns">Confirm</button>
       <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
