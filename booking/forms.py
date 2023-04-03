@@ -1,5 +1,5 @@
 from allauth.account.forms import SignupForm
-from .models import Appointment, Account
+from .models import Appointment
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
@@ -7,27 +7,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 
-# Create your forms here.
-# import json
-# from datetime import datetime
-
-
-# def get_time_slots(request):
-#     # get the date in python format, sent via ajax request
-#     date = datetime.strptime(request.GET.get('date'), '%d-%m-%Y')
-
-#     # get all times from bookings on the provided date
-#     booked_slots = Appointment.objects.filter(date=date).values_list('timeblock', flat=True)
-    
-#     available_slots = []
-#     for slots in AVAILABLE_TIMES:
-#         if slots[0] not in booked_slots:
-#             available_slots.append(slots)
-
-#     times_as_json = json.dumps(available_slots)
-    
-#     return JsonResponse(times_as_json)
-
+# Create your forms here
 
 
 class AppointmentForm(forms.ModelForm):
@@ -69,32 +49,3 @@ class AppointmentForm(forms.ModelForm):
             raise forms.ValidationError('Sorry, this time is already booked!')
 
         return cleaned_data
-
-
-class SignupForm(SignupForm):
-    """
-    Form for custom signup page
-    """
-    first_name = forms.CharField(max_length=30, label='First Name', widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
-    last_name = forms.CharField(max_length=30, label='Last Name', widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
-    username = forms.CharField(max_length=30, label='Username', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    
-    def signup(self, request, user):
-        user.first_name = self.cleaned_data['first_name']
-        user.last_name = self.cleaned_data['last_name']
-        user.username = self.cleaned_data['username']
-        user.save()
-        return user
-
-
-class AccountForm(forms.ModelForm):
-    class Meta:
-        model = Account
-        fields = ['first_name', 'last_name']
-
-
-class UserDeleteForm(forms.Form):
-    """
-    Form that adds a checkbox to confirm account deletion
-    """
-    delete = forms.BooleanField(required=True)

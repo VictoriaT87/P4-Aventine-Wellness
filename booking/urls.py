@@ -5,7 +5,6 @@ from booking.views import (
     AppointmentCreateView,
     AppointmentEditView,
     AppointmentDeleteView,
-    UserDeleteView, 
     )
 from django.urls import path, register_converter
 
@@ -23,9 +22,6 @@ class DateConverter:
 register_converter(DateConverter, "yyyy")
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('about', views.about, name='about'),
-    path('contact', views.contact, name='contact'),
     path('appointments/appointment', views.appointment, name='appointment'),
     path('appointments/appointment/new/', AppointmentCreateView.as_view(),
          name='appointment-create'),
@@ -43,7 +39,4 @@ urlpatterns = [
          AppointmentEditView.as_view(), name='appointment-edit'),
     path('appointments/appointment/<int:pk>/delete',
          AppointmentDeleteView.as_view(), name='appointment-delete'),
-    path('user/user-profile', views.user_profile, name='user-profile'),
-    path('user/user-delete/<int:id>/', UserDeleteView.as_view(), name='user-delete'),
-    path('user/user-update/<int:id>/', views.user_update, name='user-update'),
 ]
