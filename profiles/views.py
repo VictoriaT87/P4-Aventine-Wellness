@@ -22,15 +22,20 @@ def user_profile(request):
 
     if request.user.is_authenticated:
         # Render the page for authenticated users.
-        appointments = Appointment.objects.filter(
-            user=user).order_by('date', 'timeblock')
-        return render(request, 'user/user_profile.html', {
-            'user': user,
-            'appointments': appointments,
-        })
+        appointments = Appointment.objects.filter(user=user).order_by(
+            "date", "timeblock"
+        )
+        return render(
+            request,
+            "user/user_profile.html",
+            {
+                "user": user,
+                "appointments": appointments,
+            },
+        )
     else:
         # Redirect anonymous users.
-        return HttpResponseRedirect('../../accounts/login/')
+        return HttpResponseRedirect("../../accounts/login/")
 
 
 def user_update(request, id):
@@ -38,27 +43,30 @@ def user_update(request, id):
     Update the User's profile.
     """
     user = request.user
-    appointments = Appointment.objects.filter(
-        user=user).order_by('date', 'timeblock')
+    appointments = Appointment.objects.filter(user=user).order_by("date", "timeblock")
     form = AccountForm()
-    if request.method == 'POST':
+    if request.method == "POST":
         user = User.objects.get(id=id)
-        user.first_name = request.POST.get('first_name')
-        user.last_name = request.POST.get('last_name')
+        user.first_name = request.POST.get("first_name")
+        user.last_name = request.POST.get("last_name")
         user.save()
         form = AccountForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "Profile updated.")
 
-            return render(request, 'user/user_profile.html', {
-                'user': user,
-                'appointments': appointments,
-            })
+            return render(
+                request,
+                "user/user_profile.html",
+                {
+                    "user": user,
+                    "appointments": appointments,
+                },
+            )
         else:
-            messages.warning(request, 'Failed to saved profile')
+            messages.warning(request, "Failed to saved profile")
 
-    return render(request, 'user/user_update.html', {'form': form})
+    return render(request, "user/user_update.html", {"form": form})
 
 
 class UserDeleteView(LoginRequiredMixin, View):
@@ -68,13 +76,13 @@ class UserDeleteView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         form = UserDeleteForm()
-        return render(request, 'user/user_delete.html', {'form': form})
+        return render(request, "user/user_delete.html", {"form": form})
 
     def post(self, request, *args, **kwargs):
         form = UserDeleteForm(request.POST)
         if form.is_valid():
             user = request.user
             user.delete()
-            messages.success(request, 'Account successfully deleted')
-            return redirect(reverse('home'))
-        return render(request, 'user/user_delete.html', {'form': form})
+            messages.success(request, "Account successfully deleted")
+            return redirect(reverse("home"))
+        return render(request, "user/user_delete.html", {"form": form})

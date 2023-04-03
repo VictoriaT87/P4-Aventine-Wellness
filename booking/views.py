@@ -17,7 +17,7 @@ from django.views.generic import (
     DetailView,
     ListView,
     UpdateView,
-    View
+    View,
 )
 
 
@@ -39,20 +39,24 @@ def daylist():
         day["date"] = today.strftime("%d-%m-%Y")
         day["day"] = weekday
         day["slot1_booked"] = (
-            Appointment.objects.filter(date=str(today)).filter(
-                timeblock="9 AM").exists()
+            Appointment.objects.filter(date=str(today))
+            .filter(timeblock="9 AM")
+            .exists()
         )
         day["slot2_booked"] = (
-            Appointment.objects.filter(date=str(today)).filter(
-                timeblock="11 AM").exists()
+            Appointment.objects.filter(date=str(today))
+            .filter(timeblock="11 AM")
+            .exists()
         )
         day["slot3_booked"] = (
-            Appointment.objects.filter(date=str(today)).filter(
-                timeblock="1 PM").exists()
+            Appointment.objects.filter(date=str(today))
+            .filter(timeblock="1 PM")
+            .exists()
         )
         day["slot4_booked"] = (
-            Appointment.objects.filter(date=str(today)).filter(
-                timeblock="3 PM").exists()
+            Appointment.objects.filter(date=str(today))
+            .filter(timeblock="3 PM")
+            .exists()
         )
         res.append(day)
     return res
@@ -68,13 +72,14 @@ def appointment(request):
         return render(request, "appointments/appointment.html", context)
     else:
         # Do something for anonymous users.
-        return HttpResponseRedirect('../accounts/login/')
+        return HttpResponseRedirect("../accounts/login/")
 
 
 class AppointmentCreateView(CreateView):
     """
     Create an Appointment
     """
+
     form_class = AppointmentForm
     template_name = "appointments/appointment_confirm_form.html"
 
@@ -84,18 +89,17 @@ class AppointmentCreateView(CreateView):
             "date": self.kwargs.get("date"),
             "timeblock": self.kwargs.get("timeblock"),
         }
-    
+
     def get_form(self, form_class=AppointmentForm):
         form = super(AppointmentCreateView, self).get_form(form_class)
         form = super().get_form()
-        form.fields['date'].disabled = True
-        form.fields['timeblock'].disabled = True
+        form.fields["date"].disabled = True
+        form.fields["timeblock"].disabled = True
         return form
 
     def get_form_kwargs(self, *args, **kwargs):
-        kwargs = super(AppointmentCreateView,
-                       self).get_form_kwargs(*args, **kwargs)
-        kwargs['user'] = self.request.user
+        kwargs = super(AppointmentCreateView, self).get_form_kwargs(*args, **kwargs)
+        kwargs["user"] = self.request.user
         return kwargs
 
     def get_success_url(self):
@@ -103,8 +107,7 @@ class AppointmentCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        messages.success(
-            self.request, "Your appointment was successfully booked!")
+        messages.success(self.request, "Your appointment was successfully booked!")
         super().form_valid(form)
         return HttpResponseRedirect(self.get_success_url())
 
@@ -121,12 +124,18 @@ class AppointmentEditView(LoginRequiredMixin, UpdateView):
     def get_form(self, form_class=AppointmentForm):
         form = super(AppointmentEditView, self).get_form(form_class)
         form = super().get_form()
-        form.fields['date'].widget = DatePickerInput(options={
-            "format": "DD/MM/YYYY",
-            'minDate': (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d 00:00:00'),
-            'maxDate': (datetime.datetime.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d 23:59:59'),
-            "showTodayButton": True,
-        })
+        form.fields["date"].widget = DatePickerInput(
+            options={
+                "format": "DD/MM/YYYY",
+                "minDate": (
+                    datetime.datetime.today() + datetime.timedelta(days=1)
+                ).strftime("%Y-%m-%d 00:00:00"),
+                "maxDate": (
+                    datetime.datetime.today() + datetime.timedelta(days=7)
+                ).strftime("%Y-%m-%d 23:59:59"),
+                "showTodayButton": True,
+            }
+        )
         return form
 
     def get_success_url(self):
@@ -135,8 +144,7 @@ class AppointmentEditView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         if form.is_valid():
-            messages.success(
-                self.request, "Your appointment was successfully changed!")
+            messages.success(self.request, "Your appointment was successfully changed!")
             super().form_valid(form)
             return HttpResponseRedirect(self.get_success_url())
         else:
@@ -147,13 +155,12 @@ class AppointmentDeleteView(LoginRequiredMixin, DeleteView):
     """
     Delete an Appointment
     """
+
     model = Appointment
     template_name = "appointments/delete_appointment.html"
-    success_url = reverse_lazy('user-profile')
+    success_url = reverse_lazy("user-profile")
     success_message = "Appointment deleted successfully."
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(AppointmentDeleteView, self).delete(request, *args, **kwargs)
-
-

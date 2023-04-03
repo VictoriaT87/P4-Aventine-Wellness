@@ -22,4 +22,3 @@ def contact(request):
     Contact Page
     """
     return render(request, "contact.html")
-

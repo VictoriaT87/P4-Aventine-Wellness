@@ -8,7 +8,6 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,14 +16,56 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Appointment',
+            name="Appointment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date_posted', models.DateField(default=django.utils.timezone.now)),
-                ('date', models.DateField(default=datetime.datetime.now)),
-                ('days', models.CharField(choices=[('Monday', 'Monday'), ('Tuesday', 'Tuesday'), ('Wednesday', 'Wednesday'), ('Thursday', 'Thursday'), ('Friday', 'Friday'), ('Saturday', 'Saturday')], default='Monday', max_length=10)),
-                ('timeblock', models.CharField(choices=[('9 AM', '09:00 - 10:00'), ('11 AM', '11:00 - 12:00'), ('1 PM', '13:00 - 14:00'), ('3 PM', '15:00 - 16:00')], default='9 AM', max_length=10)),
-                ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date_posted", models.DateField(default=django.utils.timezone.now)),
+                ("date", models.DateField(default=datetime.datetime.now)),
+                (
+                    "days",
+                    models.CharField(
+                        choices=[
+                            ("Monday", "Monday"),
+                            ("Tuesday", "Tuesday"),
+                            ("Wednesday", "Wednesday"),
+                            ("Thursday", "Thursday"),
+                            ("Friday", "Friday"),
+                            ("Saturday", "Saturday"),
+                        ],
+                        default="Monday",
+                        max_length=10,
+                    ),
+                ),
+                (
+                    "timeblock",
+                    models.CharField(
+                        choices=[
+                            ("9 AM", "09:00 - 10:00"),
+                            ("11 AM", "11:00 - 12:00"),
+                            ("1 PM", "13:00 - 14:00"),
+                            ("3 PM", "15:00 - 16:00"),
+                        ],
+                        default="9 AM",
+                        max_length=10,
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

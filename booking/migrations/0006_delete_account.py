@@ -4,13 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('booking', '0005_remove_appointment_days'),
+        ("booking", "0005_remove_appointment_days"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='Account',
+            name="Account",
         ),
     ]

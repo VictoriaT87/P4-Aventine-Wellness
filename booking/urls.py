@@ -5,7 +5,7 @@ from booking.views import (
     AppointmentCreateView,
     AppointmentEditView,
     AppointmentDeleteView,
-    )
+)
 from django.urls import path, register_converter
 
 
@@ -22,21 +22,30 @@ class DateConverter:
 register_converter(DateConverter, "yyyy")
 
 urlpatterns = [
-    path('appointments/appointment', views.appointment, name='appointment'),
-    path('appointments/appointment/new/', AppointmentCreateView.as_view(),
-         name='appointment-create'),
+    path("appointments/appointment", views.appointment, name="appointment"),
     path(
-        'appointments/appointment/new/<date>/',
+        "appointments/appointment/new/",
         AppointmentCreateView.as_view(),
-        name='appointment-create-date',
+        name="appointment-create",
     ),
     path(
-        'appointments/appointment/new/<date>/<str:timeblock>',
+        "appointments/appointment/new/<date>/",
         AppointmentCreateView.as_view(),
-        name='appointment-create-spec',
+        name="appointment-create-date",
     ),
-    path('appointments/appointment/<int:pk>/edit',
-         AppointmentEditView.as_view(), name='appointment-edit'),
-    path('appointments/appointment/<int:pk>/delete',
-         AppointmentDeleteView.as_view(), name='appointment-delete'),
+    path(
+        "appointments/appointment/new/<date>/<str:timeblock>",
+        AppointmentCreateView.as_view(),
+        name="appointment-create-spec",
+    ),
+    path(
+        "appointments/appointment/<int:pk>/edit",
+        AppointmentEditView.as_view(),
+        name="appointment-edit",
+    ),
+    path(
+        "appointments/appointment/<int:pk>/delete",
+        AppointmentDeleteView.as_view(),
+        name="appointment-delete",
+    ),
 ]

@@ -8,7 +8,6 @@ from django.core.exceptions import ValidationError
 
 
 class SignUpTest(TestCase):
-
     @classmethod
     def setUp(cls):
         """
@@ -16,18 +15,22 @@ class SignUpTest(TestCase):
         """
         client = Client()
         user = User.objects.create_user(
-            username="test_username", email="test@test.com", password="password", first_name="firstname", last_name="lastname"
+            username="test_username",
+            email="test@test.com",
+            password="password",
+            first_name="firstname",
+            last_name="lastname",
         )
 
     def test_signupform(self):
         user = Account.objects.all()
         data = {
-            'username': 'Bob',
-            'first_name': 'Bob',
-            'last_name': 'Bob',
-            'email': 'testing@test.com',
-            'password1': 'randompw',
-            'password2': 'randompw',
+            "username": "Bob",
+            "first_name": "Bob",
+            "last_name": "Bob",
+            "email": "testing@test.com",
+            "password1": "randompw",
+            "password2": "randompw",
         }
         form = SignupForm(data=data)
         print(form.errors)

@@ -8,12 +8,11 @@ from django.contrib.auth.models import User
 
 
 class Appointment(models.Model):
-
     AVAILABLE_TIMES = (
-        ("9 AM", '09:00 - 10:00'),
-        ("11 AM", '11:00 - 12:00'),
-        ("1 PM", '13:00 - 14:00'),
-        ("3 PM", '15:00 - 16:00'),
+        ("9 AM", "09:00 - 10:00"),
+        ("11 AM", "11:00 - 12:00"),
+        ("1 PM", "13:00 - 14:00"),
+        ("3 PM", "15:00 - 16:00"),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
