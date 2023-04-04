@@ -7,6 +7,7 @@ class ContactFormLabelTests(TestCase):
     """
     Test Contact Form labels are valid
     """
+
     def test_contact_form_name_field_label(self):
         # test field label for name
         form = ContactForm()
@@ -18,8 +19,7 @@ class ContactFormLabelTests(TestCase):
         # test field label for email
         form = ContactForm()
         self.assertTrue(
-            form.fields["email"].label is None
-            or form.fields["email"].label == "email"
+            form.fields["email"].label is None or form.fields["email"].label == "email"
         )
 
     def test_contact_form_message_field_label(self):

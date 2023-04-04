@@ -25,7 +25,7 @@ class TestTemplates(TestCase):
         response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "index.html")
-        self.assertContains(response, 'Aventine')
+        self.assertContains(response, "Aventine")
 
     def test_about_url_accessible_by_name(self):
         # Test about page renders correctly
@@ -50,7 +50,7 @@ class TestContactFormSends(TestCase):
         post1 = Contact.objects.create(
             name="Test",
             email="test@test.com",
-            message='This is a test to check if a post is correctly created',
+            message="This is a test to check if a post is correctly created",
         )
 
     def test_contact_posts_and_redirects(self):

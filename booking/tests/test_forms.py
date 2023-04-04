@@ -71,8 +71,9 @@ class AppointmentFormValidationTests(TestCase):
         self.assertFalse(form.is_valid())
         print(form.errors)
         self.assertRaisesMessage(
-                ValidationError,
-                "Cannot schedule more than one appointment on a single day!")
+            ValidationError,
+            "Cannot schedule more than one appointment on a single day!",
+        )
 
     def test_form_raises_booked_validation(self):
         # test form validation errors
@@ -84,9 +85,7 @@ class AppointmentFormValidationTests(TestCase):
         form = AppointmentForm(data=data)
         self.assertFalse(form.is_valid())
         print(form.errors)
-        self.assertRaisesMessage(
-                ValidationError,
-                "Sorry, this time is already booked!")
+        self.assertRaisesMessage(ValidationError, "Sorry, this time is already booked!")
 
 
 class AppointmentFormValidTest(TestCase):

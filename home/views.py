@@ -22,17 +22,17 @@ def about(request):
 
 
 def contact(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(
                 request, "Your message was sent! We'll be in touch shortly."
             )
-            return render(request, 'contact.html')
+            return render(request, "contact.html")
     form = ContactForm()
-    context = {'form': form}
-    return render(request, 'contact.html', context)
+    context = {"form": form}
+    return render(request, "contact.html", context)
 
 
 # def contact(request):

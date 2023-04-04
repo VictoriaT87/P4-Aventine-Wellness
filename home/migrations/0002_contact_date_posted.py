@@ -5,15 +5,14 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('home', '0001_initial'),
+        ("home", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='contact',
-            name='date_posted',
+            model_name="contact",
+            name="date_posted",
             field=models.DateField(default=django.utils.timezone.now),
         ),
     ]

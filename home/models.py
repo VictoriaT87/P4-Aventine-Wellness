@@ -14,4 +14,4 @@ class Contact(models.Model):
         return f"{self.name}, {self.email}"
 
     class Meta:
-        verbose_name = 'Contact Form Submission'
+        verbose_name = "Contact Form Submission"

@@ -11,7 +11,10 @@ class AppointmentModelTest(TestCase):
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
         Contact.objects.create(
-            name="Test", email="test@test.com", date_posted="2023-03-31", message="testing"
+            name="Test",
+            email="test@test.com",
+            date_posted="2023-03-31",
+            message="testing",
         )
 
     def test_name_label(self):
@@ -47,4 +50,4 @@ class AppointmentModelTest(TestCase):
     def test_str_return(self):
         # Test str return is correct
         contact = Contact.objects.get(id=1)
-        self.assertEqual(str(contact), 'Test, test@test.com')
+        self.assertEqual(str(contact), "Test, test@test.com")

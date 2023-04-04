@@ -46,11 +46,13 @@ class AppointmentForm(forms.ModelForm):
 
         error_dict = {}
         if Appointment.objects.filter(user=self.user, date=date).exists():
-            error_dict['date'] = ValidationError(
-                "Cannot schedule more than one appointment on a single day!")
+            error_dict["date"] = ValidationError(
+                "Cannot schedule more than one appointment on a single day!"
+            )
         if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
-            error_dict['timeblock'] = ValidationError(
-                "Sorry, this time is already booked!")
+            error_dict["timeblock"] = ValidationError(
+                "Sorry, this time is already booked!"
+            )
         # if Appointment.objects.filter(
         #     user=user, timeblock=timeblock, date=date
         # ).exists():
