@@ -5,9 +5,9 @@ from django.utils import timezone
 
 
 class Contact(models.Model):
-    email = models.EmailField()
-    name = models.CharField(max_length=50)
-    message = models.TextField()
+    email = models.EmailField(null=True)
+    name = models.CharField(max_length=50, null=True)
+    message = models.TextField(null=True)
     date_posted = models.DateField(default=timezone.now)
 
     def __str__(self):

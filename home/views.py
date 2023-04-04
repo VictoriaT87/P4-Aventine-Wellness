@@ -30,6 +30,9 @@ def contact(request):
                 request, "Your message was sent! We'll be in touch shortly."
             )
             return render(request, "contact.html")
+        else:
+            messages.error(request, "Failed to send message. Please try again.")
+
     form = ContactForm()
     context = {"form": form}
     return render(request, "contact.html", context)
