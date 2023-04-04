@@ -86,4 +86,7 @@ class UserDeleteView(LoginRequiredMixin, View):
             user.delete()
             messages.success(request, "Account successfully deleted")
             return redirect(reverse("home"))
+        else:
+            messages.error(request, "Failed to delete profile.")
+
         return render(request, "user/user_delete.html", {"form": form})

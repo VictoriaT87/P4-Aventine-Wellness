@@ -107,9 +107,12 @@ class AppointmentCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        messages.success(self.request, "Your appointment was successfully booked!")
-        super().form_valid(form)
-        return HttpResponseRedirect(self.get_success_url())
+        if form.is_valid():
+            messages.success(self.request, "Your appointment was successfully booked!")
+            super().form_valid(form)
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            messages.error(self.request, "Failed to save appointment")
 
 
 class AppointmentEditView(LoginRequiredMixin, UpdateView):
