@@ -22,7 +22,6 @@ class AppointmentForm(forms.ModelForm):
         ("3 PM", "15:00 - 16:00"),
     )
 
-    # date = forms.DateField(widget=DateInput)
     date = forms.DateField()
     timeblock = forms.ChoiceField(choices=AVAILABLE_TIMES)
 

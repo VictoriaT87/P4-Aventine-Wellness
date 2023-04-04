@@ -8,19 +8,6 @@ from django.core.exceptions import ValidationError
 
 
 class SignUpTest(TestCase):
-    @classmethod
-    def setUp(cls):
-        """
-        Create a user
-        """
-        client = Client()
-        user = User.objects.create_user(
-            username="test_username",
-            email="test@test.com",
-            password="password",
-            first_name="firstname",
-            last_name="lastname",
-        )
 
     def test_signupform(self):
         user = Account.objects.all()
@@ -33,5 +20,4 @@ class SignUpTest(TestCase):
             "password2": "randompw",
         }
         form = SignupForm(data=data)
-        print(form.errors)
         self.assertTrue(form.is_valid())
