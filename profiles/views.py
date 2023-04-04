@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 
-from django.views.generic import View
+from django.views.generic import View, UpdateView
 from django.contrib import messages
 
 from booking.models import Appointment
 from .models import Account
 from .forms import AccountForm, UserDeleteForm, UserCreationForm
+
 
 # Create your views here.
 
@@ -38,42 +39,63 @@ def user_profile(request):
         return HttpResponseRedirect("../../accounts/login/")
 
 
-def user_update(request, id):
+class UserUpdateAccount(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
-    Update the User's profile.
+    Renders profile page view
     """
-    user = request.user
-    appointments = Appointment.objects.filter(user=user).order_by("date", "timeblock")
-    form = AccountForm()
-    if request.method == "POST":
-        user = User.objects.get(id=id)
-        user.first_name = request.POST.get("first_name")
-        user.last_name = request.POST.get("last_name")
-        user.save()
-        form = AccountForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Profile updated.")
+    model = Account
+    template_name = 'user/user_profile.html'
+    form_class = AccountForm
+    fields = ['first_name', 'last_name',]
 
-            return render(
-                request,
-                "user/user_profile.html",
-                {
-                    "user": user,
-                    "appointments": appointments,
-                },
-            )
-        else:
-            messages.warning(request, "Failed to saved profile")
-            return render(request, "user/user_update.html", {"form": form})
-
-    return render(request, "user/user_update.html", {"form": form})
+    def test_func(self):
+        """
+        Check if the user is the owner of the profile
+        """
+        def test_func(self, request):
+            return self.get_object() == self.request.user
 
 
-class UserDeleteView(LoginRequiredMixin, View):
+
+# def user_update(request, id):
+#     """
+#     Update the User's profile.
+#     """
+#     user = request.user
+#     appointments = Appointment.objects.filter(user=user).order_by("date", "timeblock")
+#     form = AccountForm()
+#     if request.method == "POST":
+#         user = User.objects.get(id=id)
+#         user.first_name = request.POST.get("first_name")
+#         user.last_name = request.POST.get("last_name")
+#         user.save()
+#         form = AccountForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, "Profile updated.")
+
+#             return render(
+#                 request,
+#                 "user/user_profile.html",
+#                 {
+#                     "user": user,
+#                     "appointments": appointments,
+#                 },
+#             )
+#         else:
+#             messages.warning(request, "Failed to saved profile")
+#             return render(request, "user/user_update.html", {"form": form})
+
+#     return render(request, "user/user_update.html", {"form": form})
+
+
+class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
     """
     Deletes the currently signed-in user and all associated data.
     """
+
+    def test_func(self):
+        return self.get_object() == self.request.user
 
     def get(self, request, *args, **kwargs):
         form = UserDeleteForm()

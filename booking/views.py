@@ -1,7 +1,7 @@
 import datetime
 
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.urls import reverse, reverse_lazy
@@ -75,7 +75,7 @@ def appointment(request):
         return HttpResponseRedirect("../accounts/login/")
 
 
-class AppointmentCreateView(CreateView):
+class AppointmentCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     """
     Create an Appointment
     """
@@ -115,7 +115,7 @@ class AppointmentCreateView(CreateView):
             messages.error(self.request, "Failed to save appointment")
 
 
-class AppointmentEditView(LoginRequiredMixin, UpdateView):
+class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Update an Appointment
     """
@@ -154,7 +154,7 @@ class AppointmentEditView(LoginRequiredMixin, UpdateView):
             messages.error(self.request, "Failed to save appointment")
 
 
-class AppointmentDeleteView(LoginRequiredMixin, DeleteView):
+class AppointmentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Delete an Appointment
     """
