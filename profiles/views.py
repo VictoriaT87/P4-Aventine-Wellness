@@ -65,6 +65,7 @@ def user_update(request, id):
             )
         else:
             messages.warning(request, "Failed to saved profile")
+            return render(request, "user/user_update.html", {"form": form})
 
     return render(request, "user/user_update.html", {"form": form})
 
