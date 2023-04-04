@@ -71,7 +71,7 @@ class TestAppointmentViews(TestCase):
         self.client.login(username="test_username", password="password")
         self.create_url = reverse("appointment-create-spec", args=[date, timeblock])
         response = self.client.get(self.create_url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "appointments/appointment_confirm_form.html")
 
     def test_appointment_edit_url(self):
@@ -80,7 +80,7 @@ class TestAppointmentViews(TestCase):
         self.client.login(username="test_username", password="password")
         self.edit_url = reverse("appointment-edit", args=[appointment.pk])
         response = self.client.get(self.edit_url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "appointments/edit_appointment.html")
 
     def test_appointment_delete_url(self):
@@ -89,5 +89,5 @@ class TestAppointmentViews(TestCase):
         self.client.login(username="test_username", password="password")
         self.delete_url = reverse("appointment-delete", args=[appointment.pk])
         response = self.client.get(self.delete_url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "appointments/delete_appointment.html")

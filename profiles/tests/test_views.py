@@ -59,7 +59,7 @@ class TestUserProfile(TestCase):
         self.client.login(username="test_username", password="password")
         self.edit_url = reverse("user-delete", args=[1])
         response = self.client.get(self.edit_url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "user/user_delete.html")
 
     def test_update_user_url(self):
@@ -67,5 +67,5 @@ class TestUserProfile(TestCase):
         self.client.login(username="test_username", password="password")
         self.edit_url = reverse("user-update", args=[1])
         response = self.client.get(self.edit_url)
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "user/user_update.html")
