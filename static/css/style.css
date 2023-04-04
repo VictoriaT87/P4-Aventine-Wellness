@@ -1,3 +1,5 @@
+/* Root Colours */
+
 :root {
     --color-default: #175851;
     --white: #fff;
@@ -7,11 +9,25 @@
     scroll-behavior: smooth;
 }
 
+/* Body */
 html,
 body {
     height: 100%;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    border-top: 1px solid var(--color-default);
+}
+
+/* Navbar */
 .logo {
     width: 50%;
 }
@@ -29,17 +45,7 @@ body {
     justify-content: center;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto;
-    border-top: 1px solid var(--color-default);
-}
+/* Messages*/
 
 .messages {
     list-style-type: none;
