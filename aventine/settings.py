@@ -13,28 +13,28 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
-
-if os.path.isfile("env.py"):
-    import env
-
 from django.contrib.messages import constants as messages
+if os.path.isfile('env.py'):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-# TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["aventine-wellness-p4.herokuapp.com", "localhost"]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+
+ALLOWED_HOSTS = ["aventine-wellness-p4.herokuapp.com", "localhost"]
 
 # Application definition
 
@@ -45,13 +45,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.sites",
-    "allauth",
-    "allauth.account",
-    "allauth.socialaccount",
     "cloudinary_storage",
     "django.contrib.staticfiles",
     "cloudinary",
     "crispy_forms",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     "crispy_bootstrap4",
     "bootstrap_datepicker_plus",
     "django_summernote",
@@ -59,8 +59,6 @@ INSTALLED_APPS = [
     "home",
     "profiles",
 ]
-
-CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 SITE_ID = 1
 
@@ -81,6 +79,8 @@ MESSAGE_TAGS = {
     messages.WARNING: "alert-warning",
     messages.ERROR: "alert-danger",
 }
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -118,8 +118,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "aventine.wsgi.application"
-
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 # Database
