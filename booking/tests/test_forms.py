@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from booking.forms import AppointmentForm, SignupForm
+from booking.forms import AppointmentForm
 from booking.models import Appointment
 
 from django.contrib.auth.models import User
@@ -7,7 +7,7 @@ from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
 
 
-class AppointmentFormTest(TestCase):
+class AppointmentFormLabelTests(TestCase):
     """
     Test Appointment Booking Form is valid
     """
@@ -23,7 +23,7 @@ class AppointmentFormTest(TestCase):
             email="test@test.com",
             password="password",
         )
-        appointment = Appointment.objects.create(date="2023-04-04", timeblock="9 AM")
+        appt = Appointment.objects.create(date="2023-05-01", timeblock="9 AM")
 
     def test_appointment_form_date_field_label(self):
         # test field label for date
@@ -40,9 +40,28 @@ class AppointmentFormTest(TestCase):
             or form.fields["timeblock"].label == "timeblock"
         )
 
-    def test_form_validation(self):
+
+class AppointmentFormValidationTests(TestCase):
+    """
+    Test Appointment Booking Form is valid
+    """
+
+    @classmethod
+    def setUp(cls):
+        """
+        Create a user
+        """
+        client = Client()
+        user = User.objects.create_user(
+            username="test_username",
+            email="test@test.com",
+            password="password",
+        )
+        appt = Appointment.objects.create(date="2023-05-01", timeblock="9 AM")
+
+    def test_form_raises_double_appt_validation(self):
         # test form validation errors
-        appt = Appointment.objects.create(id=300, date="2023-05-01", timeblock="9 AM")
+        appt = Appointment.objects.create(date="2023-05-01", timeblock="9 AM")
         user = authenticate(username="test_username", password="password")
         data = {
             "date": appt.date,
@@ -51,7 +70,42 @@ class AppointmentFormTest(TestCase):
         form = AppointmentForm(data=data)
         self.assertFalse(form.is_valid())
         print(form.errors)
-        self.assertRaises(ValidationError, form.clean)
+        self.assertRaisesMessage(
+                ValidationError,
+                "Cannot schedule more than one appointment on a single day!")
+
+    def test_form_raises_booked_validation(self):
+        # test form validation errors
+        appt = Appointment.objects.create(date="2023-05-01", timeblock="9 AM")
+        data = {
+            "date": appt.date,
+            "timeblock": appt.timeblock,
+        }
+        form = AppointmentForm(data=data)
+        self.assertFalse(form.is_valid())
+        print(form.errors)
+        self.assertRaisesMessage(
+                ValidationError,
+                "Sorry, this time is already booked!")
+
+
+class AppointmentFormValidTest(TestCase):
+    """
+    Test Appointment Booking Form is valid
+    """
+
+    @classmethod
+    def setUp(cls):
+        """
+        Create a user
+        """
+        client = Client()
+        user = User.objects.create_user(
+            username="test_username",
+            email="test@test.com",
+            password="password",
+        )
+        appt = Appointment.objects.create(date="2023-05-01", timeblock="9 AM")
 
     def test_new_appointment_form_is_valid(self):
         # test form is_valid with correct inputs

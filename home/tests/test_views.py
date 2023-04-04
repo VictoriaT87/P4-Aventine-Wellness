@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import HttpRequest
 from home.views import contact, home, about
 from home.forms import ContactForm
+from home.models import Contact
 from home import views
 from http import HTTPStatus
 from django.core import mail
@@ -45,14 +46,16 @@ class TestContactFormSends(TestCase):
     """
 
     def setUp(self):
-        # Every test needs access to the request factory.
         client = Client()
+        post1 = Contact.objects.create(
+            name="Test",
+            email="test@test.com",
+            message='This is a test to check if a post is correctly created',
+        )
 
     def test_contact_posts_and_redirects(self):
-        response = self.client.post(reverse("contact"), {"name": "fred", "email": "test", "message": "test message"})
+        # Test contact form posts to database
+        self.assertEqual(Contact.objects.count(), 1)
+        response = self.client.get(reverse("contact"))
         self.assertEqual(response.status_code, 200)
-
-    def test(self):
-        data = {"name": "fred", "email": "test", "message": "test message"}
-        self.client.post(reverse("contact"), data)
-        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "contact.html")

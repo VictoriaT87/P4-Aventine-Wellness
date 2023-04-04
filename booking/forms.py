@@ -44,15 +44,30 @@ class AppointmentForm(forms.ModelForm):
         timeblock = cleaned_data.get("timeblock")
         # date = self.cleaned_data['date']
 
+        error_dict = {}
         if Appointment.objects.filter(user=self.user, date=date).exists():
-            raise forms.ValidationError(
-                "Cannot schedule more than one appointment on a single day!"
-            )
+            error_dict['date'] = ValidationError(
+                "Cannot schedule more than one appointment on a single day!")
         if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
-            raise forms.ValidationError("Sorry, this time is already booked!")
-        if Appointment.objects.filter(
-            user=user, timeblock=timeblock, date=date
-        ).exists():
-            raise forms.ValidationError("Sorry, this time is already booked!")
+            error_dict['timeblock'] = ValidationError(
+                "Sorry, this time is already booked!")
+        # if Appointment.objects.filter(
+        #     user=user, timeblock=timeblock, date=date
+        # ).exists():
+        #     error_dict['f2'] = ValidationError(
+        #         "Sorry, this time is already booked!")
+        if error_dict:
+            raise ValidationError(error_dict)
+
+        # if Appointment.objects.filter(user=self.user, date=date).exists():
+        #     raise forms.ValidationError(
+        #         "Cannot schedule more than one appointment on a single day!"
+        #     )
+        # if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
+        #     raise forms.ValidationError("Sorry, this time is already booked!")
+        # if Appointment.objects.filter(
+        #     user=user, timeblock=timeblock, date=date
+        # ).exists():
+        #     raise forms.ValidationError("Sorry, this time is already booked!")
 
         return cleaned_data
