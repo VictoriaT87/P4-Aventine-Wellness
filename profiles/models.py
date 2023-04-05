@@ -24,3 +24,6 @@ class Profile(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
+
+    def __str__(self):
+        return f"Username: {self.user} | First Name: {self.first_name} | Last Name: {self.last_name}"
