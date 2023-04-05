@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from profiles.forms import SignupForm
-from profiles.models import Account
+from profiles.models import Profile
 
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model, authenticate
@@ -10,7 +10,7 @@ from django.core.exceptions import ValidationError
 class SignUpTest(TestCase):
 
     def test_signupform(self):
-        user = Account.objects.all()
+        user = Profile.objects.all()
         data = {
             "username": "Bob",
             "first_name": "Bob",

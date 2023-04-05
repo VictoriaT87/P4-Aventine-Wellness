@@ -65,7 +65,6 @@ class EditProfile(
             messages.error(self.request, "Failed to save profile")
 
 
-
 class UserDeleteProfile(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Deletes the currently signed-in user and all associated data.
@@ -88,6 +87,3 @@ class UserDeleteProfile(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         user.delete()
         messages.success(self.request, "Profile successfully deleted")
         return HttpResponseRedirect(self.success_url)
-
-
-    
