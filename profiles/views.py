@@ -38,7 +38,7 @@ def user_profile(request):
         return HttpResponseRedirect("../../accounts/login/")
 
 
-class EditProfile(
+class UserEditProfile(
     LoginRequiredMixin, UserPassesTestMixin, UpdateView
         ):
     """

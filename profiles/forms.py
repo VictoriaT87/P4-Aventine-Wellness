@@ -29,11 +29,14 @@ class SignupForm(SignupForm):
     )
 
     def signup(self, request, user):
+        user = super(SignupForm, self).save(request)
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
         user.username = self.cleaned_data["username"]
         user.save()
         return user
+
+        Profile.objects.create(user=user, first_name=self.cleaned_data['first_name'], last_name=self.cleaned_data['last_name'])
 
 
 class ProfileForm(forms.ModelForm):
