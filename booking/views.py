@@ -168,6 +168,10 @@ class AppointmentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
     success_url = reverse_lazy("user-profile")
     success_message = "Appointment deleted successfully."
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.user == self.request.user
+
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(AppointmentDeleteView, self).delete(request, *args, **kwargs)

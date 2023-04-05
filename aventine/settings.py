@@ -65,10 +65,7 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_USERNAME_REQUIRED = True
-# ACCOUNT_AUTHENTICATION_METHOD = "username"
+
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
@@ -123,23 +120,24 @@ WSGI_APPLICATION = "aventine.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if "DATABASE_URL" in os.environ:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
+# if "DATABASE_URL" in os.environ:
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#     }
+# else:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#         }
+#     }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#     },
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    },
+}
 
 # DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
@@ -193,13 +191,15 @@ DATE_INPUT_FORMATS = [
 ]
 
 # Accounts
+ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_EMAIL_VERIFCATION = "none"
+ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-LOGIN_URL = "/accounts/login/"
+LOGIN_URL = 'accounts/login/'
 LOGIN_REDIRECT_URL = "/"
+
 
 ACCOUNT_FORMS = {
     "add_email": "allauth.account.forms.AddEmailForm",

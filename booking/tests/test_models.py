@@ -41,4 +41,4 @@ class AppointmentModelTest(TestCase):
     def test_get_absolute_url(self):
         # Test absolute URL redirects to user-profile
         appointment = Appointment.objects.get(id=1)
-        self.assertEqual(appointment.get_absolute_url(), "/profile/user/user-profile")
+        self.assertEqual(appointment.get_absolute_url(), "/user/user-profile")

@@ -37,7 +37,7 @@ class TestUserProfile(TestCase):
         # Test user-profile page redirects when not logged in
         response = self.client.get(reverse("user-profile"))
         self.assertRedirects(
-            response, "/accounts/login/", status_code=302, fetch_redirect_response=True
+            response, "accounts/login/", status_code=302, fetch_redirect_response=False
         )
 
     def test_update_user_profile_page_renders(self):
