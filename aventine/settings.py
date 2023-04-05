@@ -29,9 +29,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ALLOWED_HOSTS = ["aventine-wellness-p4.herokuapp.com", "localhost"]
@@ -64,8 +64,6 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
-
-
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
@@ -120,17 +118,17 @@ WSGI_APPLICATION = "aventine.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# if "DATABASE_URL" in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-#     }
-# else:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#         }
-#     }
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
 
 # DATABASES = {
 #     'default': {
@@ -139,7 +137,7 @@ WSGI_APPLICATION = "aventine.wsgi.application"
 #     },
 # }
 
-DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+# DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 
 # Password validation
