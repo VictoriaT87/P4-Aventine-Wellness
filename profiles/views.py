@@ -1,17 +1,16 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User
+
 from django.urls import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 
-from django.views.generic import View, UpdateView
+from django.views.generic import View, UpdateView, DetailView
 from django.contrib import messages
 
 from booking.models import Appointment
-from .models import Account
-from .forms import AccountForm, UserDeleteForm, UserCreationForm
-
-
+from .models import Profile
+from .forms import ProfileForm, UserDeleteForm, UserCreationForm
 # Create your views here.
 
 
@@ -39,21 +38,65 @@ def user_profile(request):
         return HttpResponseRedirect("../../accounts/login/")
 
 
-class UserUpdateAccount(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+# class ProfileView(DetailView):
+#     """
+#     Renders profile page view
+#     """
+#     model = Profile
+#     template_name = 'user/user_profile.html'
+    
+
+#     def get(self, request, username):
+#         """
+#         Overides get method. Checks that profile user is current
+#         logged in user using username
+#         """
+#         user = get_object_or_404(User, username=username)
+#         profile = Profile.objects.get(user__username=user_id)
+
+#         context = {
+#             "account": account,
+#         }
+#         # If current user is not profile owner returns status 403 forbidden
+#         if request.user != account.user:
+#             return render(request, '403.html', status=403)
+
+#         return render(request, self.template_name, context)
+
+
+class EditProfile(
+    LoginRequiredMixin, UserPassesTestMixin, UpdateView
+        ):
     """
-    Renders profile page view
+    Renders form for editing profile
     """
-    model = Account
-    template_name = 'user/user_profile.html'
-    form_class = AccountForm
-    fields = ['first_name', 'last_name',]
+    model = Profile
+    template_name = 'user/user_update.html'
+    form_class = ProfileForm
+
+    def get_success_url(self):
+        return reverse_lazy('user-profile')
 
     def test_func(self):
-        """
-        Check if the user is the owner of the profile
-        """
-        def test_func(self, request):
-            return self.get_object() == self.request.user
+        obj = self.get_object()
+        return obj.user == self.request.user
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        if form.is_valid():
+            messages.success(self.request, "Your profile was successfully changed!")
+            super().form_valid(form)
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            messages.error(self.request, "Failed to save profile")
+
+    # def test_func(self):
+    #     """
+    #     Check if the user is the owner of the profile
+    #     """
+    #     account = self.get_object()
+    #     return self.request.user == account.user
+
 
 
 
@@ -63,13 +106,13 @@ class UserUpdateAccount(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 #     """
 #     user = request.user
 #     appointments = Appointment.objects.filter(user=user).order_by("date", "timeblock")
-#     form = AccountForm()
+#     form = ProfileForm()
 #     if request.method == "POST":
 #         user = User.objects.get(id=id)
 #         user.first_name = request.POST.get("first_name")
 #         user.last_name = request.POST.get("last_name")
 #         user.save()
-#         form = AccountForm(request.POST)
+#         form = ProfileForm(request.POST)
 #         if form.is_valid():
 #             form.save()
 #             messages.success(request, "Profile updated.")
@@ -89,13 +132,10 @@ class UserUpdateAccount(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 #     return render(request, "user/user_update.html", {"form": form})
 
 
-class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
+class UserDeleteView(LoginRequiredMixin, View):
     """
     Deletes the currently signed-in user and all associated data.
     """
-
-    def test_func(self):
-        return self.get_object() == self.request.user
 
     def get(self, request, *args, **kwargs):
         form = UserDeleteForm()
@@ -106,7 +146,7 @@ class UserDeleteView(LoginRequiredMixin, UserPassesTestMixin, View):
         if form.is_valid():
             user = request.user
             user.delete()
-            messages.success(request, "Account successfully deleted")
+            messages.success(request, "Profile successfully deleted")
             return redirect(reverse("home"))
         else:
             messages.error(request, "Failed to delete profile.")

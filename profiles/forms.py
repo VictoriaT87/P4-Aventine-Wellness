@@ -1,5 +1,5 @@
 from allauth.account.forms import SignupForm
-from .models import Account
+from .models import Profile
 from django import forms
 
 from django.contrib.auth.forms import UserCreationForm
@@ -36,9 +36,9 @@ class SignupForm(SignupForm):
         return user
 
 
-class AccountForm(forms.ModelForm):
+class ProfileForm(forms.ModelForm):
     class Meta:
-        model = Account
+        model = Profile
         fields = ["first_name", "last_name"]
 
 

@@ -6,14 +6,15 @@
 
 
 {% if user.is_authenticated %}
+
 <h1 class="booked-appointments mt-3 ">My Profile</h1>
 
 <div class="shadow p-4 rounded m-5">
     <h2 class="user-info">User Information:</h2>
     <ul class="list-group fs-4 mt-3">
         <li class="list-group mt-2">Username: {{ user.username }}</li>
-        <li class="list-group mt-2">First Name: {{ user.first_name }}</li>
-        <li class="list-group mt-2">Last Name: {{ user.last_name }}</li>
+        <li class="list-group mt-2">First Name: {{ user.profile.first_name }}</li>
+        <li class="list-group mt-2">Last Name: {{ user.profile.last_name }}</li>
     </ul>
     <div class="profile-btn-group d-flex justify-content-center">
         <a class='profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-update' user.pk %}">Update

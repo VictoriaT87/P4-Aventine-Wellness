@@ -75,7 +75,7 @@ def appointment(request):
         return HttpResponseRedirect("../accounts/login/")
 
 
-class AppointmentCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class AppointmentCreateView(LoginRequiredMixin, CreateView):
     """
     Create an Appointment
     """
@@ -140,6 +140,10 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             }
         )
         return form
+
+    def test_func(self):
+        appt = self.get_object()
+        return self.request.user == appt.user
 
     def get_success_url(self):
         return reverse("user-profile")
