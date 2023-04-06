@@ -45,8 +45,10 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 ### Home
 ![Hero Image](documentation/images/home-page.png)
-- The home page features a feature image, with some text explaining the main purpose of the website and a small image to compliment the text.
-- Along with this is a link to create a profile which will promote booking an appointment to visitors.
+- The home page features a hero image, with some text explaining the main purpose of the website and a small image to compliment the text.
+- Along with this is a link. This link will ask the visitor to create a profile to book an apppointment if they're not logged in. If they are a logged in user, this link will instead suggest they book an appointment.
+![Hero Link Logged In](documentation/images/home-btn.png)
+![Hero Link Not Logged In](documentation/images/home-btn-register.png)
 
 ### Classes and Subclasses
 - The player will be asked to enter their name first and then they are given a choice of which Destiny Class they would like to be, as well as their subclass. These choices are then stored in a Google Sheets Worksheet, allowing this data to be pulled later on in the game to reference the player.
