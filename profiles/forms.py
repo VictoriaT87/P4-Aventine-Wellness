@@ -36,11 +36,14 @@ class SignupForm(SignupForm):
         user.save()
         return user
 
-        Profile.objects.create(user=user, first_name=self.cleaned_data['first_name'], last_name=self.cleaned_data['last_name'])
+        Profile.objects.create(
+            user=user,
+            first_name=self.cleaned_data["first_name"],
+            last_name=self.cleaned_data["last_name"],
+        )
 
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["first_name", "last_name"]
-

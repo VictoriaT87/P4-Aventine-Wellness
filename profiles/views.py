@@ -11,6 +11,7 @@ from django.contrib import messages
 from booking.models import Appointment
 from .models import Profile
 from .forms import ProfileForm
+
 # Create your views here.
 
 
@@ -38,18 +39,17 @@ def user_profile(request):
         return HttpResponseRedirect("../../accounts/login/")
 
 
-class UserEditProfile(
-    LoginRequiredMixin, UserPassesTestMixin, UpdateView
-        ):
+class UserEditProfile(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Renders form for editing profile
     """
+
     model = Profile
-    template_name = 'user/user_update.html'
+    template_name = "user/user_update.html"
     form_class = ProfileForm
 
     def get_success_url(self):
-        return reverse_lazy('user-profile')
+        return reverse_lazy("user-profile")
 
     def test_func(self):
         obj = self.get_object()
@@ -71,9 +71,9 @@ class UserDeleteProfile(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
 
     model = Profile
-    template_name = 'user/user_delete.html'
+    template_name = "user/user_delete.html"
     form_class = ProfileForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy("home")
 
     def test_func(self):
         obj = self.get_object()

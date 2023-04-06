@@ -10,6 +10,7 @@ class Profile(models.Model):
     """
     Model for creating an account
     """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -19,7 +20,12 @@ class Profile(models.Model):
         if created:
             first_name = instance.first_name
             last_name = instance.last_name
-            Profile.objects.create(pk=instance.id, user=instance, first_name=first_name, last_name=last_name)
+            Profile.objects.create(
+                pk=instance.id,
+                user=instance,
+                first_name=first_name,
+                last_name=last_name,
+            )
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):

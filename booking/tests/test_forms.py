@@ -60,7 +60,7 @@ class AppointmentFormValidationTests(TestCase):
         appt = Appointment.objects.create(date="2023-05-01", timeblock="9 AM")
 
     def test_form_is_valid(self):
-        form_data = {'date': '2023-08-01', 'timeblock': '9 AM'}
+        form_data = {"date": "2023-08-01", "timeblock": "9 AM"}
         form = AppointmentForm(data=form_data)
         self.assertTrue(form.is_valid())
 

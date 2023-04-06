@@ -6,20 +6,25 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('profiles', '0002_account_url'),
+        ("profiles", "0002_account_url"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='account',
-            name='url',
+            model_name="account",
+            name="url",
         ),
         migrations.AlterField(
-            model_name='account',
-            name='user',
-            field=models.ForeignKey(blank=True, default='', null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="account",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                default="",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

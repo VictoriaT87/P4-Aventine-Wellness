@@ -7,13 +7,12 @@ class ProfileModelTest(TestCase):
     """
     Test Profile Model
     """
+
     def setUp(self):
         """
         Create a user that links to the Profile model
         """
-        self.user = User.objects.create_user(
-            username='Bob', password='Test'
-        )
+        self.user = User.objects.create_user(username="Bob", password="Test")
         self.profile = Profile.objects.get(user=self.user)
 
     def test_first_name_label(self):

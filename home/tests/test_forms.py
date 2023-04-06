@@ -9,6 +9,6 @@ class ContactFormTests(TestCase):
     """
 
     def test_form_is_valid(self):
-        form_data = {'name': 'name', 'email': 'email@email.com', 'message': 'test'}
+        form_data = {"name": "name", "email": "email@email.com", "message": "test"}
         form = ContactForm(data=form_data)
         self.assertTrue(form.is_valid())

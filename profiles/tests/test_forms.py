@@ -11,6 +11,7 @@ class TestSignUpForm(TestCase):
     """
     Test SignUp Form
     """
+
     def test_signupform(self):
         # Test Sign Up Form is valid
         user = Profile.objects.all()
@@ -30,13 +31,12 @@ class TestProfileForm(TestCase):
     """
     Test Profile Form
     """
+
     def setUp(self):
         """
         Create a user that links to the Profile model
         """
-        self.user = User.objects.create_user(
-            username='Bob', password='Test'
-        )
+        self.user = User.objects.create_user(username="Bob", password="Test")
         self.profile = Profile.objects.get(user=self.user)
 
     def test_first_name_label(self):

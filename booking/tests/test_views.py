@@ -35,6 +35,7 @@ class TestAppointmentViews(TestCase):
     """
     Testing Appointment Views
     """
+
     @classmethod
     def setUp(cls):
         """
@@ -43,9 +44,9 @@ class TestAppointmentViews(TestCase):
 
         client = Client()
         id = 1
-        username = 'test_username'
-        email = 'test@test.com'
-        password = 'password'
+        username = "test_username"
+        email = "test@test.com"
+        password = "password"
         test_user = User.objects.create_user(username, email, password)
 
     def test_appointment_page_redirects_if_logged_in_(self):
@@ -68,18 +69,17 @@ class TestAppointmentViews(TestCase):
         date = "2023-04-04"
         timeblock = "9 AM"
         self.client.login(username="test_username", password="password")
-        self.create_url = reverse(
-            "appointment-create-spec", args=[date, timeblock])
+        self.create_url = reverse("appointment-create-spec", args=[date, timeblock])
         response = self.client.get(self.create_url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(
-            response, "appointments/appointment_confirm_form.html")
+        self.assertTemplateUsed(response, "appointments/appointment_confirm_form.html")
 
 
 class TestLoginRequiredPages(TestCase):
     """
     Tests for pages that need a login
     """
+
     @classmethod
     def setUp(cls):
         """
@@ -87,9 +87,9 @@ class TestLoginRequiredPages(TestCase):
         """
         client = Client()
         id = 1
-        username = 'test_username'
-        email = 'test@test.com'
-        password = 'password'
+        username = "test_username"
+        email = "test@test.com"
+        password = "password"
         test_user = User.objects.create_user(username, email, password)
 
     def test_edit_appointment(self):

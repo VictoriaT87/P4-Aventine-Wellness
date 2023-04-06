@@ -1,10 +1,7 @@
 from . import views
 from django.urls import path
 
-from profiles.views import (
-    UserDeleteProfile,
-    UserEditProfile
-)
+from profiles.views import UserDeleteProfile, UserEditProfile
 
 
 urlpatterns = [
