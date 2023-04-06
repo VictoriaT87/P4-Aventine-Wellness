@@ -60,6 +60,10 @@ a:hover {
     margin: 15px;
 }
 
+.errorlist {
+    list-style-type: none;
+}
+
 /* Messages*/
 
 .messages {
@@ -604,7 +608,7 @@ iframe {
 }
 
 .signup {
-    max-height: 85vh;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
