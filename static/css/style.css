@@ -159,6 +159,19 @@ a:hover {
     font-size: 1.5rem;
     text-align: center;
     flex-direction: column;
+    align-items: center;
+}
+
+.hero-btn {
+    width: 16em;
+    background: var(--color-default);
+    color: var(--white);
+    border: 1px solid white;
+}
+
+.hero-btn:hover {
+    background: var(--white);
+    color: var(--color-default);
 }
 
 .hero-content-image {
@@ -536,6 +549,17 @@ iframe {
     margin: 20px;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    border-color: var(--darker)
+}
+
+.booking-slots .btn:hover {
+    color: var(--color-default);
+    background-color: var(--white);
+}
+
+.booking-slots .btn:active {
+    border: #093631;
 }
 
 .booking-slots .booked {
@@ -639,9 +663,19 @@ iframe {
 
 .profile-btns {
     background-color: #175851;
+    color: #fff;
     min-width: 5em;
     margin: 2%;
 }
+
+.profile-btns:hover {
+    color: #175851;
+    background-color: #fff;
+    border: 1px solid #093631;
+    min-width: 5em;
+    margin: 2%;
+}
+
 
 .profile-btn-signin {
     background-color: #175851;

@@ -44,9 +44,9 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 ## Existing Features
 
 ### Home
-![Start Screen Image](assets/documentation/start-screen.png)
-- The first thing to load is a logo for the game, created with the [Pyfiglet Library](https://pypi.org/project/pyfiglet/). This is a large Ascii text image, saying "Destiny RPG Game".
-- Along with this is a small paragraph explaining the game and the story for any users that have no prior knowledge of the Destiny games.
+![Hero Image](documentation/images/home-page.png)
+- The home page features a feature image, with some text explaining the main purpose of the website and a small image to compliment the text.
+- Along with this is a link to create a profile which will promote booking an appointment to visitors.
 
 ### Classes and Subclasses
 - The player will be asked to enter their name first and then they are given a choice of which Destiny Class they would like to be, as well as their subclass. These choices are then stored in a Google Sheets Worksheet, allowing this data to be pulled later on in the game to reference the player.

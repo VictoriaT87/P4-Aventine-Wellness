@@ -15,6 +15,12 @@
                     <p>A countryside wellness retreat. Open 7 days a week for 1 on 1 private sessions.</p>
                     <p>Come and join us for a relaxing meditation session outdoors, in beautiful garden surroundings.
                     </p>
+                    {% if user.is_authenticated %}
+                    <a class='btn btn-lg btn-block hero-btn' href="{% url 'appointment' %}">Book a session now!</a>
+                    {% else %}
+                    <a class='btn btn-lg btn-block hero-btn' href="{% url 'account_signup' %}">Register to book a
+                        session!</a>
+                    {% endif %}
                 </div>
                 <div class="col-lg-6 hero-content-image">
                     <img class="hero-image" src="{% static 'media/images/hero-image.webp' %}"
@@ -97,7 +103,8 @@
             <div class="col-lg-4 col-md-12 col-sm-12">
                 <div class="benefits-item  position-relative">
                     <div class="icon">
-                        <img class="icon-img" src="{% static 'media/images/buddha-white.webp' %}" alt="small buddha art">
+                        <img class="icon-img" src="{% static 'media/images/buddha-white.webp' %}"
+                            alt="small buddha art">
                     </div>
                     <h3>Bring Balance to Your Mind and Body</h3>
                 </div>
