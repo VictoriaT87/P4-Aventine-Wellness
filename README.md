@@ -1,10 +1,10 @@
-# Destiny Text Adventure Game
+# Aventine Gardens
 
-![Website responsiveness on multiple screen sizes](assets/documentation/DestinyRPG.png)
+![Website responsiveness on multiple screen sizes](documentation/images/reponsive-dark.png)
 
-Welcome to a Destiny Text Adventure Game! This game is built purely using Python. It's designed to be a fun "Choose your own adventure" game, with random luck elements and items. Based on the very popular games [Destiny and Destiny 2](https://www.bungie.net/), this text adventure will bring you through the first mission in the game, from waking on the Cosmodrome to getting your ship's engine to fly to the Tower. If you get a high luck score and you choose the correct path, you'll make it out alive!
+Welcome to Aventine Gardens! This website was built using Django, with custom Python, HTML and CSS. The website is for a local business, run from a manor house, offering daily sessions for anyone looking to improve their mental, spiritual and pyhsical health with daily sessions of Yoga and Meditation. Users will be able to create a profile, which then allows them to book their own appointments for their wellness sessions.
 
-[Live link to The Destiny Text Adventure Gamecl](https://destiny-rpg.herokuapp.com/)
+[Live link to Aventine Gardens](https://aventine-wellness-p4.herokuapp.com/)
 
 
 <br>
