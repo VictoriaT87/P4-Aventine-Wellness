@@ -667,6 +667,14 @@ iframe {
     font-size: 1.25em;
 }
 
+.password_reset label {
+    font-size: 1.35em;
+    margin: 20px;
+}
+
+.password_reset p {
+    padding: 10px;
+}
 
 /* Footer */
 
