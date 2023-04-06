@@ -2,6 +2,7 @@
 
 :root {
     --color-default: #175851;
+    --darker: #093631;
     --white: #fff;
 }
 
@@ -9,7 +10,7 @@
     scroll-behavior: smooth;
 }
 
-/* Body */
+/* Body and Divs */
 
 html,
 body {
@@ -30,6 +31,33 @@ main {
 
 a {
     color: var(--color-default);
+}
+
+a:hover {
+    color: var(--bs-success);
+}
+
+.delete-div,
+.update-div,
+.login-div {
+    height: 40vh;
+    position: relative;
+    color: #175851;
+    text-align: center;
+}
+
+.verticle-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.list-group {
+    text-align: center;
+    margin: 15px;
 }
 
 /* Messages*/
@@ -177,6 +205,10 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.card-title {
+    margin: auto;
 }
 
 .wellness-card {
@@ -337,6 +369,12 @@ a {
     color: var(--color-default);
 }
 
+.card-text {
+    color: var(--color-default);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
 
 /* Contact Page */
 
@@ -464,15 +502,167 @@ iframe {
 }
 
 
-.card-title {
-    margin: auto;
+/* Appointment Booking Page */
+
+.booking-page {
+    margin-bottom: 2em;
 }
 
-.card-text {
+.booking-page-heading {
     color: var(--color-default);
-    font-size: 1.2rem;
+    text-align: center;
+    margin: 20px;
+}
+
+.booking-page-text {
+    font-size: x-large;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.booking-slots {
+    display: flex;
+    /* max-width: 70%; */
+    margin: auto;
+    align-content: stretch;
+    justify-content: space-evenly;
+}
+
+.booking-slots .btn {
+    background-color: var(--color-default);
+    display: flex;
+    width: 35%;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.booking-slots .booked {
+    width: 30%;
+}
+
+.appointments-none {
     text-align: center;
 }
+
+.appointments-none a {
+    color: var(--color-default);
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+.booked-appointments,
+.user-info {
+    color: #175851;
+    text-align: center;
+}
+
+.appointment-list {
+    border: #175851 1px solid;
+    margin: 1em;
+    padding: 1em;
+}
+
+.appointment-form label {
+    font-size: 1.2em;
+}
+
+.appointment-details {
+    font-size: 1.25em;
+    text-decoration: underline;
+}
+
+#id_timeblock {
+    width: 250px;
+}
+
+
+/* Account Forms */
+
+.account-form {
+    width: 100%;
+    margin: 3% auto;
+    border-radius: 5px;
+}
+
+.login {
+    max-height: 60vh;
+    position: relative;
+    color: #175851;
+    text-align: center;
+}
+
+.login-form {
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup {
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #175851;
+    text-align: center;
+}
+
+.signup-form {
+
+    width: 100%;
+    border-radius: 5px;
+}
+
+#signup_form label {
+    font-size: 1.25em;
+}
+
+#signup_form input {
+    max-width: 20em;
+    text-align: center;
+}
+
+.form-group {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout {
+    color: var(--color-default);
+}
+
+
+.profile-btns {
+    background-color: #175851;
+    min-width: 5em;
+    margin: 2%;
+}
+
+.profile-btn-signin {
+    background-color: #175851;
+    min-width: 10em;
+    margin: 2%;
+}
+
+.delete {
+    font-size: 2em;
+}
+
+.delete-p {
+    font-size: 1.2rem;
+}
+
+#delete label {
+    font-size: 1.25em;
+}
+
 
 /* Footer */
 
@@ -536,200 +726,14 @@ iframe {
     display: flex;
 }
 
-/* Account Forms */
 
-.account-form {
-    width: 100%;
-    margin: 3% auto;
-    border-radius: 5px;
-}
-
-.login {
-    max-height: 60vh;
-    position: relative;
-    color: #175851;
-    text-align: center;
-}
-
-.login-form {
-    width: 100%;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.signup {
-    max-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    color: #175851;
-    text-align: center;
-}
-
-.signup-form {
-
-    width: 100%;
-    border-radius: 5px;
-}
-
-#signup_form label {
-    font-size: 1.25em;
-}
-
-#signup_form input {
-    max-width: 20em;
-    text-align: center;
-}
-
-.form-group {
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-
-
-
-
-
-.booking-page {
-    margin-bottom: 2em;
-}
-
-.booking-page-heading {
-    color: var(--color-default);
-    text-align: center;
-    margin: 20px;
-}
-
-.booking-page-text {
-    font-size: x-large;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-}
-
-.booking-slots {
-    display: flex;
-    /* max-width: 70%; */
-    margin: auto;
-    align-content: stretch;
-    justify-content: space-evenly;
-}
-
-.booking-slots .btn {
-    background-color: var(--color-default);
-    display: flex;
-    width: 35%;
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-.booking-slots .booked {
-    width: 30%;
-}
-
-.appointments-none {
-    text-align: center;
-}
-
-.appointments-none a {
-    color: var(--color-default);
-    font-size: 1.2em;
-    text-decoration: underline;
-}
-
-.booked-appointments,
-.user-info {
-    color: #175851;
-    text-align: center;
-}
-
-.delete-div,
-.update-div,
-.login-div {
-    height: 40vh;
-    position: relative;
-    color: #175851;
-    text-align: center;
-}
-
-.verticle-center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-.logout {
-    color: var(--color-default);
-}
-
-.list-group {
-    text-align: center;
-    margin: 15px;
-}
-
-.profile-btns {
-    background-color: #175851;
-    min-width: 5em;
-    margin: 2%;
-}
-
-.profile-btn-signin {
-    background-color: #175851;
-    min-width: 10em;
-    margin: 2%;
-}
-
-.appointment-list {
-    border: #175851 1px solid;
-    margin: 1em;
-    padding: 1em;
-}
-
-.appointment-form label {
-    font-size: 1.2em;
-}
-
-.appointment-details {
-    font-size: 1.25em;
-    text-decoration: underline;
-}
-
-#id_timeblock {
-    width: 250px;
-}
-
-.delete {
-    font-size: 2em;
-}
-
-.delete-p {
-    font-size: 1.2rem;
-}
-
-#delete label {
-    font-size: 1.25em;
-}
-
+/* Media Queries */
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
-
 
     .booking-slots .btn {
         background-color: var(--color-default);
@@ -738,8 +742,6 @@ iframe {
         width: 30%;
         margin: 20px;
     }
-
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -810,13 +812,4 @@ iframe {
         width: 100%;
     }
 
-
-}
-
-
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    ...
 }
