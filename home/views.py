@@ -6,7 +6,6 @@ from django.contrib import messages
 
 # Create your views here.
 
-
 def home(request):
     """
     Home Page
@@ -22,6 +21,9 @@ def about(request):
 
 
 def contact(request):
+    """
+    Contact Page and Form
+    """
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():

@@ -13,6 +13,9 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 1. [Features](#features)
     * [Home Page](#home)
+      * [Wellness Section](#wellness)
+      * [Benefits Section](#benefits)
+      * [Instructors Section](#instructors)
     * [About Page](#about)
     * [Contact Page](#contact)
     * [Pages Restricted to Login](#restricted)
@@ -40,7 +43,7 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 ## Existing Features
 
-### Game Start
+### Home
 ![Start Screen Image](assets/documentation/start-screen.png)
 - The first thing to load is a logo for the game, created with the [Pyfiglet Library](https://pypi.org/project/pyfiglet/). This is a large Ascii text image, saying "Destiny RPG Game".
 - Along with this is a small paragraph explaining the game and the story for any users that have no prior knowledge of the Destiny games.
