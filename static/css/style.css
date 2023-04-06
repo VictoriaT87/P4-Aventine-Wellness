@@ -138,7 +138,7 @@ a:hover {
     height: 100%;
     display: flex;
     justify-content: center;
-    background: url(/static/media/images/aventine-garden.jpg) fixed no-repeat center;
+    background: url(https://res.cloudinary.com/disaqbbfa/image/upload/v1679308804/static/media/images/aventine-garden.70c9a002677a.jpg) fixed no-repeat center;
     background-size: cover;
 }
 
