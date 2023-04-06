@@ -43,20 +43,22 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 ## Existing Features
 
-### Home
+### Home Page
 ![Hero Image](documentation/images/home-page.png)
 - The home page features a hero image, with some text explaining the main purpose of the website and a small image to compliment the text.
+- The index page is split into multiple sections, with the information easy to read and eye catching to a visitor.
 - Along with this is a link. This link will ask the visitor to create a profile to book an apppointment if they're not logged in. If they are a logged in user, this link will instead suggest they book an appointment.
 ![Hero Link Logged In](documentation/images/home-btn.png)
 ![Hero Link Not Logged In](documentation/images/home-btn-register.png)
 
-### Classes and Subclasses
-- The player will be asked to enter their name first and then they are given a choice of which Destiny Class they would like to be, as well as their subclass. These choices are then stored in a Google Sheets Worksheet, allowing this data to be pulled later on in the game to reference the player.
-- Depending on their choices here, the game will later on pick a grenade ability of the element selected in a fight scene. 
+<br>
 
-![Class Selection](assets/documentation/class-choice.png)
-![Subclass Selection](assets/documentation/subclass-choice.png)
-![Ability From Worksheet](assets/documentation/grenade-ability.png)
+### Wellness Section
+![Wellness Section Image](documentation/images/wellness-section.png)
+- The Wellness section of the index page explains what the booked sessions entail in a quick to read paragraph.
+- Under this, there are 2 cards, with images and text, with a quick explanation of what Yoga and Meditation are.
+
+<br>
 
 ### Random Luck and Encounters
 - When the game first loads, players will be given a random luck number between 1-100. This is chosen using the randint Method. This will effect the end game for the player as well as in certain fights.
