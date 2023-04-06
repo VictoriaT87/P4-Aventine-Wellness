@@ -80,7 +80,7 @@ a:hover {
 /* Navbar */
 
 .logo {
-    width: 100%;
+    width: 60%;
 }
 
 .navbar .container-fluid {
@@ -138,7 +138,7 @@ a:hover {
     height: 100%;
     display: flex;
     justify-content: center;
-    background: url(/static/media/images/aventine-garden.jpg) fixed no-repeat center;
+    background: url(/static/media/images/aventine-garden.webp) fixed no-repeat center;
     background-size: cover;
 }
 
@@ -202,9 +202,7 @@ a:hover {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 }
 
 .card-title {
@@ -271,8 +269,8 @@ a:hover {
     padding: 30px;
 }
 
-.treatments .card-item h4,
-.instructors .card-item h4 {
+.treatments .card-item h3,
+.instructors .card-item h3 {
     font-weight: 700;
     margin-bottom: 15px;
     color: var(--color-default);
@@ -738,7 +736,11 @@ iframe {
 /* Media Queries */
 
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+    .hero-content {
+        max-width: 100%;
+    }
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -769,7 +771,6 @@ iframe {
 
     .hero-content {
         width: 100%;
-        flex-direction: row;
     }
 
     .hero-text {
@@ -790,7 +791,7 @@ iframe {
     }
 
     .card-bg img {
-        width: 50%;
+        width: 40%;
     }
 
     .booking-slots {
@@ -808,6 +809,10 @@ iframe {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
 
+    .hero-content {
+        flex-direction: row;
+    }
+
     .hero-text {
         width: 35%;
     }
@@ -816,6 +821,11 @@ iframe {
         display: flex;
         max-width: 100%;
         border-radius: 5%;
+    }
+
+    .wellness-row {
+        flex-direction: row;
+        align-items: center;
     }
 
     .card-bg-instructors {
