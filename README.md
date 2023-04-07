@@ -164,7 +164,7 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 <br>
 
-<!-- ## User Stories
+## User Stories
 
 * Users will:
 
@@ -181,7 +181,7 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 [Back to Top](#table-of-contents)
 
-<br> -->
+<br>
 
 ## **Agile Planning**
 
@@ -287,7 +287,76 @@ This User Story was implemented with the use of the AllAuth package, as well as 
 
 >Create an app to allow users to book sessions with the yoga teacher
 
+This was from the User Story:
+#### **User Story: [Manage Bookings](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/25)**
+> As a Site User/Admin I can create, update, delete a booking so that I can manage my time slot as needed
 
+Which was down broken down into these tasks:
+- **Task: [Add Booking](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/10)**
+> Create an app inside the Django project to allow users to book a yoga session
+- **Task: [Update/Delete Booking](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/26)**
+> Allow the booking app to be updated by a Site User/Admin to change the time and date for the booked timeslot or to delete the booking entirely.
+- **Task: [No duplicate bookings](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/29)**
+> Make sure that there are measures in place so that a timeslot isn't double booked by multiple users
+
+This User Story was the main purpose for the website. I wanted users to be able to create bookings online for the service offered by the business. It was important that the booking system was easy to use with just a few clicks, with validation for double booking days or times. The booking links are individual based off the Appointment model PK which allows for easier updating and deleting based off that number. All appointments can be edited by the user on the website (with a widget that is restricted to 7 days ahead) and can also be edited on the admin panel by staff. When a user deletes their profile, it also deletes all bookings associated with that user, using the CASCADE effect on the model.
+
+---
+
+<br>
+
+#### **Epic 6: [Contact Form](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/42)**
+
+>Create a Contact Form and associated model to store contact submissions to the admin panel.
+
+This was from the User Story:
+#### **User Story: [Contact Form](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/38)**
+> As a user I can submit a contact form so that I can ask about any queries I have regarding the site or business
+
+Which was down broken down into these tasks:
+- **Task: [Contact Form](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/43)**
+> Create a contact form to insert into a template to allow users to send messages to the site admin
+- **Task: [Contact Model](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/44)**
+> Create a model for the Contact form which will allow all submitted forms to be stored on the admin panel.
+
+This User Story was important to the site, to allow any questions or queries to be asked by the user to the admin. I initally wanted the contact form to email to the user using EmailJS, however I couldn't get this working within Django. I then tried to use the Google STMP but again, this didn't work. So I decided created a custom model, which allows the data submitted through the form to be saved to the admin panel. This allows admins to see the name and email address of the user, as well as their message.
+
+---
+
+<br>
+
+#### **Epic 7: [Error Pages](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/40)**
+
+>Create custom error page templates for 404, 403 and 500 errors.
+
+This was from the User Story:
+#### **User Story: [Error Pages](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/41)**
+> As a user I can see custom error pages so that I can see exactly what my issue was and report it to the site admin if needed
+
+Which was down broken down into these tasks:
+- **Task: [404 Error Page](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/35)**
+> Add a custom 404 Page to show the user which error they encountered while keeping the base template and css of the website.
+- **Task: [403 Error Page](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/36)**
+> Create a full Testing.md document with all necessary information on how the project was manually/automatically tested.
+- **Task: [500 Error Page](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/37)**
+
+Creating custom error page templates makes the website feel more fleshed out. Before their implementation, they were provided as a basic white page with black text. Hopefully the user never sees these pages but in the event that they do, it's important that the page still looks individual to the website.
+
+<br>
+
+#### **Epic 8: [Create Documentation](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/14)**
+
+>Create both a README.md file and a Testing.md file to show the process of creating the project
+
+Which was down broken down into these tasks:
+- **Task: [Create README.md](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/32)**
+> Create an app inside the Django project to allow users to book a yoga session
+- **Task: [Create Testing.md](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/33)**
+> Create a full Testing.md document with all necessary information on how the project was manually/automatically tested.
+
+All documentation for the process of developing and testing the website.
+
+---
 
 #### **Others**
 
