@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap');
+
+
 /* Root Colours */
 
 :root {
@@ -14,6 +17,7 @@
 
 html,
 body {
+    font-family: 'Raleway', sans-serif;
     height: 100%;
 }
 
@@ -660,7 +664,6 @@ iframe {
     color: var(--color-default);
 }
 
-
 .profile-btns {
     background-color: #175851;
     color: #fff;
@@ -675,7 +678,6 @@ iframe {
     min-width: 5em;
     margin: 2%;
 }
-
 
 .profile-btn-signin {
     background-color: #175851;
