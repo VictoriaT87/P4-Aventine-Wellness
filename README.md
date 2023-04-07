@@ -12,17 +12,17 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 # Table of Contents
 
 1. [Features](#features)
-    * [Home Page](#home)
-      * [Wellness Section](#wellness)
-      * [Benefits Section](#benefits)
-      * [Instructors Section](#instructors)
-    * [About Page](#about)
-    * [Contact Page](#contact)
-    * [Pages Restricted to Login](#restricted)
-      * [Booking](#booking)
-      * [My Profile](#profile)
-      * [Register](#play-again)
-      * [Log Out](#play-again)
+    * [Home Page](#home-page)
+      * [Wellness Section](#wellness-section)
+      * [Benefits Section](#benefits-section)
+      * [Instructors Section](#instructors-section)
+    * [About Page](#about-page)
+    * [Contact Page](#contact-page)
+    * [Pages Restricted to Login](#restricted-pages)
+      * [Booking](#booking-page)
+      * [My Profile](#profile-page)
+      * [Register](#register-page)
+      * [Log Out](#log-out-page)
 2. [Project Goals](#project-goals)
 3. [User Stories](#user-stories)
 4. [Design](#design)
@@ -60,25 +60,81 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 <br>
 
-### Random Luck and Encounters
-- When the game first loads, players will be given a random luck number between 1-100. This is chosen using the randint Method. This will effect the end game for the player as well as in certain fights.
-- A random encounter can occur for the player. In certain rooms, an encounter will roll to either True or False. If this is True, the encounter with a Vandal will run and players will lose a certain amount of health, again chosen by the randint Method. 
-
-![Random Encounter](assets/documentation/random-encounter.png)
-
-### Inventory
-- For their first choice, players can search some cars in front of them. If they're lucky, the can find a key, which will allow them to open a chest within the story. This chest has a chance of dropping a weapon, which will give them a greater advantage of winning the game.
-- This item is stored in the Google Sheets Worksheet, allowing the name to be recalled later in the story.
-- After all stats are added, the Player Stats sheet will look like this:
-
-![Random Encounter](assets/documentation/google-sheets.png)
-
-### Play Again
-- At the end of the game or if the player dies, they have the option of playing again. This will trigger code to reset the workseet stats, reset the console and run the story from the beginning.
-
-![Play Again](assets/documentation/play-again.png)
+### Benefits Section
+![Benefits Section Image](documentation/images/benefits-section.png)
+- The benefits section of the home page provides some information to the user about how a wellness session can benefit their health, as well as provding a colour break up between large text sections.
 
 <br>
+
+### Instructors Section
+![Instructors Section Image](documentation/images/instructors-section.png)
+- The Instructors section allows users to get a more peronal feel for the business by introducing them to the people they would likely meet if they booked a session.
+- Each of the 3 instructors has a card with their name, photo and an explanation of their expertise in Yoga and Meditiation.
+
+<br>
+
+### About Page
+![About Page Image](documentation/images/about-page.png)
+- The About page gives the user a chance to learn more about both the Manor Hosue where the sessions will take place and what each session will entail.
+- Information about both Yoga and Meditation are also shown, with links to credited sources about each for users to research themselves. 
+
+<br>
+
+### Contact Page
+![Contact Page Image](documentation/images/contact-page.png)
+- The contact page features small icons with quick and easy to read information with a phone number, address and email.
+- The page also hold a form for users to get in contact with the business. This form stores the posted information in the Admin panel, for staff to read easily.
+- There is also directions on how to get to Aventine Gardens, as well as an embedded Google Map pointing to the business.
+
+![Contact Page Map Image](documentation/images/contact-page-map.png)
+
+<br>
+
+### Restricted Pages
+![Logged in Nav Image](documentation/images/logged-in.png)
+![Logged out Nav Image](documentation/images/logged-out.png)
+- Some pages are restricted to logged in users only. Links to these only show in the Navbar when a user logged in also.
+
+<br>
+
+### Booking Page
+![Booking Page Image](documentation/images/booking-page.png)
+- The Booking Page allows users to book an appointment, saved to their profile.
+- Each day for the next 7 days has 4 appointments each to choose from.
+- Booked appointments will show as buttons with the text "Booked" and those buttons will be disabled.
+- Clicking a button to choose a timeslot will take you to a confirmation page. If a user doesn't want this time, they can return to the booking page and choose another or confirm the original appointment time shown.
+
+![Booking Confirm Image](documentation/images/booking-confirm.png)
+
+<br>
+
+### Profile Page
+![Profile Image](documentation/images/profile.png)
+
+![Appointment Image](documentation/images/appointments.png)
+- The Profile page stores both the users information, as well as their appointments.
+- The user can update their first name, last name and their booked appointments from here.
+![Edit Profile Image](documentation/images/edit-profile.png)
+![Edit Appointment Image](documentation/images/edit-appointment.png)
+- Users can also delete their profile and their appointments from this page too. Each action has a confirmation tied to it.
+![Delete Profile Image](documentation/images/delete-profile.png)
+![Delete Appointment Image](documentation/images/delete-appointment.png)
+
+- All of this is done with database information being created, read, updated and deleted (CRUD).
+
+<br>
+
+### Register Page
+![Register Page Image](documentation/images/register-page.png)
+- The Register Page has a custom form, which asks users to provide a username, their full name and their email address and password.
+- When these are entered, they're saved to a Profile database and the username, first name and last name all show on the Profile page of the logged in user.
+
+<br>
+
+### Log Out Page
+![Register Page Image](documentation/images/log-out.png)
+- The log out page is another restricted page which asks the registered user to confirm they would like to log out of their account.
+
 
 [Back to Top](#table-of-contents)
 
@@ -86,9 +142,8 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 ## Future Features
 
-- I'd love to add either some animation or colour, if possible. I feel this would make the game more appealing to play, especially to younger generations who haven't played Text Adventure games before.
-- The story and encounters could be fleshed out more, with different scenarios, more of an inventory and more randomness.
-- Each subclass also has a unique "Super ability" in the actual Destiny games. I thought of implementing this but felt I would have more repetitive code. When I learn more Python, it would be fun to add this in without repeating myself.
+- There are definitely some features I would like to include, including better options for a registered user. Currently there is no way to reset a password or change an email address. I tried to implement these using AllAuth however I couldn't get the email system to work. More information about that is provided in the [Bugs](#bugs) section.
+- I originally wanted to add an blog to the website which would be updated with the latest information about the business and would also allow Staff to add blog posts with some Yoga videos and wellness information. The reason for not implementing them at the current time was purely down to time contraints on an already massive project.
 
 <br>
 
