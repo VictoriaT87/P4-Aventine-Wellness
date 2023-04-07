@@ -167,7 +167,7 @@ a:hover {
 }
 
 .hero-btn {
-    width: 16em;
+    width: 15em;
     background: var(--color-default);
     color: var(--white);
     border: 1px solid white;
@@ -774,6 +774,11 @@ iframe {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+
+    .hero {
+        min-height: 40em;
+    }
+
     .hero-content {
         max-width: 100%;
     }
