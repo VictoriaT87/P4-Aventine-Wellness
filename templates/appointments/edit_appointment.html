@@ -5,16 +5,13 @@
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black m-5 update-div">
     <div class="verticle-center">
         <h2 class="text-center mt-3">Edit Your Appointment</h2>
-        <div>
-
-            <div class="login-form">
-                {{ form.media }}
-                <form method="POST" class="appointment-form">{% csrf_token %}
-                    {{ form|crispy }}
-                    <button type="submit" class="btn btn-secondary profile-btns">Confirm</button>
-                    <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
-                </form>
-            </div>
+        <div class="login-form">
+            {{ form.media }}
+            <form method="POST" class="appointment-form">{% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-secondary profile-btns">Confirm</button>
+                <a class="btn btn-outline-secondary" href="{% url 'user-profile' %}">Return</a>
+            </form>
         </div>
     </div>
 </div>

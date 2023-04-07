@@ -404,6 +404,7 @@ a:hover {
 }
 
 .contact .info-item {
+    text-align: center;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
     padding: 20px 0 30px 0;
 }
@@ -602,7 +603,7 @@ iframe {
 }
 
 #id_timeblock {
-    width: 250px;
+    width: 10em;
 }
 
 
@@ -775,6 +776,32 @@ iframe {
 @media only screen and (max-width: 600px) {
     .hero-content {
         max-width: 100%;
+    }
+
+    .delete-div,
+    .update-div,
+    .login-div {
+        height: 100vh;
+    }
+
+    .mobile-profile-btns {
+        padding: 0;
+    }
+
+    .appointment-list {
+        border: none;
+        margin: 0;
+        padding: 0;
+
+    }
+
+    .appointment-details {
+        font-size: 1em;
+    }
+
+    .list-group {
+        font-size: 1em;
+        margin: 0;
     }
 }
 

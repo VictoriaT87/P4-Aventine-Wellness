@@ -17,9 +17,9 @@
         <li class="list-group mt-2">Last Name: {{ user.profile.last_name }}</li>
     </ul>
     <div class="profile-btn-group d-flex justify-content-center">
-        <a class='profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-update' user.pk %}">Update
+        <a class='profile-btns mobile-profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-update' user.pk %}">Update
             Account</a>
-        <a class='profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-delete' user.pk %}">Delete
+        <a class='profile-btns mobile-profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-delete' user.pk %}">Delete
             Account</a>
     </div>
 </div>
