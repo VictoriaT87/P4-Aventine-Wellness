@@ -25,6 +25,7 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
       * [Log Out](#log-out-page)
 2. [Project Goals](#project-goals)
 3. [User Stories](#user-stories)
+4. [Agile Planning](#agile-planning)
 4. [Design](#design)
 5. [Technologies](#technologies)
     * [Languages Used](#languages-used)
@@ -153,9 +154,9 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 ## Project Goals
 
-* I wanted to create an old school Choose Your Own Adventure type game but with the Destiny theme. As a kid, I played my fair share of text based Adventure games and the appeal of them has never left me. Bringing a new game into an old game was an idea I was very fond of.
+* I wanted to create a website for a local business that offers something that I feel is beneficial to a huge range of people. This is a real business and I have worked with the owner in the past so felt I had some knowledge around what they would like to implement. Having an online presence will help their business massively.
 
-* As a purely python game, I knew something that had multiple choices, as well as an inventory system, was going to be challenging to me for this project.
+* Learning how to create a booking system also seemed like a very good challenge and helped me learn about CRUD functionality better.
 
 <br>
 
@@ -163,24 +164,134 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 <br>
 
-## User Stories
+<!-- ## User Stories
 
 * Users will:
 
-  * Play a Text Based Adventure Game with a story from Destiny The Game.
-  * Have a different game experience every time they play, with random weapons, encounters and luck.
-  * Be able to restart the game without needing to refresh or reload the link.
+  * Find information about a local business offering Yoga and Meditation sessions.
+  * Be able to use the website across all devices with responsive design.
+  * Be able to create, update and delete Profiles and Appointments for the business.
 
 * Users expect:
 
-  * A fun to play text adventure game in an old school style.
-  * A Destiny themed game, with enemies, classes and weapons they recognize.
-  * Replayability.
-  * A fast paced game, playing through the first Destiny story mission.
+  * A website that looks well across all devices.
+  * A website that works well, with minimum errors encountered.
 
 <br>
 
 [Back to Top](#table-of-contents)
+
+<br> -->
+
+## **Agile Planning**
+
+My Project was developed with agile planning. This meant that each individual feature was split first into User Stories for what the user of the website would expect. Each User Story was thought about and planned out, which allowed me to create multiple tasks which would be developed to implement certain features and these Tasks were then grouped together into Epics.
+
+Everything was labeled as Must Have, Should Have, Could Have and Won't Have to help prioritise which were most important to implement.
+
+As the main priority of the website, the booking system was started first and given the most time for completion. After that, as the project evolved, some more tasks were added or updated, based on the changing needs of a User within the website.
+
+The Project board can be found [here](https://github.com/users/VictoriaT87/projects/5/views/1?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C%22Status%22%2C%22Labels%22%5D).
+
+
+![Project Kanban](documentation/images/project-board.png)
+
+### **Epic Breakdowns**
+## **Epic 1: [Initial Install](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/1)**
+> Allow Users to create/update/manage and delete user profiles
+
+Broken down into these tasks:
+- **Task: [Install Libraries and Frameworks](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/8)**
+>Install: Django, gunicorn, dj-database, psycopg2
+- **Task: [Hide sensitive information](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/9)**
+> Hide sensitive information by creating an env.py file
+- **Task: [Create Bookings App](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/10)**
+>  Create bookings app
+
+This Epic was the inital install of Django, gunicorn, dj-database and psycopg2 and the first App, Booking. This was the base platform on which the entire website would be built. The inital App for "booking" was created.
+
+
+---
+
+<br>
+
+## **Epic 2: [Initial Deployment](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/2)**
+> First deployment to the Heroku app once basic framework for the project is in place
+
+Broken down into these tasks:
+- **Task: [Heroku Deployment](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/11)**
+> Create App in Heroku, Create Config Var files, Deploy from main branch
+- **Task: [ElephantSQL Set up](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/12)**
+>  Create Database URL in Elephant SQL, Add the Database URL to env.py and Heroku Config Vars
+
+This Epic was for the inital deployment of the website to Heroku. This was undertaken as soon as the base packages, App and env.py file was set up and working correctly. Config Var files were created on Heroku for any sensitive information contained in the env.py file, as well as Port access needed.
+
+---
+
+<br>
+
+## **Epic 3: [Databases](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/3)**
+> Create database models in project app and migrate them
+
+Broken down into the following task:
+- **Task: [Create and Migrate Database](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/13)**
+> Create and Migrate Database for Bookings App
+
+
+This Epic was originally for the Booking app but was susequently reused when the project called for 2 new apps, Home and Profiles. Each time an app was created, a Model was also created.
+- For Booking, the database model has everything needed to book a day and timeslot.
+- For Home, a database model was created for the contact form which allowed the information submitted to be stored in the Admin panel for Staff to see the Contact Form information sent.
+- For Profiles, a database model was created to store user information (first name and last name) and also linked to the User created with AllAuth.
+
+---
+
+<br>
+
+## **Epic 4: [Admin Panel](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/4)**
+> Add an admin panel to the project app to allow the admin to CRUD bookings
+
+This was from the User Story:
+#### **User Story: [Admin Panel](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/15)**
+> As a Site Admin I can use an admin panel so that I can create, update, manage and delete bookings
+
+
+This Epic was originally for the Booking app but was susequently reused when the project had 2 other apps, Home and Profiles. The Admin panel allows the site admin to manage booked appointments, contact form submissions and user profiles. All information for each of these can be seen, updated and removed from the database through the admin panel. Each App's admin.py file was also given some sort of display or search parameter, to make it easier for the site admin to find and sort information on the backend. 
+
+---
+
+
+## **Epic 5: [User Profiles](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/6)**
+> Allow Users to create/update/manage and delete user profiles
+
+This was from the User Story:
+#### **User Story: [Create a Profile](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/18)**
+> As a Site User I can create a profile so that I can add, manage and delete a booking
+
+Which was down broken down into these tasks:
+- **Task: [Create Account](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/22)**
+> Allow a user to create an account on the website for the purpose of managing bookings
+- **Task: [Update Account](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/24)**
+> Allow a user to update all their profile information within their account and update database accordingly
+- **Task: [Delete Account](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/23)**
+> Allow a user to delete their account, add authorisation so this isn't done by accident
+
+<br>
+
+This User Story was implemented with the use of the AllAuth package, as well as a custom Profile Model, Form and Template. There is also a custom SignUp Form for when a user registers an account. The information the user enters in this is stored in the Admin panel, for SuperUsers/Staff to see and manage. Each User is assigned a User ID which allows for bookings to be assigned properly to each individual. Users can edit their profiles and delete them and this is all reflected in the database.
+
+---
+
+<br>
+
+#### **Epic 6: [Bookings](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/7)**
+
+>Create an app to allow users to book sessions with the yoga teacher
+
+
+
+#### **Others**
+
+-
 
 <br>
 
