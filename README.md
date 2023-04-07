@@ -283,7 +283,7 @@ This User Story was implemented with the use of the AllAuth package, as well as 
 
 <br>
 
-#### **Epic 6: [Bookings](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/7)**
+## **Epic 6: [Bookings](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/7)**
 
 >Create an app to allow users to book sessions with the yoga teacher
 
@@ -305,7 +305,7 @@ This User Story was the main purpose for the website. I wanted users to be able 
 
 <br>
 
-#### **Epic 6: [Contact Form](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/42)**
+## **Epic 6: [Contact Form](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/42)**
 
 >Create a Contact Form and associated model to store contact submissions to the admin panel.
 
@@ -325,7 +325,7 @@ This User Story was important to the site, to allow any questions or queries to 
 
 <br>
 
-#### **Epic 7: [Error Pages](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/40)**
+## **Epic 7: [Error Pages](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/40)**
 
 >Create custom error page templates for 404, 403 and 500 errors.
 
@@ -344,7 +344,7 @@ Creating custom error page templates makes the website feel more fleshed out. Be
 
 <br>
 
-#### **Epic 8: [Create Documentation](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/14)**
+## **Epic 8: [Create Documentation](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/14)**
 
 >Create both a README.md file and a Testing.md file to show the process of creating the project
 
@@ -354,7 +354,7 @@ Which was down broken down into these tasks:
 - **Task: [Create Testing.md](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/33)**
 > Create a full Testing.md document with all necessary information on how the project was manually/automatically tested.
 
-All documentation for the process of developing and testing the website.
+Document everything needed for the process of developing and testing the website.
 
 ---
 
