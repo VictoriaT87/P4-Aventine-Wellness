@@ -249,15 +249,6 @@ a:hover {
     text-align: center;
 }
 
-.card-bg img {
-    width: 60%;
-}
-
-.card-bg-instructors img,
-.card-bg-instructors-middle img {
-    width: 70%;
-}
-
 .card-bg-instructors {
     text-align: center;
 }
@@ -336,15 +327,16 @@ a:hover {
     padding-bottom: 30px;
 }
 
-.icon-img {
-    max-height: 125px;
-}
-
 
 /* About Page */
 
 .about-section {
     align-items: center;
+}
+
+.card-img-top {
+    max-width: 905px;
+    max-height: 560px;
 }
 
 .about-img {
@@ -861,10 +853,6 @@ iframe {
         min-height: 45vh;
     }
 
-    .card-bg img {
-        width: 40%;
-    }
-
     .booking-slots {
         display: flex;
         max-width: 60%;
@@ -906,10 +894,6 @@ iframe {
     .card-bg-instructors-middle {
         display: flex;
         justify-content: end;
-    }
-
-    .card-bg img {
-        width: 100%;
     }
 
 }
