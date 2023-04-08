@@ -94,7 +94,8 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         return form
 
     def get_form_kwargs(self, *args, **kwargs):
-        kwargs = super(AppointmentCreateView, self).get_form_kwargs(*args, **kwargs)
+        kwargs = super(AppointmentCreateView,
+                       self).get_form_kwargs(*args, **kwargs)
         kwargs["user"] = self.request.user
         return kwargs
 
@@ -104,7 +105,8 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         if form.is_valid():
-            messages.success(self.request, "Your appointment was successfully booked!")
+            messages.success(
+                self.request, "Your appointment was successfully booked!")
             super().form_valid(form)
             return HttpResponseRedirect(self.get_success_url())
         else:
@@ -167,7 +169,8 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return self.form_invalid(form)
         else:
             form.instance.user = self.request.user
-            messages.success(self.request, "Your appointment was successfully changed!")
+            messages.success(
+                self.request, "Your appointment was successfully changed!")
             response = super().form_valid(form)
             return response
 

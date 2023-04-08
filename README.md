@@ -471,16 +471,74 @@ This was marked was Won't Have by the end of the project. I originally thought t
 # Testing 
 ### Validator Testing 
 
-* All code passed through the CI Python Linter with no issues or warnings
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)
+- Python
+  - No errors were returned when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-![Linter Result](assets/documentation/linter.png)
+* Metrics Returned:
+
+    * There are 18 functions in this file.
+
+    * Function with the largest signature take 2 arguments, while the median is 0.
+
+    * Largest function has 11 statements in it, while the median is 2.5.
+
+    * The most complex function has a cyclomatic complexity value of 4 while the median is 1.
+
+    * 34 Warnings appear but are all the following:
+    	- 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+      - 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
+      - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
+      -	'template literal syntax' is only available in ES6 (use 'esversion: 6').
+
+    * When JSHint is configured to show "New JavaScript features (ES6)", there are no more warnings.
+
+
+Other Warnings included;
+* Missing Semicolons - these were all corrected.
+
+* Undefined Variables - these were removed as all were found to be unnecessary to the functions.
+
+### Lighthouse Testing
+ - When tested on desktop, the website scores 100 across all categories. 
+ <br>
+  
+![Lighthouse Report](assets/documentation/index-lighthouse.png)
+
+ - On mobile, the performace is 96. This is because of a cumulative layout shift of 0.154. Recommendations for this were to add width and height to images and change the images to .webp format.
+ - To change images from .jpg to .webp I used the website [WEBP Converter](https://cloudconvert.com/webp-converter).
+ - Even after these changes, there is still a CLS of 0.154. As I have already given everything a max-width and height, this is the best I can achieve.
+ - I also received a red warning for First Contentful Paint. The warning was telling me to "Eliminate render-blocking resources". After googling this issure, I found this website [LogRocket.com](https://blog.logrocket.com/9-tricks-eliminate-render-blocking-resources/#load-custom-fonts-locally) and after reading, felt my best option to reduce this was to load the styles.css file in the header of the index.html page, instead of using the @import method in styles.css. This fixed the issue. 
+
+![Lighthouse Metrics](assets/documentation/mobile-lighthouse.png)
+![Lighthouse Metrics](assets/documentation/lighthouse-css.png)
+![Lighthouse Metrics](assets/documentation/mobile-metrics.png)
+![Lighthouse Metrics](assets/documentation/mobile-metrics2.png)
+
+| Page | Device | Category | Result |
+|------|--------|----------|--------|
+|Index | Mobile | Performance | 96% |
+|||Accessibility| 100% |
+|||Best Practice | 100% |
+|||SEO | 100% |
+|| Desktop | Performance | 100% |
+||| Accessibility | 100% |
+||| Best Practice | 100% |
+||| SEO | 100% |
  <br>
 
 
 ### Other Testing
- - For a list of all manual testing done and functions tested, please follow [this link](assets/documentation/testing.md).
+ - The website has been tested across various screen sizes, using the Chrome DevTools responsive device section, [Responsive Design Checker](https://responsivedesignchecker.com/) and by opening the website on Firefox, Chrome, 3 various sized Android phones (Huawei P20 Lite, OnePlus 9 Pro, Samsung Galaxy S20) and an Android tablet (Samsung Galaxy Tab 10). 
+ - Here is a link to a separate [Markdown file](assets/documentation/tested-devices.md)  of device screenshots.
 
  <br>
+
+
+[Back to Top](#table-of-contents)
 
 
 [Back to Top](#table-of-contents)

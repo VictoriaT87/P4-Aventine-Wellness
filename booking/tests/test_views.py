@@ -1,13 +1,9 @@
-import unittest
-from unittest.mock import MagicMock
-from unittest.mock import patch, Mock
+
 from django.test import TestCase, Client
 from booking.models import Appointment
 from booking.views import AppointmentCreateView, AppointmentEditView
 from booking.forms import AppointmentForm
 from django.urls import reverse
-from datetime import datetime
-from django.test import RequestFactory
 
 from django.contrib.auth.models import User
 
@@ -69,10 +65,12 @@ class TestAppointmentViews(TestCase):
         date = "2023-04-04"
         timeblock = "9 AM"
         self.client.login(username="test_username", password="password")
-        self.create_url = reverse("appointment-create-spec", args=[date, timeblock])
+        self.create_url = reverse(
+            "appointment-create-spec", args=[date, timeblock])
         response = self.client.get(self.create_url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "appointments/appointment_confirm_form.html")
+        self.assertTemplateUsed(
+            response, "appointments/appointment_confirm_form.html")
 
 
 class TestLoginRequiredPages(TestCase):
