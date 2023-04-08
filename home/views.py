@@ -1,7 +1,5 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
 from .forms import ContactForm
-from django.core.mail import send_mail, BadHeaderError
 from django.contrib import messages
 
 # Create your views here.
@@ -34,7 +32,8 @@ def contact(request):
             )
             return render(request, "contact.html")
         else:
-            messages.error(request, "Failed to send message. Please try again.")
+            messages.error(
+                request, "Failed to send message. Please try again.")
 
     form = ContactForm()
     context = {"form": form}

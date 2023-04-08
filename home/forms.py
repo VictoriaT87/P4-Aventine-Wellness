@@ -4,7 +4,8 @@ from .models import Contact
 
 class ContactForm(forms.ModelForm):
     name = forms.CharField(required=True)
-    message = forms.CharField(widget=forms.Textarea(attrs={"rows": 3, "cols": 5}))
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={"rows": 3, "cols": 5}))
 
     class Meta:
         model = Contact

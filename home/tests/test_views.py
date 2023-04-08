@@ -1,15 +1,9 @@
-from django.contrib.auth.models import AnonymousUser, User
-from django.test import RequestFactory, TestCase, Client
+from django.test import TestCase, Client
 from django.urls import reverse
-from django.http import HttpRequest
 from home.views import contact, home, about
 from home.forms import ContactForm
 from home.models import Contact
 from home import views
-from http import HTTPStatus
-from django.core import mail
-
-from django.http.response import HttpResponseRedirectBase
 
 
 class TestTemplates(TestCase):
@@ -18,6 +12,7 @@ class TestTemplates(TestCase):
     """
 
     def setUp(self):
+        # set up user
         self.client = Client()
 
     def test_home_url_accessible_by_name(self):
@@ -46,6 +41,7 @@ class TestContactFormSends(TestCase):
     """
 
     def setUp(self):
+        # set up user
         client = Client()
         post1 = Contact.objects.create(
             name="Test",
