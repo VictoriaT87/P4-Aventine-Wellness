@@ -485,37 +485,35 @@ This was marked was Won't Have by the end of the project. I originally thought t
   
 ![Lighthouse Report](assets/documentation/index-lighthouse.png)
 
- - On mobile, the performace is 96. This is because of a cumulative layout shift of 0.154. Recommendations for this were to add width and height to images and change the images to .webp format.
+ - On mobile, the performace is 88. This was originally lower because of a cumulative layout shift of 0.219. Recommendations for this were to add width and height to images and change the images to .webp format.
  - To change images from .jpg to .webp I used the website [WEBP Converter](https://cloudconvert.com/webp-converter).
- - Even after these changes, there is still a CLS of 0.154. As I have already given everything a max-width and height, this is the best I can achieve.
- - I also received a red warning for First Contentful Paint. The warning was telling me to "Eliminate render-blocking resources". After googling this issure, I found this website [LogRocket.com](https://blog.logrocket.com/9-tricks-eliminate-render-blocking-resources/#load-custom-fonts-locally) and after reading, felt my best option to reduce this was to load the styles.css file in the header of the index.html page, instead of using the @import method in styles.css. This fixed the issue. 
+ - Even after these changes, there is still a CLS of 0.179. As I have already given everything a max-width and height, this is the best I can achieve. I also removed the background image on the Hero section of the index page to try and help with the CLS.
+ - I also received a red warning for First Contentful Paint. The warning was telling me to "Eliminate render-blocking resources". After googling this issue, I found this website [LogRocket.com](https://blog.logrocket.com/9-tricks-eliminate-render-blocking-resources/#load-custom-fonts-locally) and after reading, felt my best option to reduce this was to load the styles.css file in the header of the index.html page, instead of using the @import method in styles.css.
+ - The final issue and the largest still is "Eliminate render-blocking resources". This has to do with the Boostrap CSS file and the jQuery script. After researching, because they're from a CDN, I don't see any option to change them.
 
-![Lighthouse Metrics](assets/documentation/mobile-lighthouse.png)
-![Lighthouse Metrics](assets/documentation/lighthouse-css.png)
-![Lighthouse Metrics](assets/documentation/mobile-metrics.png)
-![Lighthouse Metrics](assets/documentation/mobile-metrics2.png)
+![Lighthouse Metrics](documentation/images/lighthouse-desktop.png)
+![Lighthouse Metrics](documentation/images/lighthouse-mobile.png)
+![Lighthouse Metrics](documentation/images/lighthouse-practices-desktop.png)
+![Lighthouse Metrics](documentation/images/lighthouse-mobile-performance.png)
 
 | Page | Device | Category | Result |
 |------|--------|----------|--------|
-|Index | Mobile | Performance | 96% |
+|Index | Mobile | Performance | 88% |
 |||Accessibility| 100% |
-|||Best Practice | 100% |
+|||Best Practice | 92% |
 |||SEO | 100% |
-|| Desktop | Performance | 100% |
+|| Desktop | Performance | 90% |
 ||| Accessibility | 100% |
-||| Best Practice | 100% |
+||| Best Practice | 83% |
 ||| SEO | 100% |
  <br>
 
 
 ### Other Testing
  - The website has been tested across various screen sizes, using the Chrome DevTools responsive device section, [Responsive Design Checker](https://responsivedesignchecker.com/) and by opening the website on Firefox, Chrome, 3 various sized Android phones (Huawei P20 Lite, OnePlus 9 Pro, Samsung Galaxy S20) and an Android tablet (Samsung Galaxy Tab 10). 
- - Here is a link to a separate [Markdown file](assets/documentation/tested-devices.md)  of device screenshots.
+ - Here is a link to a separate [Markdown file](documentation/tested-devices.md) of device screenshots.
 
  <br>
-
-
-[Back to Top](#table-of-contents)
 
 
 [Back to Top](#table-of-contents)
