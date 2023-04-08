@@ -2,9 +2,9 @@ from django.test import TestCase
 from home.models import Contact
 
 
-class AppointmentModelTest(TestCase):
+class ContactModelTest(TestCase):
     """
-    Test Appointment Model
+    Test Contact Model
     """
 
     @classmethod
