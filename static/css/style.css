@@ -456,17 +456,12 @@ a:hover {
 .contact-form textarea {
     border-radius: 0;
     box-shadow: none;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
     border-color: var(--color-primary);
-}
-
-.contact-form input {
-    height: 44px;
-    width: 20em;
 }
 
 .contact-form button[type=submit] {
@@ -496,10 +491,7 @@ a:hover {
     align-items: center;
 }
 
-#id_message {
-    height: 150px;
-    width: 20em;
-}
+
 
 .directions-text {
     margin: 1% auto;
@@ -550,6 +542,7 @@ iframe {
 .booking-slots .disabled {
     pointer-events: none;
 }
+
 .booking-slots .btn {
     background-color: var(--color-default);
     display: flex;
@@ -619,7 +612,7 @@ iframe {
 }
 
 .login {
-    max-height: 60vh;
+    max-height: 100%;
     position: relative;
     color: #175851;
     text-align: center;
@@ -798,7 +791,7 @@ iframe {
 
     .appointment-list {
         border: none;
-        margin: 0;
+        margin: 1em 0;
         padding: 0;
 
     }
@@ -826,6 +819,16 @@ iframe {
         flex-direction: column-reverse;
         width: 30%;
         margin: 20px;
+    }
+
+    .contact-form input {
+        height: 44px;
+        width: 20em;
+    }
+
+    #id_message {
+        height: 150px;
+        width: 20em;
     }
 }
 

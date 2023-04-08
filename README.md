@@ -478,29 +478,6 @@ This was marked was Won't Have by the end of the project. I originally thought t
 - Python
   - No errors were returned when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
 
-* Metrics Returned:
-
-    * There are 18 functions in this file.
-
-    * Function with the largest signature take 2 arguments, while the median is 0.
-
-    * Largest function has 11 statements in it, while the median is 2.5.
-
-    * The most complex function has a cyclomatic complexity value of 4 while the median is 1.
-
-    * 34 Warnings appear but are all the following:
-    	- 'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
-      - 'let' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz).
-      - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
-      -	'template literal syntax' is only available in ES6 (use 'esversion: 6').
-
-    * When JSHint is configured to show "New JavaScript features (ES6)", there are no more warnings.
-
-
-Other Warnings included;
-* Missing Semicolons - these were all corrected.
-
-* Undefined Variables - these were removed as all were found to be unnecessary to the functions.
 
 ### Lighthouse Testing
  - When tested on desktop, the website scores 100 across all categories. 
