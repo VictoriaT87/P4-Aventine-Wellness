@@ -148,17 +148,22 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         # Validate form to see if user already has a booking that day
         appointment = self.get_object()
 
-        date = form.cleaned_data.get('date')
-        timeblock = form.cleaned_data.get('timeblock')
+        date = form.cleaned_data.get("date")
+        timeblock = form.cleaned_data.get("timeblock")
 
-        existing_appointment = Appointment.objects.filter(
-            user=self.request.user,
-            date=date,
-            timeblock=timeblock
-        ).exclude(pk=appointment.pk).first()
+        existing_appointment = (
+            Appointment.objects.filter(
+                user=self.request.user, date=date, timeblock=timeblock
+            )
+            .exclude(pk=appointment.pk)
+            .first()
+        )
 
         if existing_appointment:
-            messages.error(self.request, "Failed to save appointment. Appointment already exists for the chosen date and time.")
+            messages.error(
+                self.request,
+                "Failed to save appointment. Appointment already exists for the chosen date and time.",
+            )
             return self.form_invalid(form)
         else:
             form.instance.user = self.request.user
