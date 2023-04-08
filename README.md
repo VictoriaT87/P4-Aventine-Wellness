@@ -399,10 +399,23 @@ This was marked was Won't Have by the end of the project. I originally thought t
 <br>
 
 ## Design
+### Colour Scheme
+ -   The colour scheme was important to the site and what the business offered. The setting of the Meditation and Yoga settings are outside in a manor garden and so it needed to be a mellow colour, something that showed relaxation and spiritualness. For this reason I decided on a green that was close to a forest green. I stuck with the green and white combination throughout the site. Some buttons are accentuated with a slightly darker green colouring. 
 
-- My starting point on this project was designing a flow chart based on the first story mission in Destiny The Game. To make the text adventure more fun, I added the random encounters and ability to choose ways to go and luck based weapons.
+![Color Scheme](documentation/images/colours.png)
 
-<img src="assets/documentation/flow-chart.png" alt="flow-chart" width="600"/>
+### Typography
+ -   The font chosen for the website is a font called Raleway. This was picked because it looked like an elegant font, which fits well with the theme of the business and the expected users. I wanted the typography to compliment the website, not overpower what it was saying. The font was found on [Google Font](https://fonts.google.com/specimen/Raleway) and imported to the website with a CSS import.
+
+### Wireframe
+
+- My starting point for this project was to decide on a layout using a wireframe. I went for a Hero Image for the front page, to quickly show the user what the business was about at first view. The booking system being the most important part was also given a wireframe and I decided early on I wanted a button layout, as I thought this was cleaner looking than a form.
+
+<img src="documentation/images/front-page-wireframe.png" alt="front page wireframe" width="600"/>
+
+<br>
+
+<img src="documentation/images/appointments-wireframe.png" alt="front page wireframe" width="600"/>
 
 
 <br>
@@ -414,24 +427,40 @@ This was marked was Won't Have by the end of the project. I originally thought t
 # Technologies
 
 ## Languages Used
-* [Python](https://www.python.org/)
+* [HTML5](https://en.wikipedia.org/wiki/HTML5)
+* [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+* [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-## Libraries And Frameworks
-* [Google Sheets](https://www.google.com/sheets/about/)
-* [gspread](https://docs.gspread.org/en/v5.7.0/)
-* [Pyfiglet](https://pypi.org/project/pyfiglet/)
-* [os](https://docs.python.org/3/library/os.html#os.system)
-* [random](https://docs.python.org/3/library/random.html)
-* [time](https://docs.python.org/3/library/time.html)
+## Frameworks Used
+
+* [Django](https://www.djangoproject.com/)
+* [Bootstrap](https://blog.getbootstrap.com/) 
+
+## Libraries And Installed Packages
+
+* [coverage](https://pypi.org/project/django-coverage/) - Used for running automated tests.
+* [pytest](https://docs.pytest.org/en/7.2.x/) - Used for running automated tests.
+* [pytest-cov](https://pypi.org/project/pytest-cov/) - Used for running automated tests.
+* [crispy-bootstrap4](https://pypi.org/project/crispy-bootstrap4/) - Template pack used for django-crispy-forms
+* [django-crispy-forms](https://pypi.org/project/crispy-bootstrap4/) - Used to render forms throughout the project.
+* [dj-database-url](https://pypi.org/project/dj-database-url/) - A package used to utilize DATABASE_URL environment variable.
+* [dj3-cloudinary-storage](https://pypi.org/project/dj3-cloudinary-storage/) - Facilitates integration with Cloudinary by implementing Django Storage API.  
+* [django-allauth](https://django-allauth.readthedocs.io/en/latest/) - Allows authentication, registration and account management in Django.
+* [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
+* [psycopg2](https://pypi.org/project/psycopg2/) - A PostgreSQL database adapter.
+* [Black](https://pypi.org/project/black/) - A Python code formatter.
+
 
 ## Tools And Resources
 * [GitPod](https://www.gitpod.io/)
 * [GitHub](https://github.com/)
 * [Heroku](https://heroku.com)
+- [ElephantSQL](https://www.elephantsql.com/)
+- [Cloudinary](https://cloudinary.com/)
 * [ReadMe Template](https://github.com/Code-Institute-Solutions/readme-template)
-* [Lucid Chart](https://www.lucidchart.com/)
 * [Stack Overflow](https://stackoverflow.com/)
-* [Canva](https://www.canva.com/) for my README image.
+* [Coolors](https://coolors.co/)
 
 <br>
 
