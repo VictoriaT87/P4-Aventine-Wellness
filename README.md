@@ -480,10 +480,12 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 
 ### Lighthouse Testing
- - When tested on desktop, the website scores 
+ - When tested on desktop, the website scores 90 on performance but only 83 on Best Practices. This was because 1 image (the hero image) doesn't have the correct aspect ratio but no matter which width and height I gave, it didn't fix the issue. I assume this is because it's rendered with a border-radius. I could not fix this.
+ - The other main reason for the lower score on Best Practices is because the Boostrap and jQuery files that are rendered log an issue to the console which says "Audit usage of navigator...". As these were from CDN files, I was unable to fix this error.
  <br>
   
-![Lighthouse Report](assets/documentation/index-lighthouse.png)
+![Lighthouse Metrics](documentation/images/lighthouse-desktop.png)
+![Lighthouse Metrics](documentation/images/lighthouse-practices-desktop.png)
 
  - On mobile, the performace is 88. This was originally lower because of a cumulative layout shift of 0.219. Recommendations for this were to add width and height to images and change the images to .webp format.
  - To change images from .jpg to .webp I used the website [WEBP Converter](https://cloudconvert.com/webp-converter).
@@ -491,9 +493,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
  - I also received a red warning for First Contentful Paint. The warning was telling me to "Eliminate render-blocking resources". After googling this issue, I found this website [LogRocket.com](https://blog.logrocket.com/9-tricks-eliminate-render-blocking-resources/#load-custom-fonts-locally) and after reading, felt my best option to reduce this was to load the styles.css file in the header of the index.html page, instead of using the @import method in styles.css.
  - The final issue and the largest still is "Eliminate render-blocking resources". This has to do with the Boostrap CSS file and the jQuery script. After researching, because they're from a CDN, I don't see any option to change them.
 
-![Lighthouse Metrics](documentation/images/lighthouse-desktop.png)
 ![Lighthouse Metrics](documentation/images/lighthouse-mobile.png)
-![Lighthouse Metrics](documentation/images/lighthouse-practices-desktop.png)
 ![Lighthouse Metrics](documentation/images/lighthouse-mobile-performance.png)
 
 | Page | Device | Category | Result |
@@ -508,6 +508,11 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ||| SEO | 100% |
  <br>
 
+### Automated Testing
+- I wrote tests for each app and for every view.py, model.py and form.py I have in the project. Below is the coverage report. The tests are not as comprehensive as I would like but I struggled to understand how to write tests for certain parts of my forms and views. This is definitely something I would be interested in studying more, as I can see the usefulness of having these tests within a project. I wrote as much as I was able, and all currently pass with a coverage of 91%.
+
+![Coverage Report](documentation/images/coverage_report.png)
+![Pytest Report](documentation/images/pytest.png) 
 
 ### Other Testing
  - The website has been tested across various screen sizes, using the Chrome DevTools responsive device section, [Responsive Design Checker](https://responsivedesignchecker.com/) and by opening the website on Firefox, Chrome, 3 various sized Android phones (Huawei P20 Lite, OnePlus 9 Pro, Samsung Galaxy S20) and an Android tablet (Samsung Galaxy Tab 10). 
@@ -663,10 +668,6 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
-# Separated Project
- - After looking at some other Text Adventure games and talking over it with my Mentor, I decided to split the run.py files in separate ones for the sake of easy readability. This project worked as intended, however on first run when all imports were added, I got the error message: "AttributeError: partially initialized module has no attribute (most likely due to a circular import)". This was because my functions file was importing the story file and vice versa. This was fixed by adding "from ... import ..." statements.
- - The project being split into multiple separate files worked, however the loading time for it was a little over 10 seconds when deployed to Heroku. This made it feel like the program was hanging or just not working when the "Run Program" button was clicked in Heroku. Because of this, I decided to revert all my changes back into the single run.py file, however I made a new repo with the old files, and have linked it here: [Destiny RPG Multi-File](https://github.com/VictoriaT87/Destiny_RPG_Multi_File), as well as the deployed version here: [Destiny RPG Mutli-File Deplyed](https://destiny-multifile.herokuapp.com/)
- - I understand this is not going to be assessed, I just would personally like to keep it so I can perhaps figure out why it was so slow to load. My research lead me to believe this was either because of a cache issue or just some bottleneck I have in the code.
 
 # Bugs Not Fixed
  - I would like the printed enumarate list in the get_subclass function to print to the terminal as slowly as the rest of the text. However, when I try to add function.s_print (to call the slow typing), it tells me I can't have both (index, subclass) in the method - "Too many positional arguments in method call". I have not found a fix for this.
