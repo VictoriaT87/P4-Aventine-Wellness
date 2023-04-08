@@ -292,9 +292,11 @@ This was from the User Story:
 > As a Site User/Admin I can create, update, delete a booking so that I can manage my time slot as needed
 
 Which was down broken down into these tasks:
-- **Task: [Add Booking](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/10)**
+- **Task: [Create Bookings app](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/10)**
 > Create an app inside the Django project to allow users to book a yoga session
-- **Task: [Update/Delete Booking](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/26)**
+- **Task: [Add Booking](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/26)**
+> Create a booking system which will allow site users and admins to book a time slot
+- **Task: [Update/Delete Booking](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/27)**
 > Allow the booking app to be updated by a Site User/Admin to change the time and date for the booked timeslot or to delete the booking entirely.
 - **Task: [No duplicate bookings](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/29)**
 > Make sure that there are measures in place so that a timeslot isn't double booked by multiple users
@@ -325,7 +327,27 @@ This User Story was important to the site, to allow any questions or queries to 
 
 <br>
 
-## **Epic 7: [Error Pages](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/40)**
+## **Epic 7: [Front End Design](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/45)**
+
+>Create templates, a colour scheme, navigation and responsiveness for the website
+
+This was from the User Story:
+#### **User Story: [Responsive Design](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/20)**
+> As a Site User I expect responsive elements so that I can view the website across multiple devices
+
+Which was down broken down into these tasks:
+- **Task: [Create Templates](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/30)**
+> Create templates for each page needed within the site, including the home page, a booking page, a login/create account page and pages for further information.
+- **Task: [UI Design](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/31)**
+> Design a website fitting of the theme with appropriate colours, easy to navigate, easily accessible information and has full screen reader capabilities.
+
+One of the most important parts of a website, the look and layout bring out emotions in the user. The website needed to be very calm, in fitting with the theme of the business so a colour scheme was chosen to fit that, as well as images and logo. The responsiveness of the website has been extensively tested, as documented in the testing section.
+
+---
+
+<br>
+
+## **Epic 8: [Error Pages](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/40)**
 
 >Create custom error page templates for 404, 403 and 500 errors.
 
@@ -344,7 +366,7 @@ Creating custom error page templates makes the website feel more fleshed out. Be
 
 <br>
 
-## **Epic 8: [Create Documentation](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/14)**
+## **Epic 9: [Create Documentation](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/14)**
 
 >Create both a README.md file and a Testing.md file to show the process of creating the project
 
@@ -359,8 +381,20 @@ Document everything needed for the process of developing and testing the website
 ---
 
 #### **Others**
+- **Task: [Testing](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/39)**
+> Create manual and/or automated tests for a Full-Stack Web application using an MVC framework and related contemporary technologies
 
--
+Automatic tests were written using TestCase from Django, as well as manual testing of code and resposivness. Covered in the Testing section.
+
+- **Task: [Allow Email and Password Changing](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/34)**
+> Allow the User to reset both their passwords and their email addresses if they've forgotten either.
+
+This was marked was Won't Have by the end of the project. The reason for this was that I could not get the email system to work on the project. I tried both EmailJS and a Google STMP with App Access. Neither would send an email to a test account when deployed to Heroku. For this reason, I removed any links for password or email resetting. This will be further expanded on in the Bugs section.
+
+- **Task: [Updating Information Posts on the Front Page](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/21)**
+> Allow the Site Admin to update the front page with updated information on the latest booking information
+
+This was marked was Won't Have by the end of the project. I originally thought to have a blog post section on the website, to allow site admins to write posts to the front page and showcase some videos on Yoga/Meditation. Due to time constraints, this feature was deemed unneccessary but could be implemented in the future.
 
 <br>
 
