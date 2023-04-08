@@ -42,15 +42,14 @@
         <div class="row gy-4 mt-1 contact-form">
             <form method="POST" action="{% url 'contact' %}" id="contact-form">
                 <h2>To send us a message, please fill in the form.</h2>
-                    {% csrf_token %}
-                    {{form.as_p}}
+                {% csrf_token %}
+                {{form.as_p}}
                 <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
         </div><!-- End Contact Form -->
 
     </div>
 
-    </div>
 </section><!-- End Contact Section -->
 
 
@@ -75,7 +74,8 @@
 <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5676.010710384866!2d-6.184891798442491!3d53.263224314138064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486709c51d3f12e5%3A0xc9c88bb958a0dffe!2sAventine%20Gardens!5e0!3m2!1sen!2sie!4v1679931765586!5m2!1sen!2sie"
     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
 
 {%endblock%}

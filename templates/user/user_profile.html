@@ -7,7 +7,7 @@
 
 {% if user.is_authenticated %}
 
-<h1 class="booked-appointments mt-3 ">My Profile</h1>
+<h1 class="booked-appointments mt-3">My Profile</h1>
 
 <div class="shadow p-4 rounded m-5">
     <h2 class="user-info">User Information:</h2>
@@ -17,17 +17,18 @@
         <li class="list-group mt-2">Last Name: {{ user.profile.last_name }}</li>
     </ul>
     <div class="profile-btn-group d-flex justify-content-center">
-        <a class='profile-btns mobile-profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-update' user.pk %}">Update
+        <a class='profile-btns mobile-profile-btns btn btn-secondary btn-lg mt-1 mb-1'
+            href="{% url 'user-update' user.pk %}">Update
             Account</a>
-        <a class='profile-btns mobile-profile-btns btn btn-secondary btn-lg mt-1 mb-1' href="{% url 'user-delete' user.pk %}">Delete
+        <a class='profile-btns mobile-profile-btns btn btn-secondary btn-lg mt-1 mb-1'
+            href="{% url 'user-delete' user.pk %}">Delete
             Account</a>
     </div>
 </div>
 
 <!-- Booked Appointment Times -->
 {% if appointments.count > 0 %}
-<div class="mt-5 ">
-
+<div>
     <div class="shadow p-4 rounded m-5">
         <h2 class="booked-appointments">My Booked Appointments:</h2>
         <div class="list-group fs-4 border p-3 mb-3">
@@ -54,8 +55,9 @@
             <a class="nav-link" href="{% url 'appointment' %}">Click here to book one.</a>
         </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
 
-    {% endif %}
+{% endif %}
 
-    {%endblock%}
+{%endblock%}

@@ -547,6 +547,9 @@ iframe {
     justify-content: space-evenly;
 }
 
+.booking-slots .disabled {
+    pointer-events: none;
+}
 .booking-slots .btn {
     background-color: var(--color-default);
     display: flex;
