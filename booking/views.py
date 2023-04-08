@@ -1,6 +1,6 @@
 import datetime
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -14,10 +14,7 @@ from bootstrap_datepicker_plus.widgets import DatePickerInput
 from django.views.generic import (
     CreateView,
     DeleteView,
-    DetailView,
-    ListView,
     UpdateView,
-    View,
 )
 
 
@@ -68,10 +65,10 @@ def appointment(request):
     """
     context = {"days": daylist()}
     if request.user.is_authenticated:
-        # Do something for authenticated users.
+        # Render the appointment page
         return render(request, "appointments/appointment.html", context)
     else:
-        # Do something for anonymous users.
+        # Redirect to a login page
         return HttpResponseRedirect("../accounts/login/")
 
 
@@ -92,7 +89,6 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
 
     def get_form(self, form_class=AppointmentForm):
         form = super(AppointmentCreateView, self).get_form(form_class)
-        form = super().get_form()
         form.fields["date"].disabled = True
         form.fields["timeblock"].disabled = True
         return form
@@ -126,7 +122,7 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_form(self, form_class=AppointmentForm):
         form = super(AppointmentEditView, self).get_form(form_class)
-        form = super().get_form()
+        form.user = self.request.user
         form.fields["date"].widget = DatePickerInput(
             options={
                 "format": "DD/MM/YYYY",
@@ -149,13 +145,26 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse("user-profile")
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        if form.is_valid():
-            messages.success(self.request, "Your appointment was successfully changed!")
-            super().form_valid(form)
-            return HttpResponseRedirect(self.get_success_url())
+        # Validate form to see if user already has a booking that day
+        appointment = self.get_object()
+
+        date = form.cleaned_data.get('date')
+        timeblock = form.cleaned_data.get('timeblock')
+
+        existing_appointment = Appointment.objects.filter(
+            user=self.request.user,
+            date=date,
+            timeblock=timeblock
+        ).exclude(pk=appointment.pk).first()
+
+        if existing_appointment:
+            messages.error(self.request, "Failed to save appointment. Appointment already exists for the chosen date and time.")
+            return self.form_invalid(form)
         else:
-            messages.error(self.request, "Failed to save appointment")
+            form.instance.user = self.request.user
+            messages.success(self.request, "Your appointment was successfully changed!")
+            response = super().form_valid(form)
+            return response
 
 
 class AppointmentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
