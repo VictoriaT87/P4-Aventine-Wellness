@@ -12,9 +12,8 @@ class TestSignUpForm(TestCase):
     Test SignUp Form
     """
 
-    def test_signupform(self):
+    def test_signupform_is_valid(self):
         # Test Sign Up Form is valid
-        user = Profile.objects.all()
         data = {
             "username": "Bob",
             "first_name": "Bob",

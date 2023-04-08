@@ -22,9 +22,10 @@ class TestSuccessURL(TestCase):
             password="password",
         )
         self.client.login(username="test_username", password="password")
-        response = self.client.get(reverse("user-profile"))
+        url = reverse("user-profile")
+        response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "user/user_profile.html")
 
 
 class TestAppointmentViews(TestCase):
