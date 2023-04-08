@@ -480,7 +480,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 
 ### Lighthouse Testing
- - When tested on desktop, the website scores 100 across all categories. 
+ - When tested on desktop, the website scores 
  <br>
   
 ![Lighthouse Report](assets/documentation/index-lighthouse.png)

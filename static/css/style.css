@@ -84,7 +84,7 @@ a:hover {
 /* Navbar */
 
 .logo {
-    width: 60%;
+    width: 100%;
 }
 
 .navbar .container-fluid {
@@ -810,7 +810,7 @@ iframe {
 @media only screen and (min-width: 768px) {
 
     .logo {
-        width: 50%;
+        width: 75%;
     }
 
     .booking-slots .btn {
