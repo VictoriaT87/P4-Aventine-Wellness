@@ -590,7 +590,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
   - #### Fix:
 
-    - This was a bug pointed out to me by a fellow student Sean. I wouldn't have known to look for it myself so I'm very thankful.
+    - This was a bug pointed out to me by a fellow student [Sean Johnston](https://github.com/seanj06/). I wouldn't have known to look for it myself so I'm very thankful.
     - I had LoginRequired Mixins on my edit and delete views for both appointments and profiles, however I didn't realise that would allow _any_ logged in user access to a different users account just by changing the PK in the URL for edit/delete.
     - Sean pointed me towards the UserPassesTestMixin and I was successfully able to implement this into my Views. Users now need to pass an ID check before they're allowed to access the Edit or Delete views for their own profile and they get a 403 Forbidden page if they try to access a different users profile.
 
@@ -631,8 +631,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 <br>
 
 # Bugs Not Fixed
+
+### Submit button on contact form
  - I would like the contact form to completely disappear on submission, instead of just the Submit button being left behind. This is something I looked into but adding an onclick through HTML/CSS wouldn't work because the button would still disappear if the form failed to send. This would mean the user needs to refresh the page to get the submit button to reappear.
- - I then tried to add javascript for a button click event but this prevented the submission message from being displayed after the successful submission.
+ - I then tried to add javascript for a button click event but this prevented the submission message from being displayed after the successful submission. Adding javascript to hide the button on submission, would hide it when the form was invalid but still show it when the page rendered the success message.
 
 <br>
 
@@ -749,8 +751,7 @@ The live link can be found here - [Aventine Gardens](https://aventine-wellness-p
 # Acknowledgements
 - To my amazing boyfriend Thomas. For listening to me worry about this project for months, for keeping me sane, for helping me switch off after a long day with a cup of coffee and a bar of chocolate :)
 - My family and my cats for keeping my stress levels under control!
-- My Mentor [Jubril Akolade](https://github.com/Jubrillionaire) for all the help. His guidance was invaluable.
-- [Sean Finn](https://github.com/seanf316/) and [Sean Johnston](https://github.com/seanj06/), my fellow classmates on Slack. Your help with my many questions was super appreciated, thank you.
+- [Sean Johnston](https://github.com/seanj06/), my fellow classmate on Slack. Your help with my many questions was super appreciated, thank you.
 
 <br>
 
