@@ -450,6 +450,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 * [gunicorn](https://gunicorn.org/) - A Python WSGI HTTP Server for UNIX.
 * [psycopg2](https://pypi.org/project/psycopg2/) - A PostgreSQL database adapter.
 * [Black](https://pypi.org/project/black/) - A Python code formatter.
+* [django-bootstrap-datepicker-plus](https://pypi.org/project/django-bootstrap-datepicker-plus/) - A calendar widget with extra customization.
 
 
 ## Tools And Resources
