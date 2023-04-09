@@ -15,19 +15,18 @@
 ### Huawei P20 Lite Landscape
 <br>
 
-![Huawei Horizontal](huawei-ls-3.jpg)
-![Huawei Horizontal](huawei-ls-4.jpg)
-![Huawei Horizontal](huawei-ls-1.jpg)
-![Huawei Horizontal](huawei-ls-2.jpg)
+![Huawei Horizontal](images/huawei-ls-1.jpg)
+![Huawei Horizontal](images/huawei-ls-2.jpg)
+![Huawei Horizontal](images/huawei-ls-3.jpg)
 
 <br>
 
 ### OnePlus 9 Pro
 <br>
 
-![OnePlus 9 Pro 2](one-plus-2.jpg)
-![OnePlus 9 Pro 3](one-plus-3.jpg)
-![OnePlus 9 Pro 1](one-plus-1.jpg)
+![OnePlus 9 Pro 2](images/one-plus-1.jpg)
+![OnePlus 9 Pro 3](images/one-plus-2.jpg)
+![OnePlus 9 Pro 1](images/one-plus-3.jpg)
 
 <br>
 

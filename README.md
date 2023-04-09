@@ -456,11 +456,12 @@ This was marked was Won't Have by the end of the project. I originally thought t
 * [GitPod](https://www.gitpod.io/)
 * [GitHub](https://github.com/)
 * [Heroku](https://heroku.com)
-- [ElephantSQL](https://www.elephantsql.com/)
-- [Cloudinary](https://cloudinary.com/)
+* [ElephantSQL](https://www.elephantsql.com/)
+* [Cloudinary](https://cloudinary.com/)
 * [ReadMe Template](https://github.com/Code-Institute-Solutions/readme-template)
 * [Stack Overflow](https://stackoverflow.com/)
 * [Coolors](https://coolors.co/)
+* [AmIResponsive](https://ui.dev/amiresponsive)
 
 <br>
 
@@ -480,17 +481,16 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 
 ### Lighthouse Testing
- - When tested on desktop, the website scores 90 on performance but only 83 on Best Practices. This was because 1 image (the hero image) doesn't have the correct aspect ratio but no matter which width and height I gave, it didn't fix the issue. I assume this is because it's rendered with a border-radius. I could not fix this.
- - The other main reason for the lower score on Best Practices is because the Boostrap and jQuery files that are rendered log an issue to the console which says "Audit usage of navigator...". As these were from CDN files, I was unable to fix this error.
+ - When tested on desktop, the website scores 97 on performance but only 83 on Best Practices. The main reason for the lower score on Best Practices is because the Boostrap and jQuery files that are rendered log an issue to the console which says "Audit usage of navigator...". As these were from CDN files, I was unable to fix this error.
+ - The other reason was because 1 image (the hero image) doesn't have the correct aspect ratio but no matter which width and height I gave, it didn't fix the issue. I assume this is because it's rendered with a border-radius. I could not fix this.
  <br>
   
 ![Lighthouse Metrics](documentation/images/lighthouse-desktop.png)
 ![Lighthouse Metrics](documentation/images/lighthouse-practices-desktop.png)
 
- - On mobile, the performace is 88. This was originally lower because of a cumulative layout shift of 0.219. Recommendations for this were to add width and height to images and change the images to .webp format.
+ - On mobile, the performace is 94. This was originally lower because of a cumulative layout shift of 0.219. Recommendations for this were to add width and height to images and change the images to .webp format.
  - To change images from .jpg to .webp I used the website [WEBP Converter](https://cloudconvert.com/webp-converter).
- - Even after these changes, there is still a CLS of 0.179. As I have already given everything a max-width and height, this is the best I can achieve. I also removed the background image on the Hero section of the index page to try and help with the CLS.
- - I also received a red warning for First Contentful Paint. The warning was telling me to "Eliminate render-blocking resources". After googling this issue, I found this website [LogRocket.com](https://blog.logrocket.com/9-tricks-eliminate-render-blocking-resources/#load-custom-fonts-locally) and after reading, felt my best option to reduce this was to load the styles.css file in the header of the index.html page, instead of using the @import method in styles.css.
+ - I also removed the background image on the Hero section of the index page to try and help with the CLS.
  - The final issue and the largest still is "Eliminate render-blocking resources". This has to do with the Boostrap CSS file and the jQuery script. After researching, because they're from a CDN, I don't see any option to change them.
 
 ![Lighthouse Metrics](documentation/images/lighthouse-mobile.png)
@@ -498,11 +498,11 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 | Page | Device | Category | Result |
 |------|--------|----------|--------|
-|Index | Mobile | Performance | 88% |
+|Index | Mobile | Performance | 94% |
 |||Accessibility| 100% |
 |||Best Practice | 92% |
 |||SEO | 100% |
-|| Desktop | Performance | 90% |
+|| Desktop | Performance | 97% |
 ||| Accessibility | 100% |
 ||| Best Practice | 83% |
 ||| SEO | 100% |
@@ -513,6 +513,11 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 ![Coverage Report](documentation/images/coverage_report.png)
 ![Pytest Report](documentation/images/pytest.png) 
+
+<br>
+
+### Manual Testing
+- Manual testing has been done extensively and has been shown in separate fine, located [here.](documentation/testing.md)
 
 ### Other Testing
  - The website has been tested across various screen sizes, using the Chrome DevTools responsive device section, [Responsive Design Checker](https://responsivedesignchecker.com/) and by opening the website on Firefox, Chrome, 3 various sized Android phones (Huawei P20 Lite, OnePlus 9 Pro, Samsung Galaxy S20) and an Android tablet (Samsung Galaxy Tab 10). 
@@ -525,9 +530,9 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
-# Bugs Found and Fixed
+# Bugs
 
- Below is a description of fixed bugs.
+ Below is a description of bugs encountered and how I was able to fix them or not.
 
  ### get_name function - Length
 

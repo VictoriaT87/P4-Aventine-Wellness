@@ -1,54 +1,80 @@
+
 ## Manual Testing
 
-This table is all the manual testing done for each function, if it worked as expected or not.
+This table shows all the manual testing done for the website, and whether it worked as expected or not.
 
- ### Features
+### Features
 
 Feature Tested | Expected Result | Actual Result | Pass/Fail
 ---------------|-----------------|---------------|----------
-Press 'enter' on intro screen | The first story text should run | As expected | Pass
-Type a name into terminal when prompted | Receive message "It's nice to meet you, {name}." | As expected | Pass
-Pick a class from the options | Receive message "Welcome, {chosen_class}." | As expected | Pass
-Pick a subclass from the options | Receive message "A {subclasses[choice-1]}?" | As expected | Pass
-Player class, subclass and luck are uploaded to spreadsheet | Should be visible on spreadsheet | As expected | Pass
-Chooses story option 1 to search cars | Function to search cars runs | As expected | Pass
-Chooses story option 2 to enter building | Function to enter building runs | As expected | Pass
-Chooses story option 3 to exit game | Message "You run towards the cliff and jump! This is all too much to take.[END]" prints | As expected | Pass
-Searching the cars either finds a key or not | Receive message "You've found a key!" or "But you didn't find anything" | As expected | Pass
-Function runs automatically to enter the building | Building story text will print | As expected | Pass
-Pick yes to open the chest with key in inventory | Message "You've used your key" received | As expected | Pass
-Pick yes to open the chest without key in inventory | Message "You don't have a key and the lock won't budge." | As expected | Pass
-Pick no to open the chest | Message "The chest looks old and worn..." | As expected | Pass
-If chest is opened, random roll for a weapon | Message "You've found a {weapon}!, spreadsheet updated | As expected | Pass
-If chest is opened, random roll for a weapon | Message "There was nothing in the chest, only dust..." | As expected | Pass
-Building hallway function runs | Story text to choose a path runs | As expected | Pass
-Player chooses room 1 | Dreg attacks player for random health amount | As expected | Pass
-Player chooses room 1 | Player character attacks back with no weapon, text to show "You're a {player_class}. A {player_subclass}. You can use your {player_ability}." | As expected | Pass
-Player chooses room 1 | Player character attacks back with a weapon, text to show "You pull out your {stored_weapon}" | As expected | Pass
-Hallway choice function automatically runs | Story text for Hallway choices runs and shows player options | As expected | Pass
-Player chooses room 2 in Hallway | Empty room text prints, player is given the other 2 options for the Hallway | As expected | Pass
-Random Vandal attack occurs | Message "Out of nowhere, a Fallen Vandal attacks you!", player loses a random amount of health. | As expected | Pass
-Player chooses left from hallway options | SpaceShip function story prints | As expected | Pass
-Player chooses right from hallway options | LuckEscape function text prints | As expected | Pass
-Player has high luck number | Message "You manage to hide behind some nearby crates" prints | As expected | Pass
-Player has low luck number | Message "Oh no, a Fallen Servitor!" prints, game ends | As expected | Pass
-Player chooses back from hallway options | Game Ends | As expected | Pass
-Spaceship room function with high luck roll | Message "you aim at the Captain and hit him with the full force of your Super." prints | As expected | Pass
-Spaceship room function with low luck roll | Message "You wield the Light, you aim at the Captain But you miss" prints | As expected | Pass
-Player is asked if they want to play again | Message "Would you like to play again?" prints | As expected | Pass
-Player is asked if they want to be resurrected | Message "Please enter yes or no" prints | As expected | Pass
+NavBar responsiveness | NavBar becomes hamburger menu on page resize | As expected | Pass
+Images resize on mobile | Images resize on mobile | As expected | Pass
+Layout becomes linear on mobile | Layout becomes linear on mobile | As expected | Pass
+Buttons change colour on hover | Buttons change colour on hover | As expected | Pass
+Messages are displayed for user feedback | All messages shown as expected | As expected | Pass
+Active menu buttons change for each page | Active menu buttons change for each page | As expected | Pass
+Footer links all work when clicked | Footer links all work when clicked | As expected | Pass
+Button on home page for users not logged in | button displays "Register to book a session!" | As expected | Pass
+Button on home page for users not logged in | button redirects to Sign Up Page | As expected | Pass
+Button on home page for users logged in | button displays "Book a session now!" | As expected | Pass
+Button on home page for users logged in | button redirects to appointment.html | As expected | Pass
+Contact form renders on Contact button | contact.html renders | As expected | Pass
+Contact form saves to admin panel | admin panel shows message, name and email | As expected | Pass
+User gets feedback on contact form submission | Message "Your message was sent! We'll be in touch shortly." shows | As expected | Pass
+Registration page validates each input for empty or whitespaces | message "Please fill in this field is shown" | As expected | Pass
+Registration page validates email address | message "A user is already registered with this e-mail address." | As expected | Pass
+Registration page validates username | message "A user with that username already exists." | As expected | Pass
+Book and Profile links are hidden until a user is logged in | Only show when logged in | As expected | Pass
+Book link renders Appointment page | appointments.html is shown | As expected | Pass
+Appointments already booked have disabled buttons | buttons are disabled and show "BOOKED" | As expected | Pass
+User taken to confirmation page on booking | appointment_confirm_form.html is shown | As expected | Pass
+User redirected to appointment page if cancel is clicked on confirm | appointment.html renders on cancel | As expected | Pass
+User gets feedback message on booking confirmation | message "Your appointment was successfully booked!" displays | As expected | Pass
+Page redirects to profile on booking confirmation | user_profile.html renders on confirmation | As expected | Pass
+My Profile link renders Profile page | user_profile.html is shown | As expected | Pass
+User information is displayed on Profile page | Username, First Name, Last Name shown | As expected | Pass
+User booked appointments shown on Profile page | Appointments shown under "My Booked appointments" | As expected | Pass
+Appointments on profile shows message if nothing booked | message "You don't have any saved appointments!" shown | As expected | Pass
+Update Account button brings user to update form | user_update.html renders | As expected | Pass
+Return button on user_update page redirects back to profile | user_profile.html renders | As expected | Pass
+Users updated first name and last name are saved | Profile page updates with new user information | As expected | Pass
+Delete Profile button directs to confirmation page | user_delete.html renders | As expected | Pass
+Return button on user_delete page redirects back to profile | user_profile.html renders | As expected | Pass
+Confirm button on user_delete page redirects back to index.html | index.html renders | As expected | Pass
+Confirmation message on user_delete shows | message "Profile successfully deleted" shown | As expected | Pass
+All of a users appointments are deleted on profile deletion | appointments removed from database | As expected | Pass
+Edit Appointment redirects to update form | edit_appointment form renders | As expected | Pass
+Edit Appointment has date widget with restricted days | widget only allows booking up to 6 days ahead | As expected | Pass
+Edit Appointment date can be inputted manually | typing a date edits apppointment to that date | As expected | Pass
+Edit Appointment timeblock has a dropdown of choices | time choices are shown | As expected | Pass
+Delete Appointment redirects to delete confirmation | delete_appointment form renders | As expected | Pass
+Delete Appointment cancel button redirects to Profile | user_profile.html renders | As expected | Pass
+Delete Appointment delete button redirects to Profile | user_profile.html renders | As expected | Pass
+Appointment deleted from database on confirmation | appointment deleted | As expected | Pass
+User redirected to logout confirmation when Logout is clicked | account/logout.html renders | As expected | Pass
+User redirected to Profile Logout is cancelled | user_profile.html renderes | As expected | Pass
+User redirected to Index page when logged out | index.html renderes | As expected | Pass
+User shown log out message feedback | message "You have signed out." shown | As expected | Pass
+
+<br>
 
 ### Errors
 
 Error Tested | Expected Result | Actual Result | Pass/Fail
 -------------|-----------------|---------------|----------
-Press something before 'enter' on intro screen | Receive message "You typed '{start}'. When you're ready to begin. press ENTER." and should remain on Introduction screen | As expected | Pass
-Player enters something other than letters when asked for name | Receive message "Please enter letters only." | As expected | Pass
-Type less than 3 characters when asked for name | Receive message "Please enter a name at least 3 letters long." | As expected | Pass
-Player enters anything other than the 3 possible Classes | Receive message "Please type one of the classes listed." | As expected | Pass
-Player enters anything other than the numbers 1, 2 or 3 when option arises | Receive message "Please enter number 1, 2 or 3." | As expected | Pass
-Search function runs, awards a key to player inventory if True | Player inventory is updated or not, player receives message to inform them | As expected | Pass
-Player types anything other than Yes or No when question arises | Receive message "Please enter yes or no" | As expected | Pass
-Player receives a weapon | Receive message "You've found a {weapon}!" | As expected | Pass
-Players don't enter either Fight or Run during Captain fight | Receive message "Please enter Yes or No." | As expected | Pass
-Players don't enter either Yes or No when asked to be resurrected | Receive message "Please enter either fight or run." | As expected | Pass
+Contact form validates for whitespaces | message "Please fill in this field" shows | As expected | Pass
+Book Appointment validates double day booking | message "Cannot schedule more than one appointment on a single day!" shown | As expected | Pass
+Edit Appointment validates double day booking | message "Cannot schedule more than one appointment on a single day!" shown | As expected | Pass
+Edit Appointment validates double time booking | message "Sorry, this time is already booked!" shown | As expected | Pass
+User tried to render user_profile URL when not logged in | user redirected to log in page | As expected | Pass
+User tried to render appointment URL when not logged in | user redirected to log in page | As expected | Pass
+User tried to render edit_profile URL when not logged in | user redirected to 404 page | As expected | Pass
+User tried to render delete_profile URL when not logged in | user redirected to 404 page | As expected | Pass
+User tried to render edit_appointment URL when not logged in | user redirected to 404 page | As expected | Pass
+User tried to render delete_appointment URL when not logged in | user redirected to 404 page | As expected | Pass
+User tried to render user_profile URL for another user | user redirected to 403 page | As expected | Pass
+User tried to render appointment URL for another user | user redirected to 403 page | As expected | Pass
+User tried to render edit_profile URL for another user | user redirected to 403 page | As expected | Pass
+User tried to render delete_profile URL for another user | user redirected to 403 page | As expected | Pass
+User tried to render edit_appointment URL for another user | user redirected to 403 page | As expected | Pass
+User tried to render delete_appointment URL for another user | user redirected to 403 page | As expected | Pass

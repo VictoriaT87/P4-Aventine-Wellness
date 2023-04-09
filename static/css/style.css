@@ -472,8 +472,9 @@ a:hover {
 }
 
 .contact-form button[type=submit]:hover {
-    background: #093631;
-    color: var(--white);
+    background: var(--white);
+    color: var(--color-default);
+    border: 1px solid #093631;
 }
 
 #contact-form {
@@ -597,9 +598,9 @@ iframe {
     text-decoration: underline;
 }
 
-#id_timeblock {
+/* #id_timeblock {
     width: 10em;
-}
+} */
 
 
 /* Account Forms */
@@ -770,6 +771,10 @@ iframe {
 @media (max-height: 700px), handheld and (orientation: landscape)  {
     .hero {
         min-height: 130vh;
+    }
+
+    .update-div {
+        height: 130vh;
     }
 }
 
