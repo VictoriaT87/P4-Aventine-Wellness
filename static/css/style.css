@@ -767,7 +767,7 @@ iframe {
 
 /* Media Queries */
 
-@media screen and (orientation: landscape) {
+@media (max-height: 700px), handheld and (orientation: landscape)  {
     .hero {
         min-height: 130vh;
     }
