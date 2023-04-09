@@ -484,6 +484,12 @@ a:hover {
     align-items: center;
 }
 
+#contact-form .contact-p {
+    text-align: center;
+    color: var(--color-default);
+    font-size: 1.4em;
+}
+
 #contact-form p {
     display: flex;
     flex-direction: column;

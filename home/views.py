@@ -33,7 +33,7 @@ def contact(request):
             return render(request, "contact.html")
         else:
             messages.error(
-                request, "Failed to send message. Please try again.")
+                request, "Failed to send message. Please try again. All fields are required.")
 
     form = ContactForm()
     context = {"form": form}

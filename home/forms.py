@@ -5,7 +5,7 @@ from http import HTTPStatus
 
 
 class ContactForm(forms.ModelForm):
-    name = forms.CharField(required=True)
+    name = forms.CharField()
     message = forms.CharField(
         widget=forms.Textarea(attrs={"rows":5, "cols":20}))
 
@@ -16,3 +16,11 @@ class ContactForm(forms.ModelForm):
             "email",
             "message",
         )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        name = cleaned_data.get("name")
+        email = cleaned_data.get("email")
+        message = cleaned_data.get("message")
+
+        return cleaned_data
