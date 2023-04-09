@@ -119,6 +119,10 @@ The Project board can be found [here](https://github.com/users/VictoriaT87/proje
 
 <br>
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 ## Epic Breakdowns
 ## **Epic 1: [Initial Install](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/1)**
 > Allow Users to create/update/manage and delete user profiles
@@ -371,14 +375,13 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ### Wireframes
 
 - My starting point for this project was to decide on a layout using a wireframe. I went for a Hero Image for the front page, to quickly show the user what the business was about at first view. The booking system being the most important part was also given a wireframe and I decided early on I wanted a button layout, as I thought this was cleaner looking than a form.
-<details>
-<summary>Wireframe Images</summary>
+
 <img src="documentation/images/front-page-wireframe.png" alt="front page wireframe" width="600"/>
 
 <br>
 
 <img src="documentation/images/appointments-wireframe.png" alt="front page wireframe" width="600"/>
-</details>
+
 
 <br>
 
@@ -821,6 +824,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ### Submit button on contact form
  - I would like the contact form to completely disappear on submission, instead of just the Submit button being left behind. This is something I looked into but adding an onclick through HTML/CSS wouldn't work because the button would still disappear if the form failed to send. This would mean the user needs to refresh the page to get the submit button to reappear.
  - I then tried to add javascript for a button click event but this prevented the submission message from being displayed after the successful submission. Adding javascript to hide the button on submission, would hide it when the form was invalid but still show it when the page rendered the success message.
+ - To counter this and make for a better UX, I decided to create a new view which renders the "contact_thank_you.html" page. This redirects a user to a page with a success message upon a valif form submission.
 
 <br>
 
@@ -837,7 +841,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 # Credits and Sources
 
 ### Booking System
-- The booking system was based on a combination of multiple walkthroughs of Django Booking systems.
+- The booking system was based on a reading and watching multiple walkthroughs of Django Booking systems.
   - [DevGenius - Django Tutorial On How To Create A Booking System For A Health Clinic](https://blog.devgenius.io/django-tutorial-on-how-to-create-a-booking-system-for-a-health-clinic-9b1920fc2b78)
   - [Codemy.com YouTube, Build Dental Website](https://www.youtube.com/watch?v=4b3yvjcPLnk)
   - [DarshanDev YouTube, Django Hotel Management System](https://www.youtube.com/watch?v=-9dhCQ7FdD0&list=PL_6Ho1hjJirn8WbY4xfVUAlcn51E4cSbY&index=2)
@@ -884,13 +888,13 @@ This was marked was Won't Have by the end of the project. I originally thought t
 - [Django Documentation, Using mixins with class-based views](https://docs.djangoproject.com/en/4.1/topics/class-based-views/mixins/)
 - [Django Documentation, Using the Django authentication system](https://docs.djangoproject.com/en/4.1/topics/auth/default/)
 - [Django Documentation, Form handling with class-based views](https://docs.djangoproject.com/en/4.1/topics/class-based-views/generic-editing/)
-- [codewithhugo.com, Disable a HTML <a> link/anchor tag](https://codewithhugo.com/disable-html-anchor/)
+- [codewithhugo.com, Disable a HTML link/anchor tag](https://codewithhugo.com/disable-html-anchor/)
 - [Stackoverflow.com, Angular ngx-boostrap datepicker position issue on mobile screen](https://stackoverflow.com/questions/60906841/angular-ngx-boostrap-datepicker-position-issue-on-mobile-screen)
 - [developer.mozilla.org, translate3d()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d)
 - [Stackoverflow.com, What is best practice when using ValidationError and Constraint (new in Django 2.2)?](https://stackoverflow.com/questions/59592746/what-is-best-practice-when-using-validationerror-and-constraint-new-in-django-2)
 - [How to restrict date and time in django bootstrap datetimepicker plus?](https://stackoverflow.com/questions/51022722/how-to-restrict-date-and-time-in-django-bootstrap-datetimepicker-plus)
 - [Trim whitespaces from charField](https://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield)
-- [Pexels](https://www.pexels.com/) Images used are all from Pexels.
+- [Pexels](https://www.pexels.com/)
 
 <br>
 
