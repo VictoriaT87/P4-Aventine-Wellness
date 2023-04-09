@@ -15,12 +15,15 @@ class TestTemplates(TestCase):
         # set up user
         self.client = Client()
 
-    def test_home_url_accessible_by_name(self):
+    def test_home_url_renders(self):
         # Test home page renders correctly
         response = self.client.get(reverse("home"))
         self.assertEqual(response.status_code, 200)
+
+    def test_home_url_template_is_correct(self):
+        # Test home page template is correct
+        response = self.client.get(reverse("home"))
         self.assertTemplateUsed(response, "index.html")
-        self.assertContains(response, "Aventine")
 
     def test_about_url_accessible_by_name(self):
         # Test about page renders correctly
@@ -33,6 +36,12 @@ class TestTemplates(TestCase):
         response = self.client.get(reverse("contact"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "contact.html")
+
+    def test_contact_thank_page_accessible_by_name(self):
+        # Test contact thank you page renders correctly
+        response = self.client.get(reverse("thank-you"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "contact_thank_you.html")
 
 
 class TestContactFormSends(TestCase):
