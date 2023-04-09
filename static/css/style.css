@@ -74,12 +74,7 @@ a:hover {
 .messages {
     list-style-type: none;
     text-align: center;
-    padding: 0;
-    margin: 0;
-}
-
-.messages li {
-    padding: 10px 0;
+    margin-bottom: 0;
 }
 
 /* Navbar */
