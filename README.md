@@ -638,6 +638,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
+### Whitespace Validation on Contact Form
+- The contact form currently allows users to submit messages that aren't stripped, e.g "C C C". Looking into this, I found some answers which were to set the model fields to have "blank=False" and "null=False" but this didn't work. I then tried to clean the data on the field using the clean() method but again, this didn't work.
+- The fields do all have to be filled in or the form will fail to send with an error message explaing all fields must be filled in, this was the best I could achieve for the form currently.
+
 [Back to Top](#table-of-contents)
 
 <br>
