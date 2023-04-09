@@ -1,8 +1,6 @@
-{% if messages %}
-<div class="alert alert-success alert-dismissible fade show messages" role="alert">
-    {% for message in messages %}
-    {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    {% endfor %}
-</div>
-{% endif %}
+{% for msg in messages %}
+        <div class="alert {{msg.tags}} alert-dismissible fade show messages" role="alert">
+            {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+{% endfor %}
