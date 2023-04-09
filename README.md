@@ -36,6 +36,7 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
       * [My Profile](#profile-page)
       * [Register](#register-page)
       * [Log Out](#log-out-page)
+      * [Admin Page](#admin-page)
     * [Future Features](#future-features)
 7. [The Surface Plane](#the-surface-plane)
     * [Design](#design)
@@ -531,6 +532,20 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ![Register Page Image](documentation/images/log-out.png)
 - The log out page is another restricted page which asks the registered user to confirm they would like to log out of their account.
 
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Admin Page
+![Admin Dashboard Image](documentation/images/admin-home.png)
+- The admin dashboard is restricted to Super Users and anyone the Super User designates as staff. The dashboard is populated with the information from the Models in each app.
+- The booked appointments for each user are shown, with their name, the date of the appointment, the time they have chosen and the date the user booked the appointment.
+![Admin Appointments Image](documentation/images/admin-appts.png)
+- The Profiles of each registered user is also posted here, with the username, first name and last name of the User saved.
+![Admin Profiles Image](documentation/images/admin-profiles.png)
+- The Contact form submissions are saved to the admin panel. The name, email and message from the contact form is shown to the admin, to allow them to reply to the User easily.
+![Admin Profiles Image](documentation/images/admin-contact.png)
 
 [Back to Top](#table-of-contents)
 
