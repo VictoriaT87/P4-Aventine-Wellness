@@ -11,7 +11,20 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
 
 # Table of Contents
 
-1. [Features](#features)
+1. [UX](#ux)
+  
+2. [The Strategy Plane](#the-strategy-plane)
+    * [Targeted Users](#targeted-users)
+    * [Site Goals](#site-goals)
+    * [Project Goals](#project-goals)
+3. [Agile Planning](#agile-planning)
+    * [User Stories](#user-stories)
+    * [Epic Breakdowns](#epic-breakdowns)
+4. [Skeleton Plane](#skeleton-plane)
+    * [Wireframes](#wireframes)
+5. [The Scope Plane](#the-scope-plane)
+6. [The Structure Plane](#the-structure-plane)
+    * [Features](#features)
     * [Home Page](#home-page)
       * [Wellness Section](#wellness-section)
       * [Benefits Section](#benefits-section)
@@ -23,159 +36,49 @@ Welcome to Aventine Gardens! This website was built using Django, with custom Py
       * [My Profile](#profile-page)
       * [Register](#register-page)
       * [Log Out](#log-out-page)
-2. [Project Goals](#project-goals)
-3. [User Stories](#user-stories)
-4. [Agile Planning](#agile-planning)
-4. [Design](#design)
-5. [Technologies](#technologies)
+    * [Future Features](#future-features)
+7. [The Surface Plane](#the-surface-plane)
+    * [Design](#design)
+      * [Colour Scheme](#colour-scheme)
+      * [Typography](#typography)
+      * [Images](#images)
+8. [Technologies](#technologies)
     * [Languages Used](#languages-used)
     * [Libraries And Frameworks](#libraries-and-frameworks)
     * [Tools and Resources](#tools-and-resources)
-6. [Testing](#testing)
+9. [Testing](#testing)
     * [Validator Testing](#validator-testing)
     * [Other Testing](#other-testing)
-7. [Bugs Found and Fixed](#bugs-found-and-fixed)
+10. [Bugs Found and Fixed](#bugs-found-and-fixed)
     * [Bugs Not Fixed](#bugs-not-fixed)
-8. [Credits And Sources](#credits-and-sources)
-9. [Deployment](#deployment)
-10. [Acknowledgements](#acknowledgements)
-
-# Features 
-
-## Existing Features
-
-### Home Page
-![Hero Image](documentation/images/home-page.png)
-- The home page features a hero image, with some text explaining the main purpose of the website and a small image to compliment the text.
-- The index page is split into multiple sections, with the information easy to read and eye catching to a visitor.
-- Along with this is a link. This link will ask the visitor to create a profile to book an apppointment if they're not logged in. If they are a logged in user, this link will instead suggest they book an appointment.
-![Hero Link Logged In](documentation/images/home-btn.png)
-![Hero Link Not Logged In](documentation/images/home-btn-register.png)
+11. [Credits And Sources](#credits-and-sources)
+12. [Deployment](#deployment)
+13. [Acknowledgements](#acknowledgements)
 
 <br>
 
-### Wellness Section
-![Wellness Section Image](documentation/images/wellness-section.png)
-- The Wellness section of the index page explains what the booked sessions entail in a quick to read paragraph.
-- Under this, there are 2 cards, with images and text, with a quick explanation of what Yoga and Meditation are.
+# UX
 
-<br>
+## The Strategy Plane
 
-### Benefits Section
-![Benefits Section Image](documentation/images/benefits-section.png)
-- The benefits section of the home page provides some information to the user about how a wellness session can benefit their health, as well as provding a colour break up between large text sections.
+### Targeted Users
 
-<br>
+- A user that wants to learn about Yoga and Meditation.
+- A user that wants to book a session with a Yoga Guru.
+- A user that is interested in Wellness - Spiritual, Mental or Physical health.
 
-### Instructors Section
-![Instructors Section Image](documentation/images/instructors-section.png)
-- The Instructors section allows users to get a more peronal feel for the business by introducing them to the people they would likely meet if they booked a session.
-- Each of the 3 instructors has a card with their name, photo and an explanation of their expertise in Yoga and Meditiation.
+### Site Goals
 
-<br>
+- For users to be able to create an account to book appointments.
+- For users to be able to edit their account to book appointments.
+- For users to be able to edit or delete their appointments online. 
+- For users to be able to view all contact information of the business.
+- For users to be able to contact the business online.
 
-### About Page
-![About Page Image](documentation/images/about-page.png)
-- The About page gives the user a chance to learn more about both the Manor Hosue where the sessions will take place and what each session will entail.
-- Information about both Yoga and Meditation are also shown, with links to credited sources about each for users to research themselves. 
+### Project Goals
 
-<br>
-
-### Contact Page
-![Contact Page Image](documentation/images/contact-page.png)
-- The contact page features small icons with quick and easy to read information with a phone number, address and email.
-- The page also hold a form for users to get in contact with the business. This form stores the posted information in the Admin panel, for staff to read easily.
-- There is also directions on how to get to Aventine Gardens, as well as an embedded Google Map pointing to the business.
-
-![Contact Page Map Image](documentation/images/contact-page-map.png)
-
-<br>
-
-### Restricted Pages
-![Logged in Nav Image](documentation/images/logged-in.png)
-![Logged out Nav Image](documentation/images/logged-out.png)
-- Some pages are restricted to logged in users only. Links to these only show in the Navbar when a user logged in also.
-
-<br>
-
-### Booking Page
-![Booking Page Image](documentation/images/booking-page.png)
-- The Booking Page allows users to book an appointment, saved to their profile.
-- Each day for the next 7 days has 4 appointments each to choose from.
-- Booked appointments will show as buttons with the text "Booked" and those buttons will be disabled.
-- Clicking a button to choose a timeslot will take you to a confirmation page. If a user doesn't want this time, they can return to the booking page and choose another or confirm the original appointment time shown.
-
-![Booking Confirm Image](documentation/images/booking-confirm.png)
-
-<br>
-
-### Profile Page
-![Profile Image](documentation/images/profile.png)
-
-![Appointment Image](documentation/images/appointments.png)
-- The Profile page stores both the users information, as well as their appointments.
-- The user can update their first name, last name and their booked appointments from here.
-![Edit Profile Image](documentation/images/edit-profile.png)
-![Edit Appointment Image](documentation/images/edit-appointment.png)
-- Users can also delete their profile and their appointments from this page too. Each action has a confirmation tied to it.
-![Delete Profile Image](documentation/images/delete-profile.png)
-![Delete Appointment Image](documentation/images/delete-appointment.png)
-
-- All of this is done with database information being created, read, updated and deleted (CRUD).
-
-<br>
-
-### Register Page
-![Register Page Image](documentation/images/register-page.png)
-- The Register Page has a custom form, which asks users to provide a username, their full name and their email address and password.
-- When these are entered, they're saved to a Profile database and the username, first name and last name all show on the Profile page of the logged in user.
-
-<br>
-
-### Log Out Page
-![Register Page Image](documentation/images/log-out.png)
-- The log out page is another restricted page which asks the registered user to confirm they would like to log out of their account.
-
-
-[Back to Top](#table-of-contents)
-
-<br>
-
-## Future Features
-
-- There are definitely some features I would like to include, including better options for a registered user. Currently there is no way to reset a password or change an email address. I tried to implement these using AllAuth however I couldn't get the email system to work. More information about that is provided in the [Bugs](#bugs) section.
-- I originally wanted to add an blog to the website which would be updated with the latest information about the business and would also allow Staff to add blog posts with some Yoga videos and wellness information. The reason for not implementing them at the current time was purely down to time contraints on an already massive project.
-
-<br>
-
-[Back to Top](#table-of-contents)
-
-<br>
-
-## Project Goals
-
-* I wanted to create a website for a local business that offers something that I feel is beneficial to a huge range of people. This is a real business and I have worked with the owner in the past so felt I had some knowledge around what they would like to implement. Having an online presence will help their business massively.
-
-* Learning how to create a booking system also seemed like a very good challenge and helped me learn about CRUD functionality better.
-
-<br>
-
-[Back to Top](#table-of-contents)
-
-<br>
-
-## User Stories
-
-* Users will:
-
-  * Find information about a local business offering Yoga and Meditation sessions.
-  * Be able to use the website across all devices with responsive design.
-  * Be able to create, update and delete Profiles and Appointments for the business.
-
-* Users expect:
-
-  * A website that looks well across all devices.
-  * A website that works well, with minimum errors encountered.
+- Create a website for a local business that offers something that I feel is beneficial to a huge range of people. This is a real business and I have worked with the owner in the past so felt I had some knowledge around what they would like to implement. Having an online presence will help their business massively.
+- Learn how to create a booking system which has full CRUD functionality.
 
 <br>
 
@@ -196,7 +99,26 @@ The Project board can be found [here](https://github.com/users/VictoriaT87/proje
 
 ![Project Kanban](documentation/images/project-board.png)
 
-### **Epic Breakdowns**
+[Back to Top](#table-of-contents)
+
+<br>
+
+## User Stories
+
+* Users will:
+
+  * Find information about a local business offering Yoga and Meditation sessions.
+  * Be able to use the website across all devices with responsive design.
+  * Be able to create, update and delete Profiles and Appointments for the business.
+
+* Users expect:
+
+  * A website that looks well across all devices.
+  * A website that works well, with minimum errors encountered.
+
+<br>
+
+## Epic Breakdowns
 ## **Epic 1: [Initial Install](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/1)**
 > Allow Users to create/update/manage and delete user profiles
 
@@ -210,6 +132,9 @@ Broken down into these tasks:
 
 This Epic was the inital install of Django, gunicorn, dj-database and psycopg2 and the first App, Booking. This was the base platform on which the entire website would be built. The inital App for "booking" was created.
 
+[Back to Top](#table-of-contents)
+
+<br>
 
 ---
 
@@ -225,6 +150,10 @@ Broken down into these tasks:
 >  Create Database URL in Elephant SQL, Add the Database URL to env.py and Heroku Config Vars
 
 This Epic was for the inital deployment of the website to Heroku. This was undertaken as soon as the base packages, App and env.py file was set up and working correctly. Config Var files were created on Heroku for any sensitive information contained in the env.py file, as well as Port access needed.
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ---
 
@@ -243,6 +172,10 @@ This Epic was originally for the Booking app but was susequently reused when the
 - For Home, a database model was created for the contact form which allowed the information submitted to be stored in the Admin panel for Staff to see the Contact Form information sent.
 - For Profiles, a database model was created to store user information (first name and last name) and also linked to the User created with AllAuth.
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 ---
 
 <br>
@@ -256,6 +189,10 @@ This was from the User Story:
 
 
 This Epic was originally for the Booking app but was susequently reused when the project had 2 other apps, Home and Profiles. The Admin panel allows the site admin to manage booked appointments, contact form submissions and user profiles. All information for each of these can be seen, updated and removed from the database through the admin panel. Each App's admin.py file was also given some sort of display or search parameter, to make it easier for the site admin to find and sort information on the backend. 
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ---
 
@@ -278,6 +215,10 @@ Which was down broken down into these tasks:
 <br>
 
 This User Story was implemented with the use of the AllAuth package, as well as a custom Profile Model, Form and Template. There is also a custom SignUp Form for when a user registers an account. The information the user enters in this is stored in the Admin panel, for SuperUsers/Staff to see and manage. Each User is assigned a User ID which allows for bookings to be assigned properly to each individual. Users can edit their profiles and delete them and this is all reflected in the database.
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ---
 
@@ -303,6 +244,10 @@ Which was down broken down into these tasks:
 
 This User Story was the main purpose for the website. I wanted users to be able to create bookings online for the service offered by the business. It was important that the booking system was easy to use with just a few clicks, with validation for double booking days or times. The booking links are individual based off the Appointment model PK which allows for easier updating and deleting based off that number. All appointments can be edited by the user on the website (with a widget that is restricted to 7 days ahead) and can also be edited on the admin panel by staff. When a user deletes their profile, it also deletes all bookings associated with that user, using the CASCADE effect on the model.
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 ---
 
 <br>
@@ -323,6 +268,10 @@ Which was down broken down into these tasks:
 
 This User Story was important to the site, to allow any questions or queries to be asked by the user to the admin. I initally wanted the contact form to email to the user using EmailJS, however I couldn't get this working within Django. I then tried to use the Google STMP but again, this didn't work. So I decided created a custom model, which allows the data submitted through the form to be saved to the admin panel. This allows admins to see the name and email address of the user, as well as their message.
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 ---
 
 <br>
@@ -342,6 +291,10 @@ Which was down broken down into these tasks:
 > Design a website fitting of the theme with appropriate colours, easy to navigate, easily accessible information and has full screen reader capabilities.
 
 One of the most important parts of a website, the look and layout bring out emotions in the user. The website needed to be very calm, in fitting with the theme of the business so a colour scheme was chosen to fit that, as well as images and logo. The responsiveness of the website has been extensively tested, as documented in the testing section.
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ---
 
@@ -364,6 +317,12 @@ Which was down broken down into these tasks:
 
 Creating custom error page templates makes the website feel more fleshed out. Before their implementation, they were provided as a basic white page with black text. Hopefully the user never sees these pages but in the event that they do, it's important that the page still looks individual to the website.
 
+[Back to Top](#table-of-contents)
+
+<br>
+
+---
+
 <br>
 
 ## **Epic 9: [Create Documentation](https://github.com/VictoriaT87/P4-Aventine-Wellness/issues/14)**
@@ -377,6 +336,10 @@ Which was down broken down into these tasks:
 > Create a full Testing.md document with all necessary information on how the project was manually/automatically tested.
 
 Document everything needed for the process of developing and testing the website.
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ---
 
@@ -398,6 +361,192 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
+[Back to Top](#table-of-contents)
+
+<br>
+
+## Skeleton Plane
+
+### Wireframes
+
+- My starting point for this project was to decide on a layout using a wireframe. I went for a Hero Image for the front page, to quickly show the user what the business was about at first view. The booking system being the most important part was also given a wireframe and I decided early on I wanted a button layout, as I thought this was cleaner looking than a form.
+<details>
+<summary>Wireframe Images</summary>
+<img src="documentation/images/front-page-wireframe.png" alt="front page wireframe" width="600"/>
+
+<br>
+
+<img src="documentation/images/appointments-wireframe.png" alt="front page wireframe" width="600"/>
+</details>
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+## The Scope Plane
+- Home page with hero image that immediately tells the user what the site is for.
+- Account registration which will allow for restricted viewing on Editing and Deleting pages and booking an appointment.
+- Fully responsive website, tested across all screen sizes, with navigation for mobile.
+- Ability to create, view, update and delete appointments.
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+## The Structure Plane
+
+# Features 
+
+## Existing Features
+
+### Home Page
+![Hero Image](documentation/images/home-page.png)
+- The home page features a hero image, with some text explaining the main purpose of the website and a small image to compliment the text.
+- The index page is split into multiple sections, with the information easy to read and eye catching to a visitor.
+- Along with this is a link. This link will ask the visitor to create a profile to book an apppointment if they're not logged in. If they are a logged in user, this link will instead suggest they book an appointment.
+![Hero Link Logged In](documentation/images/home-btn.png)
+![Hero Link Not Logged In](documentation/images/home-btn-register.png)
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Wellness Section
+![Wellness Section Image](documentation/images/wellness-section.png)
+- The Wellness section of the index page explains what the booked sessions entail in a quick to read paragraph.
+- Under this, there are 2 cards, with images and text, with a quick explanation of what Yoga and Meditation are.
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Benefits Section
+![Benefits Section Image](documentation/images/benefits-section.png)
+- The benefits section of the home page provides some information to the user about how a wellness session can benefit their health, as well as provding a colour break up between large text sections.
+
+<br>
+
+### Instructors Section
+![Instructors Section Image](documentation/images/instructors-section.png)
+- The Instructors section allows users to get a more peronal feel for the business by introducing them to the people they would likely meet if they booked a session.
+- Each of the 3 instructors has a card with their name, photo and an explanation of their expertise in Yoga and Meditiation.
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### About Page
+![About Page Image](documentation/images/about-page.png)
+- The About page gives the user a chance to learn more about both the Manor Hosue where the sessions will take place and what each session will entail.
+- Information about both Yoga and Meditation are also shown, with links to credited sources about each for users to research themselves. 
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Contact Page
+![Contact Page Image](documentation/images/contact-page.png)
+- The contact page features small icons with quick and easy to read information with a phone number, address and email.
+- The page also hold a form for users to get in contact with the business. This form stores the posted information in the Admin panel, for staff to read easily.
+- There is also directions on how to get to Aventine Gardens, as well as an embedded Google Map pointing to the business.
+
+![Contact Page Map Image](documentation/images/contact-page-map.png)
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Restricted Pages
+![Logged in Nav Image](documentation/images/logged-in.png)
+![Logged out Nav Image](documentation/images/logged-out.png)
+- Some pages are restricted to logged in users only. Links to these only show in the Navbar when a user logged in also.
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Booking Page
+![Booking Page Image](documentation/images/booking-page.png)
+- The Booking Page allows users to book an appointment, saved to their profile.
+- Each day for the next 7 days has 4 appointments each to choose from.
+- Booked appointments will show as buttons with the text "Booked" and those buttons will be disabled.
+- Clicking a button to choose a timeslot will take you to a confirmation page. If a user doesn't want this time, they can return to the booking page and choose another or confirm the original appointment time shown.
+
+![Booking Confirm Image](documentation/images/booking-confirm.png)
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Profile Page
+![Profile Image](documentation/images/profile.png)
+
+![Appointment Image](documentation/images/appointments.png)
+- The Profile page stores both the users information, as well as their appointments.
+- The user can update their first name, last name and their booked appointments from here.
+![Edit Profile Image](documentation/images/edit-profile.png)
+![Edit Appointment Image](documentation/images/edit-appointment.png)
+- Users can also delete their profile and their appointments from this page too. Each action has a confirmation tied to it.
+![Delete Profile Image](documentation/images/delete-profile.png)
+![Delete Appointment Image](documentation/images/delete-appointment.png)
+
+- All of this is done with database information being created, read, updated and deleted (CRUD).
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Register Page
+![Register Page Image](documentation/images/register-page.png)
+- The Register Page has a custom form, which asks users to provide a username, their full name and their email address and password.
+- When these are entered, they're saved to a Profile database and the username, first name and last name all show on the Profile page of the logged in user.
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+### Log Out Page
+![Register Page Image](documentation/images/log-out.png)
+- The log out page is another restricted page which asks the registered user to confirm they would like to log out of their account.
+
+
+[Back to Top](#table-of-contents)
+
+<br>
+
+## Future Features
+
+- There are definitely some features I would like to include, including better options for a registered user. Currently there is no way to reset a password or change an email address. I tried to implement these using AllAuth however I couldn't get the email system to work. More information about that is provided in the [Bugs](#bugs) section.
+- I originally wanted to add an blog to the website which would be updated with the latest information about the business and would also allow Staff to add blog posts with some Yoga videos and wellness information. The reason for not implementing them at the current time was purely down to time contraints on an already massive project.
+
+<br>
+
+[Back to Top](#table-of-contents)
+
+
+## The Surface Plane
 ## Design
 ### Colour Scheme
  -   The colour scheme was important to the site and what the business offered. The setting of the Meditation and Yoga settings are outside in a manor garden and so it needed to be a mellow colour, something that showed relaxation and spiritualness. For this reason I decided on a green that was close to a forest green. I stuck with the green and white combination throughout the site. Some buttons are accentuated with a slightly darker green colouring. 
@@ -407,16 +556,8 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ### Typography
  -   The font chosen for the website is a font called Raleway. This was picked because it looked like an elegant font, which fits well with the theme of the business and the expected users. I wanted the typography to compliment the website, not overpower what it was saying. The font was found on [Google Font](https://fonts.google.com/specimen/Raleway) and imported to the website with a CSS import.
 
-### Wireframe
-
-- My starting point for this project was to decide on a layout using a wireframe. I went for a Hero Image for the front page, to quickly show the user what the business was about at first view. The booking system being the most important part was also given a wireframe and I decided early on I wanted a button layout, as I thought this was cleaner looking than a form.
-
-<img src="documentation/images/front-page-wireframe.png" alt="front page wireframe" width="600"/>
-
-<br>
-
-<img src="documentation/images/appointments-wireframe.png" alt="front page wireframe" width="600"/>
-
+### Images
+- All images were chosen to compliment the project theme of relaxation, wellbeing and spiritualness. Images were all taken from [Pexels.com](https://www.pexels.com/).
 
 <br>
 
@@ -453,6 +594,11 @@ This was marked was Won't Have by the end of the project. I originally thought t
 * [django-bootstrap-datepicker-plus](https://pypi.org/project/django-bootstrap-datepicker-plus/) - A calendar widget with extra customization.
 *[Css Minifier](https://www.toptal.com/developers/cssminifier) - Minify CSS for better response time.
 
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
 
 ## Tools And Resources
 * [GitPod](https://www.gitpod.io/)
@@ -514,6 +660,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ||| SEO | 100% |
  <br>
 
+ [Back to Top](#table-of-contents)
+
+<br>
+
 ### Automated Testing
 - I wrote tests for each app and for every view.py, model.py and form.py I have in the project. Below is the coverage report. The tests are not as comprehensive as I would like but I struggled to understand how to write tests for certain parts of my forms and views. This is definitely something I would be interested in studying more, as I can see the usefulness of having these tests within a project. I wrote as much as I was able, and all currently pass with a coverage of 91%.
 
@@ -529,8 +679,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
  - The website has been tested across various screen sizes, using the Chrome DevTools responsive device section, [Responsive Design Checker](https://responsivedesignchecker.com/) and by opening the website on Firefox, Chrome, 3 various sized Android phones (Huawei P20 Lite, OnePlus 9 Pro, Samsung Galaxy S20) and an Android tablet (Samsung Galaxy Tab 10). 
  - Here is a link to a separate [Markdown file](documentation/tested-devices.md) of device screenshots.
 
- <br>
-
+<br>
 
 [Back to Top](#table-of-contents)
 
@@ -561,6 +710,12 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ![Double Appointment](documentation/images/double-appointment.png)
 ![Original Form Validation](documentation/images/form-validation.png) 
 
+<br>
+
+[Back to Top](#table-of-contents)
+
+<br>
+
   ### DateTime Errors across the website
 
   - #### Issue:
@@ -582,6 +737,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 ### User Editing and Deletion
 
   - #### Issue:
@@ -593,6 +752,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
     - This was a bug pointed out to me by a fellow student [Sean Johnston](https://github.com/seanj06/). I wouldn't have known to look for it myself so I'm very thankful.
     - I had LoginRequired Mixins on my edit and delete views for both appointments and profiles, however I didn't realise that would allow _any_ logged in user access to a different users account just by changing the PK in the URL for edit/delete.
     - Sean pointed me towards the UserPassesTestMixin and I was successfully able to implement this into my Views. Users now need to pass an ID check before they're allowed to access the Edit or Delete views for their own profile and they get a 403 Forbidden page if they try to access a different users profile.
+
+<br>
+
+[Back to Top](#table-of-contents)
 
 <br>
 
@@ -613,6 +776,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 ### Env.py File Disappeared
 
   - #### Issue:
@@ -630,6 +797,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <br>
 
+[Back to Top](#table-of-contents)
+
+<br>
+
 # Bugs Not Fixed
 
 ### Submit button on contact form
@@ -639,8 +810,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 <br>
 
 ### Whitespace Validation on Contact Form
-- The contact form currently allows users to submit messages that aren't stripped, e.g "C C C". Looking into this, I found some answers which were to set the model fields to have "blank=False" and "null=False" but this didn't work. I then tried to clean the data on the field using the clean() method but again, this didn't work.
+- The contact form currently allows users to submit messages that aren't stripped, e.g "C C C". Looking into this, I found some answers which were to set the model fields to have "blank=False" and "null=False" but this didn't work. I then tried to clean the data on the field using the clean() method but again, this didn't work. [Trim whitespaces from charField](https://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield)
 - The fields do all have to be filled in or the form will fail to send with an error message explaing all fields must be filled in, this was the best I could achieve for the form currently.
+
+<br>
 
 [Back to Top](#table-of-contents)
 
@@ -701,6 +874,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 - [developer.mozilla.org, translate3d()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d)
 - [Stackoverflow.com, What is best practice when using ValidationError and Constraint (new in Django 2.2)?](https://stackoverflow.com/questions/59592746/what-is-best-practice-when-using-validationerror-and-constraint-new-in-django-2)
 - [How to restrict date and time in django bootstrap datetimepicker plus?](https://stackoverflow.com/questions/51022722/how-to-restrict-date-and-time-in-django-bootstrap-datetimepicker-plus)
+- [Trim whitespaces from charField](https://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield)
 - [Pexels](https://www.pexels.com/) Images used are all from Pexels.
 
 <br>
