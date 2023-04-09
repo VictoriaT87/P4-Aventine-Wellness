@@ -6,9 +6,9 @@
  ### Huawei P20 Lite Vertical 
  <br>
 
-![Huawei Vertical](huawei1.jpg)
-![Huawei Vertical](huawei2.jpg)
-![Huawei Vertical](huawei3.jpg)
+![Huawei Vertical](images/huawei1.jpg)
+![Huawei Vertical](images/huawei2.jpg)
+![Huawei Vertical](images/huawei3.jpg)
 
 <br>
 

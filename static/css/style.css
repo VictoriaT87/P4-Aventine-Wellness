@@ -769,7 +769,7 @@ iframe {
 
 @media screen and (orientation: landscape) {
     .hero {
-        min-height: 100vh;
+        min-height: 130vh;
     }
 }
 
