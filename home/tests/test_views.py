@@ -68,6 +68,8 @@ class TestContactFormSends(TestCase):
     def test_contact_form_submission(self):
         # Test contact form posts to database
         contact = Contact.objects.last()
-        self.assertEqual(contact.name, 'Test')
-        self.assertEqual(contact.email, 'test@test.com')
-        self.assertEqual(contact.message, 'This is a test to check if a post is correctly created')
+        self.assertEqual(contact.name, "Test")
+        self.assertEqual(contact.email, "test@test.com")
+        self.assertEqual(
+            contact.message, "This is a test to check if a post is correctly created"
+        )

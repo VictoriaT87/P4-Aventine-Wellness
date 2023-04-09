@@ -15,12 +15,10 @@ class Appointment(models.Model):
         ("3 PM", "15:00 - 16:00"),
     )
 
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     date_posted = models.DateField(default=timezone.now)
     date = models.DateField(default=datetime.now)
-    timeblock = models.CharField(
-        max_length=10, choices=AVAILABLE_TIMES, default="9 AM")
+    timeblock = models.CharField(max_length=10, choices=AVAILABLE_TIMES, default="9 AM")
 
     def __str__(self):
         return f"{self.user} | date: {self.date} | time: {self.timeblock}"

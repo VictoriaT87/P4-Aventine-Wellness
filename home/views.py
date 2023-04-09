@@ -29,10 +29,12 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('thank-you'))
+            return HttpResponseRedirect(reverse("thank-you"))
         else:
             messages.error(
-                request, "Failed to send message. Please try again. All fields are required.")
+                request,
+                "Failed to send message. Please try again. All fields are required.",
+            )
 
     form = ContactForm()
     context = {"form": form}
