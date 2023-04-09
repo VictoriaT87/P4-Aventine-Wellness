@@ -683,7 +683,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 <br>
 
 ### Automated Testing
-- I wrote tests for each app and for every view.py, model.py and form.py I have in the project. Below is the coverage report. The tests are not as comprehensive as I would like but I struggled to understand how to write tests for certain parts of my forms and views. This is definitely something I would be interested in studying more, as I can see the usefulness of having these tests within a project. I wrote as much as I was able, and all currently pass with a coverage of 91%.
+- I wrote tests for each app and for every view.py, model.py and form.py I have in the project. Below is the coverage report. The tests are not as comprehensive as I would like but I struggled to understand how to write tests for certain parts of my forms and views. This is definitely something I would be interested in studying more, as I can see the usefulness of having these tests within a project. I wrote as much as I was able, and all currently pass with a coverage of 92%.
 
 ![Coverage Report](documentation/images/coverage_report.png)
 ![Pytest Report](documentation/images/pytest.png) 
