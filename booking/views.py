@@ -157,8 +157,6 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             Appointment.objects.filter(
                 user=self.request.user, date=date, timeblock=timeblock
             )
-            .exclude(pk=appointment.pk)
-            .first()
         )
 
         if existing_appointment:

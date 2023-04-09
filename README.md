@@ -451,6 +451,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 * [psycopg2](https://pypi.org/project/psycopg2/) - A PostgreSQL database adapter.
 * [Black](https://pypi.org/project/black/) - A Python code formatter.
 * [django-bootstrap-datepicker-plus](https://pypi.org/project/django-bootstrap-datepicker-plus/) - A calendar widget with extra customization.
+*[Css Minifier](https://www.toptal.com/developers/cssminifier) - Minify CSS for better response time.
 
 
 ## Tools And Resources
@@ -463,6 +464,10 @@ This was marked was Won't Have by the end of the project. I originally thought t
 * [Stack Overflow](https://stackoverflow.com/)
 * [Coolors](https://coolors.co/)
 * [AmIResponsive](https://ui.dev/amiresponsive)
+* [Real Python](https://realpython.com/)
+* [Pexels](https://www.pexels.com/)
+* [Online Convert](https://image.online-convert.com/convert-to-webp)
+* [Pic Resize](https://picresize.com/)
 
 <br>
 
@@ -533,150 +538,101 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 # Bugs
 
- Below is a description of bugs encountered and how I was able to fix them or not.
+ Below is a description of bugs encountered and how I was able to fix them or why I couldn't.
 
- ### get_name function - Length
+### Validation for Creating and Editing Appointments
 
-  - #### Reason for fail:
+  - #### Issue:
 
-    - User could input a name that was 1 or 2 characters long or an unlimited length.
-
-  - #### Fix:
-
-    - Add len(name.strip(" ")) to the function - user now needs to input a username between 3 characters and 8.
-
-  ### get_subclass function - IndexError
-
-  - #### Reason for fail:
-
-    - Players need to enter a number - either 1, 2 or 3. However if they enter any other number, an error occurs "IndexError: list index out of range"
+    - User could select days that they had already booked or when updating an appointment, could select the same day and time as any other booked appointment.
 
   - #### Fix:
 
-    - I originally tried to use a range() for the input but I struggled with making this work because of the input containing an f-string. Upon further research, I realised I could add an if statement to my Try, to make sure the user input either 1, 2 or 3.
+    - This was the hardest to fix issue I've encountered so far as a developer. I had 4 calls with Tutor Support (Ed is a star!), 2 with my Mentor, sent the code separately to my Mentor for him to look into on his own time and had over 100 tabs open in Chrome to try to understand and fix it. 
+    - I knew the code to validate should be something like this "Appointment.objects.filter(user=user, date=date).exists()" from researching on my own through Stack Overflow and other resources online. However, at first, it wasn't working at all. After a call with Ed from Tutor Support, he made me realise I needed to call this within the Clean() method of my form and that I needed to write "user=self.user".
+    - With this working, I was able to get a validation error for booking on the same day as the user already had one appointment, however, the timeslot validation still wasn't working.
+    - Another call with tutor support made me realise, that calling 2 if statements with a "raise forms.ValidationError" on each was only doing one or the other, not both. After looking into this more, I found this [Stackoverflow.com, What is best practice when using ValidationError and Constraint (new in Django 2.2)?](https://stackoverflow.com/questions/59592746/what-is-best-practice-when-using-validationerror-and-constraint-new-in-django-2) and saw I could create an error dictionary so this was implemented.
+    - This now all worked when Creating an appointment but updating an appointment still didn't stop a user from updating their appointment to the same day they already had an appointment.
+    - Another call (honestly, thank you Ed from Tutor Support!) and I was able to realise I needed to call a new validation error on the UpdateView in my Views, instead of having it on my form. I messed with many different ways to do this by reading through the [Django Documentation on making queries](https://docs.djangoproject.com/en/4.1/topics/testing/tools/) and it now works.
+    - Users can no longer book an appointment if they have one currently booked on the same day. Users also can't book an appointment for the same timeslot as another user and users can't edit their appointment to the same date or time as a currently booked appointment in the database.
+    - The only issue that it currently has is that when a user edits their appointment, if they wanted to keep the same date but change the time, this still shows the message "Cannot schedule more than one appointment on a single day!" which is bad practice. However, with the amount of time and calls and messages I needed to get it to this working stage, I didn't have time to figure out how to stop that from happening. This is something I would like to look into more when I have spare time.
+    - I am 100% sure there is a better/easier way for this to be done but with my beginner knowledge, this was the best I could do but it works!
 
-![Subclass Index](assets/documentation/subclass_index.png) 
+![Double Appointment](documentation/images/double-appointment.png)
+![Original Form Validation](documentation/images/form-validation.png) 
 
-  <br>
+  ### DateTime Errors across the website
 
-  ### get_subclass function - Invalid Literal
+  - #### Issue:
 
-  - #### Reason for fail:
-
-    - Entering a string in the Subclass input was giving the error "invalid literal for int() with base 10"
+    - Validation for booking appointments and editing appointments would fail because of the time being deemed "invalid".
 
   - #### Fix:
 
-    - Researching this took me a long time. As I was enumerating the list for Subclass choices with an index (that starts at 0), I needed the input to be an int. I asked for help on both Reddit.com/LearnPython and StackOverflow and eventually figured out that with a Try statement, I could add a ValueError and an if statement to make sure the player entered a number between 1 and 3 and it wasn't a string.
-    ``` 
-    try:
-        choice = int(input(f"\nMake your choice, {chosen_class}."
-                "\n1, 2 or 3?\n>"))
-        if choice < 1 or choice > 3 or choice == str():
-            raise ValueError
-        except ValueError:
-          print("Please enter number 1, 2 or 3.")
-    ```
+    - This seemed like an easy to handle issue but it was very trying! Because I needed to restrict users from booking appointments at any day at all in the future, I decided to add a calendar widget to the edit appointments form. The django-bootstrap-datepicker-plus widget was the one I chose as it had customization.
+    - However, with this added, the form would not validate because it deemed the time to be incorrect as it was rendering the time as "YYYY-MM-DD" when I had the form rendering the time as "DD-MM-YYYY".
+    - I tried a combination of multiple options I found on [StackOverflow, How to change Date Format in a form field Django](https://stackoverflow.com/questions/67538930/how-to-change-date-format-in-a-form-field-django). This included setting a widget on the form itself, setting the form date field to have a DateInput of "format='%d%m%Y'" and trying to put a date time input directly on a form through Jinja {{date|date:'%d-%m-%Y'}} 
+    - Looking into this, I understood that I needed to set a "DATE_FORMAT" my my settings.py file, however even then it wouldn't validate.
+    - I then set "USE_L10N = False" in settings.py but again this didn't solve the issue.
+    - At this stage I removed the widget to try and get the input to work without it but this lead me to the problem of either letting a use book a date that could be 100 years from now or disabling the field altogether which wouldn't be good UX.
+    - I then looked at Django's Documentation and found out about setting DATE_INPUT_FORMATS in my settings.py. I did this and only added the one I wanted ["%m/%d/%Y"] but because the date was different across the site with the Create Appointment URL, the date input and what was saved to the database, I soon realised I needed to add all the options available.
+    - Once this was implemented, my widget works, the time is displayed correctly on the appointment booking page and it saves correctly to the database.
 
-![Subclass Int Error](assets/documentation/subclass-int-error.png)
+![Valid Date](documentation/images/valid-date.png) 
 
 <br>
 
-### get_subclass function - Choices Not From Spreadsheet
+### User Editing and Deletion
 
-  - #### Reason for fail:
+  - #### Issue:
 
-    - When calling get_subclass, it was choosing the last game's choice, instead of the current one. 
-
-  - #### Fix:
-
-    - To fix, I passed the chosen_class parameter to get_subclass:
-        - if player_class == "Hunter":
-        - if chosen_class == "Hunter":
-
-  <br>
-
-  ### Else statements
-
-  - #### Reason for fail:
-
-    - If a player entered a choice that wasn't listed for certain options, the error message would print to the terminal. However, instead of repeating the choices, the game would then print a different function's questions.
+    - Any logged in user was able to delete another users profile by changing the URL PK number to another.
 
   - #### Fix:
 
-    - For this, I realised I needed to add the word "continue" within my Else statement. This made the code loop again if an incorrect option was entered.
-
-  <br>
-
-![Else Statements](assets/documentation/else-statement.png)
-
-  <br>
-
-  ### Player Health not clearing each run
-
-  - #### Reason for fail:
-
-    - Everytime the health function would run, it would choose a randint between 1 and 100. This would be removed from the players starting health of 100. However, if a player chose to re-run the game, the players health would stay as the negative number. This meant the player would always die at the Dreg Fight function.
-
-  - #### Fix:
-
-    - Add the code "guardian.health = 100" to the play_again function. This would reset it every time.
-
-![Player Health](assets/documentation/health_bug.png)
+    - This was a bug pointed out to me by a fellow student Sean. I wouldn't have known to look for it myself so I'm very thankful.
+    - I had LoginRequired Mixins on my edit and delete views for both appointments and profiles, however I didn't realise that would allow _any_ logged in user access to a different users account just by changing the PK in the URL for edit/delete.
+    - Sean pointed me towards the UserPassesTestMixin and I was successfully able to implement this into my Views. Users now need to pass an ID check before they're allowed to access the Edit or Delete views for their own profile and they get a 403 Forbidden page if they try to access a different users profile.
 
 <br>
 
- ### dreg_fight() function not calling the correct values
+### UserPassesTestMixin Issue 
 
-  - #### Reason for fail:
-  
-    - The dreg_fight function was not calling the correct values.
-    
+  - #### Issue:
+
+    - Django Debug error: "404 Page Not Found: No profile found matching the query"
+
   - #### Fix:
-  
-    - I had originally put the parameters in the function for the returned values of (chosen_class, chosen_subclass, abilities, weapon), however I realised that because of the different classes I have, this wasn't working. To fix it, I wrote local variables to pull the values from the spreadsheet instead.
 
-![Dreg Fight Variables](assets/documentation/fight_error.png)
+    - This issue was my fault completely. I originally did not have a profile model for users and later on decided to add one. Because of this, when users signed up, there was a clash in the database with users who were given a unique Profile ID which didn't correspond with the User ID.
+    - When I realised that any logged in user could change the URL PK number to any other number, I decided to add the UserPassesTestMixin to my edit and delete views.
+    - Unfortunately because of the issue with the ID checks, this always gave me a 404  page "No profile found matching the query", even when the user was trying to access their own page - they would never pass the test as the Profile and User ID didn't match.
+    - To fix this, I needed to completely purge all database tables and rebuild them. I did this using "python manage.py flush" command.
+    - I needed to remake a superuser and make all migrations again.
+    - Because of this issue and the fact that I had a SQLite local database and a database connected from ElephantSQL, these 2 have a disconnect. As the ElephantSQL database is the official one I'm using, I have not flushed the SQLite database, for fear of ruining the project. This may be something I can do safely but I've chosen to avoid it when it's unneccessary.
 
 <br>
 
- ### Object has no Attribute
+### Env.py File Disappeared
 
-  - #### Reason for fail:
-  
-    - When going through the story, some of the functions failed to run with the error "object has no attribute".
-    
+  - #### Issue:
+
+    - Upon logging in to Gitpod one morning, my env.py file had disappeard so the entire site would not connect.
+
   - #### Fix:
-  
-    - Instead of calling the class, I was calling a 'self.' method. This worked for some versions of the adventure that the player chose but if the adventure went to the GameFunctions class back to the Story functions class, it wouldn't be able to find the correct object. To fix this, I wrote "GameFunctions.object(self, )" or "Story.object(self, )". This worked to fix the issue.
 
-![Dreg Fight Variables](assets/documentation/attribute_error.png)
+    - During the development of this project, Code Institute announced that we would no longer be able to get free use of GitPod and would need to migrate to CodeAnywhere.
+    - As I had very little time remaining of my free time on Gitpod, I decided to try migrate over. I created an account and linked my repository to CodeAnywhere. However, it seemed very slow and sluggish and I needed to reinstall every package and make an env.py file etc.
+    - In the end, I decided to stay on GitPod for the remainder of this project. However when I logged in the next day, I realised my env.py file was missing completely and the project wouldn't run.
+    - After checking on the Slack channel with the Tutors, I was told this would happen because I opened the repository on a different platform.
+    - I was able to pull all the data I needed for the recreation of the env.py file from my Heroku deployment thankfully and I was able to reinstall everything needed to get it back up and running.
 
-<br>
-
- ### Error Code 400 on gspread
-
-  - #### Reason for fail:
-  
-    - When running the player_abilites function, I would get an error saying "gspread.exceptions.APIError: {'code': 400,..."
-    
-  - #### Fix:
-  
-    - Researching lead to me to understand that I had my possible abilites in a [list] and the google spreadsheet couldn't understand that. Removing them from a list and putting them in a Tuple fixed this error.
 
 <br>
-
- ### Potentially compromised credentials 
-
-  - Not a bug necessarily but a lesson learned. When creating a 2nd Heroku deployment, I used the same creds.json file as this and was informed by an email from Google, Github and Heroku that my key was compromised. I had to remake the key for this project as a result and update it on Heroku.
-
-![Potentially compromised credentials](assets/documentation/creds-comp.png)
-
-<br>
-
 
 # Bugs Not Fixed
- - I would like the printed enumarate list in the get_subclass function to print to the terminal as slowly as the rest of the text. However, when I try to add function.s_print (to call the slow typing), it tells me I can't have both (index, subclass) in the method - "Too many positional arguments in method call". I have not found a fix for this.
+ - I would like the contact form to completely disappear on submission, instead of just the Submit button being left behind. This is something I looked into but adding an onclick through HTML/CSS wouldn't work because the button would still disappear if the form failed to send. This would mean the user needs to refresh the page to get the submit button to reappear.
+ - I then tried to add javascript for a button click event but this prevented the submission message from being displayed after the successful submission.
 
 <br>
 
@@ -686,18 +642,60 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 # Credits and Sources
 
-- The Project is built using the foundation from the [Elijah Henderson youtube videos on "Let's Make a Text Adventure Game In Python"](https://www.youtube.com/watch?v=HzDcKq2NDwM)
-- The classes, subclasses, abilites, weapons and enemies are based on the video game [Destiny by Bungie](https://www.bungie.net/)
-- The slow typing code was found on [StackOverflow.com](https://stackoverflow.com/questions/60608275/how-can-i-print-text-so-it-looks-like-its-being-typed-out)
-- Clearing the terminal when starting the game or replaying was based on code found on [StackOverflow.com](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
-- Random choice code was found on [Pynative.com](https://pynative.com/python-random-choice/)
-- Code for enumerating the index and text in get_subclass was made with help from [GeeksforGeeks.org](https://www.geeksforgeeks.org/enumerate-in-python/)
-- Getting the value from individual cells was found at [StackOverflow.com](https://stackoverflow.com/questions/19480449/reading-particular-cell-value-from-excelsheet-in-python)
-- Deleting a certain row from the Google spreadsheet was found in [pythoninoffice.com](https://pythoninoffice.com/use-python-to-delete-excel-rows-columns/)
-- Object Oriented Programming and Classes were learned on the [Tech With Tim Youtube Channel](https://www.youtube.com/watch?v=JeznW_7DlB0)
-- Validation for entering a number in the get_subclass function was found at [StackOverflow.com](https://stackoverflow.com/questions/41832613/python-input-validation-how-to-limit-user-input-to-a-specific-range-of-integers)
-- The fix to add a Try statement into the get_subclass function int(input()): [StackOverflow.com](https://stackoverflow.com/questions/71374555/prevent-error-on-intinput-that-is-a-string-and-prevent-negative-number-input) and [Programiz.com](https://www.programiz.com/python-programming/exception-handling)
-- Raising a ValueError if player entered a string or the incorrect number in the get_subclass function [DigitalOcean.com](https://www.digitalocean.com/community/tutorials/python-valueerror-exception-handling-examples)
+### Booking System
+- The booking system was based on a combination of multiple walkthroughs of Django Booking systems.
+  - [DevGenius - Django Tutorial On How To Create A Booking System For A Health Clinic](https://blog.devgenius.io/django-tutorial-on-how-to-create-a-booking-system-for-a-health-clinic-9b1920fc2b78)
+  - [Codemy.com YouTube, Build Dental Website](https://www.youtube.com/watch?v=4b3yvjcPLnk)
+  - [DarshanDev YouTube, Django Hotel Management System](https://www.youtube.com/watch?v=-9dhCQ7FdD0&list=PL_6Ho1hjJirn8WbY4xfVUAlcn51E4cSbY&index=2)
+  - [Developer-Felix, Doctor-Patient-Scheduler](https://github.com/Developer-Felix/Doctor---Patient-Scheduler)
+  - [Tyler Taewook, Tutor Scheduler Django](https://github.com/tylertaewook/tutor-scheduler-django) 
+  - [Selmi Tech YouTube, Build A Doctor Website With Django](https://www.youtube.com/watch?v=3_3q_dE4_qs) 
+  - [pynative.com, Python Create List Of Dates Within Range](https://pynative.com/python-create-list-of-dates-within-range/)
+  - [Geeks For Geeks, Creating a list of range of dates in Python](https://www.geeksforgeeks.org/creating-a-list-of-range-of-dates-in-python/) 
+
+<br>
+
+### Testing Credits
+- [Freecodecamp.org, An Introduction to Unit Testing in Python](https://www.freecodecamp.org/news/an-introduction-to-testing-in-python) 
+- [Real Python.com, Getting Started With Testing in Python](https://realpython.com/python-testing/)
+- [Real Python.com, Testing in Django (Part 1) – Best Practices and Examples](https://realpython.com/testing-in-django-part-1-best-practices-and-examples/)
+- [Real Python.com, Effective Python Testing With Pytest](https://realpython.com/pytest-python-testing/)
+- [valentinog.com, Django Testing Cheat Sheet](https://www.valentinog.com/blog/testing-django/)
+- [developer.mozilla.org, Django Tutorial Part 10: Testing a Django web application](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing)
+- [adamj.eu, How to Unit Test a Django Form](https://adamj.eu/tech/2020/06/15/how-to-unit-test-a-django-form/)
+- [Django Documentation, Advanced testing topics](https://docs.djangoproject.com/en/4.1/topics/testing/advanced)
+- [Django Documentation, Testing tools](https://docs.djangoproject.com/en/4.1/topics/testing/tools/)
+- [Stackoverflow.com, How to test django model method __str__()](https://stackoverflow.com/questions/29077509/how-to-test-django-model-method-str)
+- [Stackoverflow.com, How can I unit test django messages?](https://stackoverflow.com/questions/2897609/how-can-i-unit-test-django-messages)
+- [Stackoverflow.com, Django how to test model functions with validator](https://stackoverflow.com/questions/67331863/django-how-to-test-model-functions-with-validator)
+- [Stackoverflow.com, Is it possible exclude test directories from coverage.py reports?](https://stackoverflow.com/questions/1628996/is-it-possible-exclude-test-directories-from-coverage-py-reports)
+
+<br>
+
+### General Credits
+- [PythonEatsTail, Adding extra fields to a Django custom user model](https://www.youtube.com/watch?v=sSKYEMEU-C8&list=PL3I1Ttg2koa7hPduw6NDOaiZImfTTgw0b&index=31) 
+- [Stackoverflow.com, How to pass logged user's id to CreateView](https://stackoverflow.com/questions/63550890/how-to-pass-logged-users-id-to-createview)
+- [Geeks For Geeks, UpdateView – Class Based Views Django](https://www.geeksforgeeks.org/updateview-class-based-views-django/)
+- [Geeks For Geeks, Update View – Function based Views Django](https://www.geeksforgeeks.org/update-view-function-based-views-django/)
+- [ordinarycoders.com, Build a Django Contact Form with Email Backend](https://ordinarycoders.com/blog/article/build-a-django-contact-form-with-email-backend)
+- [Stackoverflow.com, Edit view is not showing choice field data in django?](https://stackoverflow.com/questions/40946200/edit-view-is-not-showing-choice-field-data-in-django)
+- [Stackoverflow.com, How to validate in UpdateView without validating through a form?](https://stackoverflow.com/questions/54319706/how-to-validate-in-updateview-without-validating-through-a-form)
+- [Stackoverflow.com, How to remove an already selected option from options list to avoid double bookings](https://stackoverflow.com/questions/73270490/how-to-remove-an-already-selected-option-from-options-list-to-avoid-double-booki)
+- [Stackoverflow.com, django form validation with parameters from view](https://stackoverflow.com/questions/19007990/django-form-validation-with-parameters-from-view)
+- [Stackoverflow.com, How to pass logged user's id to CreateView](https://stackoverflow.com/questions/63550890/how-to-pass-logged-users-id-to-createview)
+- [Stackoverflow.com, Django validating time slot](https://stackoverflow.com/questions/67981109/django-validating-time-slot)
+- [Stackoverflow.com, Django form field clean to check if entered date is in a stored range](https://stackoverflow.com/questions/13026689/django-form-field-clean-to-check-if-entered-date-is-in-a-stored-range)
+- [Stackoverflow.com, Create User and UserProfile on user signup with django-allauth](https://stackoverflow.com/questions/69990075/create-user-and-userprofile-on-user-signup-with-django-allauth)
+- [Simpleisbetterthancomplex.com, How to Extend Django User Model](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html)
+- [Django Documentation, Using mixins with class-based views](https://docs.djangoproject.com/en/4.1/topics/class-based-views/mixins/)
+- [Django Documentation, Using the Django authentication system](https://docs.djangoproject.com/en/4.1/topics/auth/default/)
+- [Django Documentation, Form handling with class-based views](https://docs.djangoproject.com/en/4.1/topics/class-based-views/generic-editing/)
+- [codewithhugo.com, Disable a HTML <a> link/anchor tag](https://codewithhugo.com/disable-html-anchor/)
+- [Stackoverflow.com, Angular ngx-boostrap datepicker position issue on mobile screen](https://stackoverflow.com/questions/60906841/angular-ngx-boostrap-datepicker-position-issue-on-mobile-screen)
+- [developer.mozilla.org, translate3d()](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate3d)
+- [Stackoverflow.com, What is best practice when using ValidationError and Constraint (new in Django 2.2)?](https://stackoverflow.com/questions/59592746/what-is-best-practice-when-using-validationerror-and-constraint-new-in-django-2)
+- [How to restrict date and time in django bootstrap datetimepicker plus?](https://stackoverflow.com/questions/51022722/how-to-restrict-date-and-time-in-django-bootstrap-datetimepicker-plus)
+- [Pexels](https://www.pexels.com/) Images used are all from Pexels.
 
 <br>
 
@@ -740,7 +738,7 @@ The following are the steps I went through to deploy my live site:
 
 <br>
 
-The live link can be found here - [Destiny RPG Game](https://destiny-rpg.herokuapp.com/)
+The live link can be found here - [Aventine Gardens](https://aventine-wellness-p4.herokuapp.com/)
 
 <br>
 
