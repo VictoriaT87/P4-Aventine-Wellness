@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from .forms import ContactForm
 from django.contrib import messages
+
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -27,10 +29,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(
-                request, "Your message was sent! We'll be in touch shortly."
-            )
-            return render(request, "contact.html")
+            return HttpResponseRedirect(reverse('thank-you'))
         else:
             messages.error(
                 request, "Failed to send message. Please try again. All fields are required.")
@@ -38,3 +37,10 @@ def contact(request):
     form = ContactForm()
     context = {"form": form}
     return render(request, "contact.html", context)
+
+
+def contact_thank_you(request):
+    """
+    Conact Thank You Page
+    """
+    return render(request, "contact_thank_you.html")
