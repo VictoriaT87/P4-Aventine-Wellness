@@ -50,6 +50,7 @@ class ProfileForm(forms.ModelForm):
     """
     Profile Form - shown on Profile Page
     """
+
     class Meta:
         model = Profile
         fields = ["first_name", "last_name"]

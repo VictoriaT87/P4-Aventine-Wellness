@@ -6,8 +6,9 @@ from http import HTTPStatus
 
 class ContactForm(forms.ModelForm):
     """
-    Contact Form 
+    Contact Form
     """
+
     name = forms.CharField()
     message = forms.CharField(widget=forms.Textarea(attrs={"rows": 5, "cols": 20}))
 
