@@ -485,7 +485,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 ### Restricted Pages
 ![Logged in Nav Image](documentation/images/logged-in.png)
 ![Logged out Nav Image](documentation/images/logged-out.png)
-- Some pages are restricted to logged in users only. Links to these only show in the Navbar when a user logged in also.
+- Some pages are restricted to logged in users only. Links to these pages are only show in the Navbar when a user logged in.
 
 <br>
 
@@ -820,7 +820,6 @@ This was marked was Won't Have by the end of the project. I originally thought t
     - After checking on the Slack channel with the Tutors, I was told this would happen because I opened the repository on a different platform.
     - I was able to pull all the data I needed for the recreation of the env.py file from my Heroku deployment thankfully and I was able to reinstall everything needed to get it back up and running.
 
-
 <br>
 
 [Back to Top](#table-of-contents)
@@ -829,7 +828,26 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 # Bugs Not Fixed
 
+### Email System
+
+  - #### Issue:
+
+    - Emails would not send, despite having the correct credentials.
+
+  - #### What I Tried:
+
+    - I wanted to add an email system to have the user verify their account before being able to access restricted pages.
+    - Initially, I tried to implement this with EmailJS but even after following the tutorial and the walkthrough, when deployed to the live server, the EmailJS dashboard would show my emails were failing to sent with a service error.
+    - I then looked into Google STMP with some tutorials - [1](https://www.geeksforgeeks.org/setup-sending-email-in-django-project/), [2](https://dev.to/abderrahmanemustapha/how-to-send-email-with-django-and-gmail-in-production-the-right-way-24ab), but again, this didn't work. 
+    - Researching this made me believe that the port for sending emails was blocked.
+    - I do know that there must be a way to send them but given time contraints, I had to leave it unfixed and remove any mention of password resetting or email verification.
+
 ### Submit button on contact form
+
+- #### Issue:
+
+    - Have the Submit button dissapear from the contact form once submitted.
+  
  - I would like the contact form to completely disappear on submission, instead of just the Submit button being left behind. This is something I looked into but adding an onclick through HTML/CSS wouldn't work because the button would still disappear if the form failed to send. This would mean the user needs to refresh the page to get the submit button to reappear.
  - I then tried to add javascript for a button click event but this prevented the submission message from being displayed after the successful submission. Adding javascript to hide the button on submission, would hide it when the form was invalid but still show it when the page rendered the success message.
  - To counter this and make for a better UX, I decided to create a new view which renders the "contact_thank_you.html" page. This redirects a user to a page with a success message upon a valif form submission.
@@ -837,6 +855,11 @@ This was marked was Won't Have by the end of the project. I originally thought t
 <br>
 
 ### Whitespace Validation on Contact Form
+
+- #### Issue:
+
+    - Could not achieve full whitespace validation for forms.
+
 - The contact form currently allows users to submit messages that aren't stripped, e.g "C C C". Looking into this, I found some answers which were to set the model fields to have "blank=False" and "null=False" but this didn't work. I then tried to clean the data on the field using the clean() method but again, this didn't work. [Trim whitespaces from charField](https://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield)
 - The fields do all have to be filled in or the form will fail to send with an error message explaing all fields must be filled in, this was the best I could achieve for the form currently.
 
