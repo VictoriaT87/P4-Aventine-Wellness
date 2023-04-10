@@ -88,6 +88,7 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         }
 
     def get_form(self, form_class=AppointmentForm):
+        # disable editing time and date for confirmation page
         form = super(AppointmentCreateView, self).get_form(form_class)
         form.fields["date"].disabled = True
         form.fields["timeblock"].disabled = True
@@ -102,6 +103,7 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         return reverse("user-profile")
 
     def form_valid(self, form):
+        # check if form is valid, if not raise an error
         form.instance.user = self.request.user
         if form.is_valid():
             messages.success(self.request, "Your appointment was successfully booked!")
@@ -123,6 +125,7 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_form(self, form_class=AppointmentForm):
         form = super(AppointmentEditView, self).get_form(form_class)
         form.user = self.request.user
+        # Add datepicker for editing an appointment
         form.fields["date"].widget = DatePickerInput(
             options={
                 "format": "DD/MM/YYYY",

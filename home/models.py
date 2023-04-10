@@ -5,6 +5,9 @@ from django.utils import timezone
 
 
 class Contact(models.Model):
+    """
+    Contact Form model for posting to the admin panel
+    """
     email = models.EmailField(blank=False)
     name = models.CharField(max_length=50, blank=False)
     message = models.TextField(blank=False)

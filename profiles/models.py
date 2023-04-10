@@ -15,6 +15,8 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
+    # when a user creates a profile, save it
+    # https://stackoverflow.com/questions/69990075/create-user-and-userprofile-on-user-signup-with-django-allauth
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
@@ -32,4 +34,5 @@ class Profile(models.Model):
         instance.profile.save()
 
     def __str__(self):
+        # String for the admin panel display
         return f"Username: {self.user} | First Name: {self.first_name} | Last Name: {self.last_name}"

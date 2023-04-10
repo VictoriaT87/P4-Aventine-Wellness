@@ -534,7 +534,6 @@ iframe {
 
 .booking-slots {
     display: flex;
-    /* max-width: 70%; */
     margin: auto;
     align-content: stretch;
     justify-content: space-evenly;
@@ -598,11 +597,6 @@ iframe {
     font-size: 1.25em;
     text-decoration: underline;
 }
-
-/* #id_timeblock {
-    width: 10em;
-} */
-
 
 /* Account Forms */
 
@@ -768,6 +762,7 @@ iframe {
 
 /* Media Queries */
 
+/* For small devices in landscape mode */
 @media (max-height: 700px), handheld and (orientation: landscape)  {
     .hero {
         min-height: 130vh;

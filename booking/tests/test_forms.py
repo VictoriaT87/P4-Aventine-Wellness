@@ -9,7 +9,7 @@ from django.core.exceptions import ValidationError
 
 class AppointmentFormLabelTests(TestCase):
     """
-    Test Appointment Booking Form is valid
+    Test Appointment Booking Form labels are valid
     """
 
     @classmethod
@@ -43,7 +43,7 @@ class AppointmentFormLabelTests(TestCase):
 
 class AppointmentFormValidationTests(TestCase):
     """
-    Test Appointment Booking Form is valid
+    Test Appointment Booking Form validations
     """
 
     @classmethod

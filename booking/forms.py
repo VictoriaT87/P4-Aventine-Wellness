@@ -37,17 +37,21 @@ class AppointmentForm(forms.ModelForm):
         super(AppointmentForm, self).__init__(*args, **kwargs)
 
     def clean(self):
+        # clean data from form
         cleaned_data = super().clean()
         user = cleaned_data.get("user")
         date = cleaned_data.get("date")
         timeblock = cleaned_data.get("timeblock")
 
+        # create error dictionary for validation errors
         error_dict = {}
         if Appointment.objects.filter(user=self.user, date=date).exists():
+            # if user has already booked on that date raise validation error
             error_dict["date"] = ValidationError(
                 "Cannot schedule more than one appointment on a single day!"
             )
         if Appointment.objects.filter(timeblock=timeblock, date=date).exists():
+            # if a time on that day is booked raise validation error
             error_dict["timeblock"] = ValidationError(
                 "Sorry, this time is already booked!"
             )

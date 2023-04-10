@@ -59,7 +59,7 @@ class TestContactFormSends(TestCase):
         )
 
     def test_contact_redirects(self):
-        # Test contact form posts to database
+        # Test contact form posts is shown
         self.assertEqual(Contact.objects.count(), 1)
         response = self.client.get(reverse("contact"))
         self.assertEqual(response.status_code, 200)
