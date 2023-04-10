@@ -927,6 +927,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 - [How to restrict date and time in django bootstrap datetimepicker plus?](https://stackoverflow.com/questions/51022722/how-to-restrict-date-and-time-in-django-bootstrap-datetimepicker-plus)
 - [Trim whitespaces from charField](https://stackoverflow.com/questions/5043012/django-trim-whitespaces-from-charfield)
 - [Pexels](https://www.pexels.com/)
+- [ThemeWagon](https://themewagon.com/themes/free-responsive-bootstrap-5-html5-construction-company-website-template-upconsttruction/) Some elements for the Contact Page were built on the UpConstruction boostrap template.
 
 <br>
 
