@@ -872,7 +872,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 # Credits and Sources
 
 ### Booking System
-- The booking system was based on a reading and watching multiple walkthroughs of Django Booking systems.
+- The booking system was based on reading and watching multiple walkthroughs of Django Booking systems.
   - [DevGenius - Django Tutorial On How To Create A Booking System For A Health Clinic](https://blog.devgenius.io/django-tutorial-on-how-to-create-a-booking-system-for-a-health-clinic-9b1920fc2b78)
   - [Codemy.com YouTube, Build Dental Website](https://www.youtube.com/watch?v=4b3yvjcPLnk)
   - [DarshanDev YouTube, Django Hotel Management System](https://www.youtube.com/watch?v=-9dhCQ7FdD0&list=PL_6Ho1hjJirn8WbY4xfVUAlcn51E4cSbY&index=2)

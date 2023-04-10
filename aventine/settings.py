@@ -130,13 +130,6 @@ else:
         }
     }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -170,6 +163,8 @@ USE_L10N = False
 
 USE_TZ = True
 
+# date formats used for form validation on appointments
+# more info in README.md
 DATE_FORMAT = "d-m-Y"
 DATE_INPUT_FORMATS = [
     "%d-%m-%Y",
@@ -186,7 +181,8 @@ DATE_INPUT_FORMATS = [
     "%d %B, %Y",  # '25 October, 2006'   # '21-03-2014'
 ]
 
-# Accounts
+
+# Extending AllAuth User model
 ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
 ACCOUNT_AUTHENTICATION_METHOD = "username"
 ACCOUNT_EMAIL_REQUIRED = True
@@ -196,7 +192,7 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = "accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 
-
+# Custom form used for SignUp
 ACCOUNT_FORMS = {
     "add_email": "allauth.account.forms.AddEmailForm",
     "change_password": "allauth.account.forms.ChangePasswordForm",
