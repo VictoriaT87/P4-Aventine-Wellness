@@ -793,6 +793,8 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
   - #### Fix:
 
+    - I need to apologise to the Assessor for a Git commit on 05/04 - This was when I was trying to sort out everything with this bug and needed to flush my database. I wasn't able to add everything needed to the commit message so I will put it here. On commit [#commit 997fe7b](https://github.com/VictoriaT87/P4-Aventine-Wellness/commit/997fe7be1e125398a11f8ed581bd8a8b355b5f58), 11 files were changed with 170 additions and 44 deletions. This was to flush my database and migrate it again, add UserPassesMixin to my views, add signals, and rename databases.
+
     - This issue was my fault completely. I originally did not have a profile model for users and later on decided to add one. Because of this, when users signed up, there was a clash in the database with users who were given a unique Profile ID which didn't correspond with the User ID.
     - When I realised that any logged in user could change the URL PK number to any other number, I decided to add the UserPassesTestMixin to my edit and delete views.
     - Unfortunately because of the issue with the ID checks, this always gave me a 404  page "No profile found matching the query", even when the user was trying to access their own page - they would never pass the test as the Profile and User ID didn't match.
