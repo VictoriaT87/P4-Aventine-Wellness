@@ -382,8 +382,16 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 <img src="documentation/images/appointments-wireframe.png" alt="front page wireframe" width="600"/>
 
-
 <br>
+
+### Database Schema
+
+- The AllAuth Database is the main one used with everything linked from there.
+- The Appointment Database pulls the UserId from the AllAuth database, and then creates a Date and Timeblock for a user's booked appointment. This allowed for validation, so that no 2 users can book the same timeslot and that 1 user can't have multiple appointments on the same day.
+- The Profile Form is used in conjunction with the AllAuth SignUpForm. When a user registers with the SignUpForm, a Profile object is created, storing the users First Name and Last Name and linking it to their exclusive UserID.
+- The Contact Database is used purely for creating and storing Contact Form submissions on the admin panel so admin's to view.
+
+![Database Schema](documentation/images/schema.png)
 
 [Back to Top](#table-of-contents)
 
@@ -880,7 +888,6 @@ This was marked was Won't Have by the end of the project. I originally thought t
 - [Stackoverflow.com, How to validate in UpdateView without validating through a form?](https://stackoverflow.com/questions/54319706/how-to-validate-in-updateview-without-validating-through-a-form)
 - [Stackoverflow.com, How to remove an already selected option from options list to avoid double bookings](https://stackoverflow.com/questions/73270490/how-to-remove-an-already-selected-option-from-options-list-to-avoid-double-booki)
 - [Stackoverflow.com, django form validation with parameters from view](https://stackoverflow.com/questions/19007990/django-form-validation-with-parameters-from-view)
-- [Stackoverflow.com, How to pass logged user's id to CreateView](https://stackoverflow.com/questions/63550890/how-to-pass-logged-users-id-to-createview)
 - [Stackoverflow.com, Django validating time slot](https://stackoverflow.com/questions/67981109/django-validating-time-slot)
 - [Stackoverflow.com, Django form field clean to check if entered date is in a stored range](https://stackoverflow.com/questions/13026689/django-form-field-clean-to-check-if-entered-date-is-in-a-stored-range)
 - [Stackoverflow.com, Create User and UserProfile on user signup with django-allauth](https://stackoverflow.com/questions/69990075/create-user-and-userprofile-on-user-signup-with-django-allauth)
@@ -911,7 +918,11 @@ The following are the steps I went through to deploy my live site:
 2. Go to 'New' and select 'Create a new app'
 3. Input your app name and create app.
 4. Navigate to 'Settings'
-5. Install the needed buildpacks. Select Python and install and then node.js and install and then click save. They must be in this order.
+5. On the Config Vars section, enter the following values:
+    - SECRET_KEY: The Secret Key for your project
+    - DATABASE_URL: The URL from your ElephantSQL dashboard
+    - CLOUNDINARY_URL: The URL from your Cloudinary dashboard
+    - PORT: 8000
 6. Navigate to the 'Deploy' section. 
 7. Connect to GitHub, search for your repo and confirm. 
 8. Choose branch to deploy.
