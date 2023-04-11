@@ -45,7 +45,7 @@ a:hover {
 .delete-div,
 .update-div,
 .login-div {
-    height: 40vh;
+    height: 50vh;
     position: relative;
     color: #175851;
     text-align: center;
@@ -596,6 +596,12 @@ iframe {
 .appointment-details {
     font-size: 1.25em;
     text-decoration: underline;
+}
+
+.edit-p {
+    text-align: center;
+    color: var(--color-default);
+    margin: 5px;
 }
 
 /* Account Forms */

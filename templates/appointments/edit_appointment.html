@@ -5,6 +5,7 @@
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black m-5 update-div">
     <div class="verticle-center">
         <h2 class="text-center mt-3">Edit Your Appointment</h2>
+        <p class="edit-p">PLEASE NOT: Due to limited available times per day, any edited appointment must be for a date other than the original booked date.</p>
         <div class="login-form">
             {{ form.media }}
             <form method="POST" class="appointment-form">{% csrf_token %}

@@ -130,10 +130,10 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             options={
                 "format": "DD/MM/YYYY",
                 "minDate": (
-                    datetime.datetime.today() + datetime.timedelta(days=1)
+                    datetime.datetime.today() + datetime.timedelta(days=0)
                 ).strftime("%Y-%m-%d 00:00:00"),
                 "maxDate": (
-                    datetime.datetime.today() + datetime.timedelta(days=7)
+                    datetime.datetime.today() + datetime.timedelta(days=6)
                 ).strftime("%Y-%m-%d 23:59:59"),
                 "showTodayButton": True,
             }
