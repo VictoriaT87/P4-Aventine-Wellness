@@ -993,7 +993,7 @@ The live link can be found here - [Aventine Gardens](https://aventine-wellness-p
 # Acknowledgements
 - To my amazing boyfriend Thomas. For listening to me worry about this project for months, for keeping me sane, for helping me switch off after a long day with a cup of coffee and a bar of chocolate :)
 - My family and my cats for keeping my stress levels under control!
-- [Sean Johnston](https://github.com/seanj06/), my fellow classmate on Slack. Your help with my many questions was super appreciated, thank you.
+- [Sean Johnston](https://github.com/seanj06/) and [Sean Finn](https://github.com/seanf316/), my fellow classmates on Slack. Your help with my many questions was super appreciated, thank you.
 
 <br>
 
