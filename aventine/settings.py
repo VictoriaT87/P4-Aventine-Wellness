@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-X_FRAME_OPTIONS = "SAMEORIGIN"
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ALLOWED_HOSTS = ["aventine-wellness-p4.herokuapp.com", "localhost"]
@@ -176,7 +176,7 @@ DATE_INPUT_FORMATS = [
     "%B %d %Y",  # 'October 25 2006'
     "%B %d, %Y",  # 'October 25, 2006'
     "%d %B %Y",  # '25 October 2006'
-    "%d %B, %Y",  # '25 October, 2006'   # '21-03-2014'
+    "%d %B, %Y",  # '25 October, 2006'
 ]
 
 

@@ -46,4 +46,5 @@ class AppointmentModelTest(TestCase):
     def test_str_return(self):
         # Test str return is correct
         appointment = Appointment.objects.get(id=1)
-        self.assertEqual(str(appointment), "None | date: 2023-03-31 | time: 9 AM")
+        self.assertEqual(
+            str(appointment), "None | date: 2023-03-31 | time: 9 AM")

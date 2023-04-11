@@ -26,7 +26,8 @@ class ContactFormLabelTests(TestCase):
         # test field label for date
         form = ContactForm()
         self.assertTrue(
-            form.fields["name"].label is None or form.fields["name"].label == "name"
+            form.fields["name"].label is None
+            or form.fields["name"].label == "name"
         )
 
     def test_contact_form_timeblock_field_label(self):
@@ -45,6 +46,9 @@ class ContactFormTests(TestCase):
 
     def test_form_is_valid(self):
         # test contact form is valid
-        form_data = {"name": "name", "email": "email@email.com", "message": "test"}
+        form_data = {
+            "name": "name",
+            "email": "email@email.com",
+            "message": "test"}
         form = ContactForm(data=form_data)
         self.assertTrue(form.is_valid())

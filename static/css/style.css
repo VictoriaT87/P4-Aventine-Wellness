@@ -769,7 +769,7 @@ iframe {
 /* Media Queries */
 
 /* For small devices in landscape mode */
-@media (max-height: 700px), handheld and (orientation: landscape)  {
+@media (max-height: 700px) and (orientation: landscape)  {
     .hero {
         min-height: 130vh;
     }

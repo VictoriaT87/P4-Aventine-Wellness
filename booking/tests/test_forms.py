@@ -29,7 +29,8 @@ class AppointmentFormLabelTests(TestCase):
         # test field label for date
         form = AppointmentForm()
         self.assertTrue(
-            form.fields["date"].label is None or form.fields["date"].label == "date"
+            form.fields["date"].label is None
+            or form.fields["date"].label == "date"
         )
 
     def test_appointment_form_timeblock_field_label(self):
@@ -91,7 +92,9 @@ class AppointmentFormValidationTests(TestCase):
         form = AppointmentForm(data=data)
         self.assertFalse(form.is_valid())
         print(form.errors)
-        self.assertRaisesMessage(ValidationError, "Sorry, this time is already booked!")
+        self.assertRaisesMessage(
+            ValidationError, "Sorry, this time is already booked!"
+            )
 
 
 class AppointmentFormValidTest(TestCase):

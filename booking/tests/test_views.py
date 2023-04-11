@@ -57,7 +57,8 @@ class TestAppointmentViews(TestCase):
         self.client.login(username="wrong_username", password="wrong_password")
         response = self.client.get(reverse("appointment"))
         self.assertRedirects(
-            response, "/accounts/login/", status_code=302, fetch_redirect_response=True
+            response, "/accounts/login/",
+            status_code=302, fetch_redirect_response=True
         )
 
     def test_appointment_create_url(self):
@@ -65,10 +66,12 @@ class TestAppointmentViews(TestCase):
         date = "2023-04-04"
         timeblock = "9 AM"
         self.client.login(username="test_username", password="password")
-        self.create_url = reverse("appointment-create-spec", args=[date, timeblock])
+        self.create_url = reverse(
+            "appointment-create-spec", args=[date, timeblock])
         response = self.client.get(self.create_url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "appointments/appointment_confirm_form.html")
+        self.assertTemplateUsed(
+            response, "appointments/appointment_confirm_form.html")
 
 
 class TestLoginRequiredPages(TestCase):

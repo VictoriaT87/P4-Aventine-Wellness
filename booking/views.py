@@ -95,7 +95,8 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         return form
 
     def get_form_kwargs(self, *args, **kwargs):
-        kwargs = super(AppointmentCreateView, self).get_form_kwargs(*args, **kwargs)
+        kwargs = super(
+            AppointmentCreateView, self).get_form_kwargs(*args, **kwargs)
         kwargs["user"] = self.request.user
         return kwargs
 
@@ -106,7 +107,8 @@ class AppointmentCreateView(LoginRequiredMixin, CreateView):
         # check if form is valid, if not raise an error
         form.instance.user = self.request.user
         if form.is_valid():
-            messages.success(self.request, "Your appointment was successfully booked!")
+            messages.success(
+                self.request, "Your appointment was successfully booked!")
             super().form_valid(form)
             return HttpResponseRedirect(self.get_success_url())
         else:
@@ -166,12 +168,14 @@ class AppointmentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return self.form_invalid(form)
         else:
             form.instance.user = self.request.user
-            messages.success(self.request, "Your appointment was successfully changed!")
+            messages.success(
+                self.request, "Your appointment was successfully changed!")
             response = super().form_valid(form)
             return response
 
 
-class AppointmentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class AppointmentDeleteView(LoginRequiredMixin, UserPassesTestMixin,
+                            DeleteView):
     """
     Delete an Appointment
     """
@@ -187,4 +191,5 @@ class AppointmentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
-        return super(AppointmentDeleteView, self).delete(request, *args, **kwargs)
+        return super(AppointmentDeleteView, self).delete(
+            request, *args, **kwargs)

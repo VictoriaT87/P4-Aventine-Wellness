@@ -652,11 +652,14 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 - HTML
   - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)
+  - The only warnings that were given were because of the nature of Django Template Syntax.
+![W3 Errors](documentation/images/w3-errors.png)
 - CSS
   - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)
 - Python
   - No errors were returned when passing through [CI Python Linter](https://pep8ci.herokuapp.com/)
 
+<br>
 
 ### Lighthouse Testing
 ![Lighthouse Metrics](documentation/images/lighthouse-desktop.png)
@@ -704,7 +707,7 @@ This was marked was Won't Have by the end of the project. I originally thought t
 <br>
 
 ### Manual Testing
-- Manual testing has been done extensively and has been shown in separate fine, located [here.](documentation/testing.md)
+- Manual testing has been done extensively and has been shown in separate file, located [here.](documentation/testing.md)
 
 ### Other Testing
  - The website has been tested across various screen sizes, using the Chrome DevTools responsive device section, [Responsive Design Checker](https://responsivedesignchecker.com/) and by opening the website on Firefox, Chrome, 3 various sized Android phones (Huawei P20 Lite, OnePlus 9 Pro, Samsung Galaxy S20) and an Android tablet (Samsung Galaxy Tab 10). 

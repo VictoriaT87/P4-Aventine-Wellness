@@ -71,5 +71,6 @@ class TestContactFormSends(TestCase):
         self.assertEqual(contact.name, "Test")
         self.assertEqual(contact.email, "test@test.com")
         self.assertEqual(
-            contact.message, "This is a test to check if a post is correctly created"
+            contact.message,
+            "This is a test to check if a post is correctly created"
         )
