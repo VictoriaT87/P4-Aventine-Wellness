@@ -659,14 +659,19 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 
 ### Lighthouse Testing
- - When tested on desktop, the website scores 97 on performance but only 83 on Best Practices. The main reason for the lower score on Best Practices is because the Boostrap and jQuery files that are rendered log an issue to the console which says "Audit usage of navigator...". As these were from CDN files, I was unable to fix this error.
- - The other reason was because 1 image (the hero image) doesn't have the correct aspect ratio but no matter which width and height I gave, it didn't fix the issue. I assume this is because it's rendered with a border-radius. I could not fix this.
- <br>
-  
 ![Lighthouse Metrics](documentation/images/lighthouse-desktop.png)
+  - Testing on Desktop has given a variety of scores, going from a score between 85 and 97 for Performance and a score between 83 to 92 for Best Practices. The last tests before submissions are posted below.
+  - When tested on desktop, the website scores 95 on performance.
+  - For a while, the best score I could achieve for Best Practices was only 83. The main reason for the lower score on Best Practices was because the Boostrap and jQuery files that are rendered logged an issue to the console which said "Audit usage of navigator...". As these were from CDN files, I was unable to fix this error manually. However upon further testing, this seems to have disappeared as an error.
+  - The other reason was because 1 image (the hero image) doesn't have the correct aspect ratio but no matter which width and height I gave, it didn't fix the issue. I assume this is because it's rendered with a border-radius. I could not fix this.
+
+ <br>
+
 ![Lighthouse Metrics](documentation/images/lighthouse-practices-desktop.png)
 
- - On mobile, the performace is 94. This was originally lower because of a cumulative layout shift of 0.219. Recommendations for this were to add width and height to images and change the images to .webp format.
+<br>
+
+ - On mobile, the performace is 92. This was originally lower because of a cumulative layout shift of 0.219. Recommendations for this were to add width and height to images and change the images to .webp format.
  - To change images from .jpg to .webp I used the website [WEBP Converter](https://cloudconvert.com/webp-converter).
  - I also removed the background image on the Hero section of the index page to try and help with the CLS.
  - The final issue and the largest still is "Eliminate render-blocking resources". This has to do with the Boostrap CSS file and the jQuery script. After researching, because they're from a CDN, I don't see any option to change them.
@@ -676,13 +681,13 @@ This was marked was Won't Have by the end of the project. I originally thought t
 
 | Page | Device | Category | Result |
 |------|--------|----------|--------|
-|Index | Mobile | Performance | 94% |
+|Index | Mobile | Performance | 92% |
 |||Accessibility| 100% |
 |||Best Practice | 92% |
 |||SEO | 100% |
-|| Desktop | Performance | 97% |
+|| Desktop | Performance | 95% |
 ||| Accessibility | 100% |
-||| Best Practice | 83% |
+||| Best Practice | 92% |
 ||| SEO | 100% |
  <br>
 
